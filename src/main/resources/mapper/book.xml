@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.db.project.book.bookMapper">
+<mapper namespace="com.db.project.book.BookMapper">
 
     <!--사용자 맞춤형 새로 나온 6개의 책 -->
     <select id="selectNewBook" parameterType="hashmap" resultType="hashmap">
@@ -12,6 +12,7 @@
         (select category_category_seq as category_seq from customer_preference where customer_customer_seq = #{customer_seq})
         limit 6
     </select>
+
 
     <!--책 등록하기-->
     <insert id="insertBook" parameterType="hashmap">
@@ -31,4 +32,8 @@
     </select>
 
     <!---->
+    <select id="select" parameterType="hashmap" resultType="hashmap">
+
+    </select>
+
 </mapper>

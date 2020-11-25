@@ -28,5 +28,21 @@
         AND customer_password= #{customer_password}
     </select>
 
-
+    <!--Spring Scheduler -->
+    <!-- 등급 변경 -->
+    <update id="updateRentalMembership" parameterType="hashmap">
+        UPDATE customer set rental_membership_rental_membership_seq = #{rental_membership_seq}
+    </update>
+    <update id="updateBurrowMembership" parameterType="hashmap">
+        UPDATE customer set borrow_membership_borrow_membership_seq = #{borrow_membership_seq}
+    </update>
+    <!-- 우수 회원 매기기-->
+    <insert id="insertBestRental">
+        insert best_rental(customer_customer_seq, best_rental_rank)
+        values(#{customer_seq}, #{rental_rank})
+    </insert>
+    <insert id="insertBestBorrow">
+        insert best_borrow(customer_customer_seq, best_borrow_rank)
+        values(#{customer_seq}, #{borrow_rank})
+    </insert>
 </mapper>

@@ -1,4 +1,4 @@
 package com.db.project.book;
 
-public class bookDAO {
+public class BookMapper {
 }
