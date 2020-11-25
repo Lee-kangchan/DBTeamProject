@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.db.project.book.bookMapper">
+
+    <!--사용자 맞춤형 새로 나온 6개의 책 -->
+    <select id="selectNewBook" parameterType="hashmap" resultType="hashmap">
+       select * from book
+        join category on category_category_seq = category_seq
+        where category_seq =
+        (select category_category_seq as category_seq from customer_preference where customer_customer_seq = #{customer_seq})
+        limit 6
+    </select>
+
+    <!--책 등록하기-->
+    <insert id="insertBook" parameterType="hashmap">
+        insert book(book_isbn, book_name, book_year, book_img, category_category_seq)
+        values(#{book_isbn}, #{book_name}, #{book_year}, #{book_img}, #{category_category_seq})
+    </insert>
+
+    <!--isbn찾기 -->
+    <select id = "selectBookIsbn" parameterType="hashmap" resultType="hashmap">
+        select * from book
+        where book_isbn = #{book_isbn}
+    </select>
+
+    <!--책 조회-->
+    <select id="selectBook" resultType="hashmap">
+        select * from book
+    </select>
+
+    <!---->
+</mapper>

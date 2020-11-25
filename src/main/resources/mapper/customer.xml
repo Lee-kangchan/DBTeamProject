@@ -4,7 +4,29 @@
 
 <mapper namespace="com.db.project.customer.CustomerMapper">
 
+    <!--모든 customer 검색하기-->
     <select id="selectCustomer" resultType="hashmap" >
        SELECT * FROM cloudbook.borrow_membership;
     </select>
+    <!-- 회원가입 -->
+    <insert id="insertCustomer" parameterType="hashmap">
+        INSERT INTO
+        customer(customer_id, customer_pw, customer_name, customer_nickname, customer_address_num, customer_phone, customer_address, customer_customer_seq)
+        VALUES (#{customer_id},#{customer_pw},#{customer_name},#{customer_nickname}, #{customer_address_num}, #{customer_phone}, #{customer_address}, #{customer_customer_seq})
+    </insert>
+
+    <!-- 추천인 입력-->
+    <select id = "selectCustomerSeq" parameterType="hashmap">
+        SELECT customer_seq FROM customer
+        WHERE customer_nickname = #{customer_nickname};
+    </select>
+
+    <!-- 로그인 -->
+    <select id="login" parameterType="hashmap">
+        SELECT * FROM customer
+        WHERE customer_id = #{customer_id}
+        AND customer_password= #{customer_password}
+    </select>
+
+
 </mapper>

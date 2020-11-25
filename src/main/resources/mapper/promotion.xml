@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.db.project.promotion.PromotionMapper">
+
+    <!--진행중인 프로모션-->
+    <select id="selectProcessPromotion" parameterType="hashmap" resultType="hashmap" >
+        <![CDATA[
+        select * from promotion
+        WHERE #{today} > promotion_startAt
+        and #{today} < promotion_endAt;
+        ]]>
+    </select>
+
+    <!--모든 프로모션 찾기 -->
+    <select id="selectPromotion" resultType="hashmap">
+        select * from promotion
+    </select>
+
+    <!--프로모션 등록 -->
+    <insert id="insertPromotion" parameterType="hashmap">
+        insert into promotion(promotion_title, promotion_image, promotion_startAt, promotion_endAt)
+        values(#{promotion_title}, #{promotion_image},#{promotion_startAt},#{promotion_endAt});
+    </insert>
+
+</mapper>
