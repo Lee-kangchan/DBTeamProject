@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.db.project.card.CardMapper">
+
+
+    <!--카드 등록-->
+    <insert id="insertCard" parameterType="hashmap">
+        insert into card(card_num, customer_seq, card_type, card_validity, card_cvc, card_pw)
+        values (#{card_num}, #{customer_seq}, #{card_type}, #{card_validity}, #{card_cvc}, #{card_pw})
+    </insert>
+    <!--카드목록-->
+    <select id="selectCard" parameterType="hashmap" resultType="hashmap">
+        select * from card
+        where customer_seq = #{customer_seq}
+    </select>
+    <!--카드삭제-->
+    <delete id="deleteCard" parameterType="hashmap">
+        delete * from card
+        where customer_seq = #{customer_seq}
+    </delete>
+    <!--포인트 충전-->
+    <update id="updateCustomerPlusPoint" parameterType="hashmap">
+        update customer set customer_point = customer_point+#{customer_point}
+        where customer_seq = #{customer_seq}
+    </update>
+    <!--포인트 차감-->
+    <update id="updateCustomerMinusPoint" parameterType="hashmap">
+        update customer set customer_point = customer_point-#{customer_point}
+        where customer_seq = #{customer_seq}
+    </update>
+
+    <!--포인트 사용 내역 입력 -->
+    <insert id="insertApproval" parameterType="hashmap">
+        insert into approval(customer_seq, approval_point, approval_yn, approval_detail)
+        values(#{customer_seq}, #{approval_point}, #{approval_yn}, #{approval_detail})
+    </insert>
+
+    <!--사용자 포인트 내역 확인-->
+    <select id="selectApproval" parameterType="hashmap" resultType="hashmap">
+        select * from approval
+        where customer_seq = #{customer_seq}
+    </select>
+
+    <!--관리자 사용 내역-->
+    <insert id="insertSales" parameterType="hashmap">
+        insert into sales(sales_money, sales_type, sales_detail)
+        values(#{sales_money}, #{sales_type}, #{sales_detail})
+    </insert>
+
+    <!-- 관리자 내역 확인 -->
+    <select id="selectSales" resultType="hashmap">
+        select * from sales
+    </select>
+
+</mapper>
