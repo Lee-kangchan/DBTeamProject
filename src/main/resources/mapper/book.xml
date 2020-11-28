@@ -15,7 +15,7 @@
 
     <!--isbn찾기 -->
     <select id = "selectBookIsbn" parameterType="hashmap" resultType="hashmap">
-        select * from book
+        select book_isbn from book
         where book_isbn = #{book_isbn}
     </select>
     <!--책 등록하기-->
@@ -37,19 +37,13 @@
     </insert>
 
     <!--나의 도서 현황-->
-    <select id="selectCustomerBook">
+    <select id="selectCustomerBook" parameterType="hashmap" resultType="hashmap">
         select * from customer_book
         where customer_seq = #{customer_seq}
     </select>
 
     <!--우리 동네 도서-->
-    <select id="selectCurrentBook" resultType="hashmap">
-        select * from customer_book
-        join customer on customer
-    </select>
-
-    <!--우리 동네 도서-->
-    <select id="selectCustomerBook" parameterType="hashmap" resultType="hashmap">
+    <select id="selectCurrentBook" parameterType="hashmap" resultType="hashmap">
         <![CDATA[
         select * from customer_book a
         join customer b on a.customer_seq = b.customer_seq
@@ -59,7 +53,7 @@
     </select>
 
     <!--자신이 등록한 도서 삭제-->
-    <delete id="deleteCustomerBook">
+    <delete id="deleteCustomerBook" parameterType="hashmap">
         delete from customer_book
         where custoomer_book_seq = #{customer_book_seq}
     </delete>
