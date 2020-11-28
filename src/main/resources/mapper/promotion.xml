@@ -17,6 +17,11 @@
     <select id="selectPromotion" resultType="hashmap">
         select * from promotion
     </select>
+    <!--상세 프로모션 찾기 -->
+    <select id="selectDetailPromotion" parameterType="resultType" resultType="hashmap">
+        select * from promotion
+        where promotion_seq = #{promotion_seq}
+    </select>
 
     <!--프로모션 등록 -->
     <insert id="insertPromotion" parameterType="hashmap">
