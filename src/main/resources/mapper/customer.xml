@@ -11,8 +11,17 @@
     <!-- 회원가입 -->
     <insert id="insertCustomer" parameterType="hashmap">
         INSERT INTO
-        customer(customer_id, customer_pw, customer_name, customer_nickname, customer_address_num, customer_phone, customer_address, customer_customer_seq)
-        VALUES (#{customer_id},#{customer_pw},#{customer_name},#{customer_nickname}, #{customer_address_num}, #{customer_phone}, #{customer_address}, #{customer_customer_seq})
+        customer(customer_id, customer_pw, customer_name, customer_nickname, customer_address_num, customer_phone, customer_address, recommend_seq)
+        VALUES (#{customer_id},#{customer_pw},#{customer_name},#{customer_nickname}, #{customer_address_num}, #{customer_phone}, #{customer_address}, #{recommend_seq})
+    </insert>
+    <!--방금 생성한 회원 seq 찾기-->
+    <select id="selectCustomer" parameterType="hashmap" resultType="hashmap">
+        select max(customer_seq)as customer_seq from customer
+
+    </select>
+    <insert id="insertPreference">
+        insert into (customer_customer_seq, category_category_seq)
+        values(#{customer_seq}, #{category_seq})
     </insert>
 
     <!-- 추천인 입력-->
@@ -31,18 +40,35 @@
     <!--Spring Scheduler -->
     <!-- 등급 변경 -->
     <update id="updateRentalMembership" parameterType="hashmap">
-        UPDATE customer set rental_membership_rental_membership_seq = #{rental_membership_seq}
+        UPDATE customer set rental_membership_seq= #{rental_membership_seq}
     </update>
     <update id="updateBurrowMembership" parameterType="hashmap">
-        UPDATE customer set borrow_membership_borrow_membership_seq = #{borrow_membership_seq}
+        UPDATE customer set borrow_membership_seq = #{borrow_membership_seq}
     </update>
     <!-- 우수 회원 매기기-->
-    <insert id="insertBestRental">
-        insert best_rental(customer_customer_seq, best_rental_rank)
-        values(#{customer_seq}, #{rental_rank})
+    <insert id="insertBestRental" parameterType="hashmap">
+        insert best_rental(customer_customer_seq)
+        values(SELECT a.customer_seq , count(a.customer_seq) count FROM db2020.customer a
+            join customer_book b on a.customer_seq = b.customer_seq
+            join matching c on b.customer_book_seq = c.customer_book_seq
+            where c.matching_type = "반납"
+            group by a.customer_seq
+            order by count desc )
     </insert>
-    <insert id="insertBestBorrow">
-        insert best_borrow(customer_customer_seq, best_borrow_rank)
-        values(#{customer_seq}, #{borrow_rank})
+    <insert id="insertBestBorrow" parameterType="hashmap">
+        insert best_borrow(customer_customer_seq)
+        values(SELECT a.customer_seq , count(a.customer_seq) count FROM db2020.customer a
+            join matching c on a.customer_seq= c.customer_seq
+            where c.matching_type = "반납"
+            group by a.customer_seq
+            order by count desc )
     </insert>
+    <delete id="deleteBestRental">
+        delete from best_rental
+    </delete>
+    <delete id="deleteBestBorrow">
+        delete from best_borrow
+    </delete>
+
+
 </mapper>

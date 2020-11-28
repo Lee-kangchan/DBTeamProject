@@ -9,31 +9,61 @@
        select * from book
         join category on category_category_seq = category_seq
         where category_seq =
-        (select category_category_seq as category_seq from customer_preference where customer_customer_seq = #{customer_seq})
+        (select category_seq from customer_preference where customer_seq = #{customer_seq})
         limit 6
     </select>
-
-
-    <!--책 등록하기-->
-    <insert id="insertBook" parameterType="hashmap">
-        insert book(book_isbn, book_name, book_year, book_img, category_category_seq)
-        values(#{book_isbn}, #{book_name}, #{book_year}, #{book_img}, #{category_category_seq})
-    </insert>
 
     <!--isbn찾기 -->
     <select id = "selectBookIsbn" parameterType="hashmap" resultType="hashmap">
         select * from book
         where book_isbn = #{book_isbn}
     </select>
+    <!--책 등록하기-->
+    <insert id="insertBook" parameterType="hashmap">
+        insert into book(book_isbn, book_name, book_year, book_img, category_seq)
+        values(#{book_isbn}, #{book_name}, #{book_year}, #{book_img}, #{category_seq})
+    </insert>
 
-    <!--책 조회-->
-    <select id="selectBook" resultType="hashmap">
-        select * from book
+    <!--사용자 책 등록하기-->
+    <insert id="insertCustomerBook" parameterType="hashmap">
+        insert into customer_book(customer_seq, book_isbn, customer_book_deposit, customer_book_comment, customer_book_secret_number)
+        values (#{customer_seq}, #{book_isbn}, #{customer_book_deposit}, #{customer_book_comment}, #{customer_book_secret_number} )
+    </insert>
+
+    <!--책 상태 사진 등록하기-->
+    <insert id="insertCustomerBookImage" parameterType="hashmap">
+        insert into customer_book_image(customer_book_seq, customer_book_name)
+        values
+    </insert>
+
+    <!--나의 도서 현황-->
+    <select id="selectCustomerBook">
+        select * from customer_book
+        where customer_seq = #{customer_seq}
     </select>
+
+    <!--우리 동네 도서-->
+    <select id="selectCurrentBook" resultType="hashmap">
+        select * from customer_book
+        join customer on customer
+    </select>
+
+    <!--우리 동네 도서-->
+    <select id="selectCustomerBook" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+        select * from customer_book a
+        join customer b on a.customer_seq = b.customer_seq
+        where b.customer_address_num < #{customer_address_num} + 100
+        and b.customer_address_num > #{customer_address_num} - 100
+        ]]>
+    </select>
+
+    <!--자신이 등록한 도서 삭제-->
+    <delete id="deleteCustomerBook">
+        delete from customer_book
+        where custoomer_book_seq = #{customer_book_seq}
+    </delete>
 
     <!---->
-    <select id="select" parameterType="hashmap" resultType="hashmap">
-
-    </select>
 
 </mapper>
