@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.db.project.matching.MatchingMapper">
+    <!--매칭 등록-->
+    <insert id="insertMatching" parameterType="hashmap">
+        insert into matching(matching_deal_address, customer_seq, customer_book_seq, customer_secret_num)
+        values((select customer_address from customer a join customer_book b on a.customer_seq = b.customer_seq where b.customer_book_seq = #{customer_book_seq} ), #{customer_seq}, #{customer_book_seq},#{customer_secret_num})
+    </insert>
+
+    <!--나의 매칭 목록(대출)-->
+    <select id="selectRentalMatching" parameterType="hashmap" resultType="hashmap">
+        select * from matching
+        where customer_seq = #{customer_seq}
+    </select>
+    <!--나의 매칭 목록(대여)-->
+    <select id="selectBorrowMatching" parameterType="hashmap" resultType="hashmap">
+        select * from customer_book a
+        join matching b on a.customer_book_seq = b.customer_book_seq
+        where a.customer_seq = #{customer_seq}
+    </select>
+    <!--대여자 상태 변경-->
+    <update id="updateRentalMatching" parameterType="hashmap">
+        update matching set matching_rental_yn = 1
+        where matching_seq = #{matching_seq}
+    </update>
+    <!--대출자 상태 변경-->
+    <update id="updateBorrowMatching" parameterType="hashmap">
+        update matching set matching_borrow_yn = 1
+        where matching_seq = #{matching_seq}
+    </update>
+
+    <!--매칭 상태 조회 -->
+    <select id="selectMatchingState" parameterType="hashmap" resultType="String">
+        select matching_type from matching
+        where matching_seq = #{matching_seq}
+    </select>
+
+    <!--매칭 상태 변경-->
+    <update id="updateTypeMatching" parameterType="hashmap">
+        update matching set matching_type = #{matching_type}
+        where matching_seq = #{matching_seq}
+    </update>
+    <!-- 매칭 대출자, 대여자 상태 변경 -->
+    <update id="updateMatchingReset" parameterType="hashmap">
+        update matching set matching_rental_yn = 0 , matching_borrow_yn = 0
+        where matching_seq = #{matching_seq}
+    </update>
+</mapper>
