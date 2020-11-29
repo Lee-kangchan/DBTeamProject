@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class MainController {
 
-	@Autowired
-	CustomerService service;
 	@GetMapping("hello")
 	public String test(Model model){
-		model.addAttribute("user", service.selectCustomer());
 		return "hello";
+	}
+
+	@GetMapping("home")
+	public String home(Model model){
+		return "home";
 	}
 }

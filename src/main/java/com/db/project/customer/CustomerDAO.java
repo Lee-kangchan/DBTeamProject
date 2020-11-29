@@ -16,9 +16,6 @@ public class CustomerDAO {
         mapper = sqlSession.getMapper(CustomerMapper.class);
     }
 
-    public List<HashMap<String , Object>> selectCustomer(){
-        return mapper.selectCustomer();
-    }
     public void insertCustomer(HashMap<String, Object> HashMap){
         mapper.insertCustomer(HashMap);
     }

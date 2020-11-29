@@ -10,12 +10,15 @@ import java.util.Map;
 
 @Service
 public class CustomerServiceImpl implements  CustomerService{
+
     @Autowired
     SqlSession sqlSession;
-
     @Override
-    public List<HashMap<String, Object>> selectCustomer() {
-        CustomerDAO dao = new CustomerDAO(sqlSession);
-        return dao.selectCustomer();
+    public int selectCustomer(HashMap<String, Object> map) {
+        CustomerDAO customerDAO = new CustomerDAO(sqlSession);
+
+        return customerDAO.selectCustomer(map);
     }
+
+
 }

@@ -4,10 +4,7 @@
 
 <mapper namespace="com.db.project.customer.CustomerMapper">
 
-    <!--모든 customer 검색하기-->
-    <select id="selectCustomer" resultType="hashmap" >
-       SELECT * FROM cloudbook.borrow_membership;
-    </select>
+
     <!-- 회원가입 -->
     <insert id="insertCustomer" parameterType="hashmap">
         INSERT INTO
@@ -15,7 +12,7 @@
         VALUES (#{customer_id},#{customer_pw},#{customer_name},#{customer_nickname}, #{customer_address_num}, #{customer_phone}, #{customer_address}, #{recommend_seq})
     </insert>
     <!--방금 생성한 회원 seq 찾기-->
-    <select id="selectCustomer" parameterType="hashmap" resultType="Integer">
+    <select id="selectCustomer" parameterType="hashmap" resultType="int">
         select max(customer_seq)as customer_seq from customer
 
     </select>
@@ -25,7 +22,7 @@
     </insert>
 
     <!-- 추천인 입력-->
-    <select id = "selectCustomerSeq" parameterType="hashmap" resultType="Integer">
+    <select id = "selectCustomerSeq" parameterType="hashmap" resultType="int">
         SELECT customer_seq FROM customer
         WHERE customer_nickname = #{customer_nickname};
     </select>
@@ -71,7 +68,7 @@
     </delete>
 
     <!--등급 퍼센테이지 확인-->
-    <select id="customerSales" parameterType="hashmap" resultType="Integer">
+    <select id="customerSales" parameterType="hashmap" resultType="int">
         select borrow_membership_benefit from customer a
         join borrow_membership b on a.borrow_membership_seq = b.borrow_membership_seq
         where a.customer_seq = #{customer_seq}

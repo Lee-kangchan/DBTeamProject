@@ -18,7 +18,7 @@
         select * from promotion
     </select>
     <!--상세 프로모션 찾기 -->
-    <select id="selectDetailPromotion" parameterType="resultType" resultType="hashmap">
+    <select id="selectDetailPromotion" parameterType="hashmap" resultType="hashmap">
         select * from promotion
         where promotion_seq = #{promotion_seq}
     </select>
