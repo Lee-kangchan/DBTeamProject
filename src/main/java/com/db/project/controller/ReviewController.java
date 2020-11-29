@@ -18,9 +18,9 @@ public class ReviewController {
     ReviewService reviewService;
 
     @GetMapping("review")
-    public String home(Model model){
+    public String review(Model model){
         List<HashMap<String,Object>> result = reviewService.selectReviewMain();
-
+        
         model.addAttribute("review", result);
         return "review";
     }

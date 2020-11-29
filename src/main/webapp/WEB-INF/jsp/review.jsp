@@ -65,22 +65,28 @@
         </div>
     </div><strong style="color: rgb(131,135,143);font-size: 20px;margin-bottom: 22px;margin-top: 6px;">도서별 리뷰 보기</strong>
     <div class="container" style="width: 1000px;">
-        <% for(var i = 0; i <= review.length / 3; i++) { %>
+        <% for(int i = 0; i <= review.size() / 3; i++) { %>
         <div class="row">
-            <% for(var j = 0; j < 3; j++) { %>
-                <% if(i == (review.length / 3) && j >= (review.length % 3)) %>
+            <% for(int j = 0; j < 3; j++) { %>
+                <% if(i == (review.size() / 3) && j >= (review.size() % 3)) { %>
                     <div class="col" style="padding-right: 5px;padding-left: 5px;">
                     </div>
                 <% } else { %>
                 <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                    <a href="#">
+                    <a href="#" style="text-decoration:none;">
                     <picture><img style="width: 152px;height: 225px;"></picture>
-                    <strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목</strong>
-                    <strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">별점</strong>
+                    <strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);"><%= review.get((i * 3) + j).get("book_name") %></strong>
+                    <strong style="font-size: 16px;text-align: center;color: rgb(8,9,9);">리뷰 수 : <%= review.get((i * 3) + j).get("review_count") %></strong>
+                    <% if (review.get((i * 3) + j).get("score") != null) { %>
+                    <strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);"><%= review.get((i * 3) + j).get("score") %></strong>
+                    <% } else { %>
+                    <strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">0</strong>
+                    <% } %>
                     </a>
                 </div>
                 <% } %>
             <% } %>
+            </div>
         <% } %>
     </div>
     <script src="static/assets/js/jquery.min.js"></script>
