@@ -3,6 +3,7 @@ package com.db.project.review;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class ReviewDAO {
 
@@ -14,8 +15,8 @@ public class ReviewDAO {
         mapper = sqlSession.getMapper(ReviewMapper.class);
     }
 
-    public HashMap<String, Object> selectMainReview(HashMap<String, Object> HashMap){return mapper.selectMainReview(HashMap);}
-    public HashMap<String, Object> selectReviewMain(HashMap<String, Object> HashMap){return mapper.selectReviewMain(HashMap);}
+    public List<HashMap<String, Object>> selectMainReview(){return mapper.selectMainReview();}
+    public List<HashMap<String, Object>> selectReviewMain(){return mapper.selectReviewMain();}
     public HashMap<String, Object> selectReviewScore(HashMap<String, Object> HashMap){return mapper.selectReviewScore(HashMap);}
     public HashMap<String, Object> selectReviewCount(HashMap<String, Object> HashMap){return mapper.selectReviewCount(HashMap);}
     public HashMap<String, Object> selectReviewContent(HashMap<String, Object> HashMap){return mapper.selectReviewContent(HashMap);}
