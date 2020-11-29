@@ -14,7 +14,7 @@
     </select>
 
 <!-- 리뷰 메인 페이지 -->
-<select id="selectReviewMain" parameterType="hashmap" resultType="hashmap">
+<select id="selectReviewMain" resultType="hashmap">
        SELECT book_isbn AS isbn, book_img, book_name, (SELECT count(*) FROM review WHERE book_isbn = isbn) AS review_count, (SELECT round(avg(review_score), 1) FROM review WHERE book_isbn = isbn) AS score
         FROM book
     </select>
