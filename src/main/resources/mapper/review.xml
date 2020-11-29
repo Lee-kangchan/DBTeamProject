@@ -8,38 +8,38 @@
     <select id="selectMainReview" parameterType="hashmap" resultType="hashmap">
         SELECT reivew_seq, book_img, book_name, customer_nickname, review_title, reivew_detail, review_score, review_createAt
         FROM customer, book, review
-        WHERE review.customer_customer_seq = customer.customer_seq AND book_book_isbn = book_isbn
+        WHERE review.customer_seq = customer.customer_seq AND review.book_isbn = book.book_isbn
         ORDER BY review_createAt DESC
         LIMIT 4
     </select>
 
     <!-- 리뷰 메인 페이지 -->
     <select id="selectReviewMain" parameterType="hashmap" resultType="hashmap">
-       SELECT book_isbn, book_img, book_name, (SELECT count(*) FROM review WHERE book_book_isbn = book_isbn) AS review_count, (SELECT round(avg(review_score), 1) FROM review WHERE book_book_isbn = book_isbn) AS score
+       SELECT book_isbn, book_img, book_name, (SELECT count(*) FROM review WHERE book_isbn = book_isbn) AS review_count, (SELECT round(avg(review_score), 1) FROM review WHERE book_isbn = book_isbn) AS score
         FROM book
     </select>
 
     <!-- 리뷰의 스코어 들고오기 -->
     <select id="selectReviewScore" parameterType="hashmap" resultType="hashmap">
-        SELECT round(avg(review_score), 1) FROM review WHERE book_book_isbn = #{book_isbn}) AS score
+        SELECT round(avg(review_score), 1) FROM review WHERE book_isbn = #{book_isbn}) AS score
     </select>
 
     <!-- 리뷰 개수 들고오기 -->
     <select id="selectReviewCount" parameterType="hashmap" resultType="hashmap">
-        SELECT count(*) AS review_count FROM review WHERE book_book_isbn = #{book_isbn}
+        SELECT count(*) AS review_count FROM review WHERE book_isbn = #{book_isbn}
     </select>
 
     <!-- 리뷰 내용 들고오기 -->
     <select id="selectReviewContent" parameterType="hashmap" resultType="hashmap">
         SELECT review_title, review_detail, review_score, review_createAt
         FROM review
-        WHERE book_book_isbn = #{book_isbn}
+        WHERE book_isbn = #{book_isbn}
     </select>
 
     <!-- 리뷰 작성하기 -->
     <insert id="insertReview" parameterType="hashmap">
         INSERT INTO
-        review(customer_customer_seq, book_book_isbn, review_title, review_detail, review_score)
+        review(customer_seq, book_isbn, review_title, review_detail, review_score)
         VALUES (#{customer_seq}, #{book_isbn}, #{review_title}, #{review_detail}, #{review_score})
     </insert>
 </mapper>
