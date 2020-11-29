@@ -13,7 +13,9 @@ public class BookDAO {
         this.sqlSession = sqlSession;
         mapper = sqlSession.getMapper(BookMapper.class);
     }
-
+    public List<HashMap<String, Object>> selectBook(){
+        return mapper.selectBook();
+    }
     public List<HashMap<String, Object>> selectNewBook(HashMap<String, Object> HashMap){
         return mapper.selectNewBook(HashMap);
     }

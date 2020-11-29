@@ -4,6 +4,9 @@
 
 <mapper namespace="com.db.project.book.BookMapper">
 
+    <select id="selectBook" resultType="hashmap">
+        select * from book
+    </select>
     <!--사용자 맞춤형 새로 나온 6개의 책 -->
     <select id="selectNewBook" parameterType="hashmap" resultType="hashmap">
        select * from book
@@ -14,7 +17,7 @@
     </select>
 
     <!--isbn찾기 -->
-    <select id = "selectBookIsbn" parameterType="hashmap" resultType="hashmap">
+    <select id = "selectBookIsbn" parameterType="hashmap" resultType="Integer">
         select book_isbn from book
         where book_isbn = #{book_isbn}
     </select>
@@ -33,7 +36,7 @@
     <!--책 상태 사진 등록하기-->
     <insert id="insertCustomerBookImage" parameterType="hashmap">
         insert into customer_book_image(customer_book_seq, customer_book_name)
-        values
+        values (#{customer_book_seq}, #{customer_book_name})
     </insert>
 
     <!--나의 도서 현황-->

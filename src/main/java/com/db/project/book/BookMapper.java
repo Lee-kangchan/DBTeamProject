@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface BookMapper {
 
+    public List<HashMap<String, Object>> selectBook();
     public List<HashMap<String, Object>> selectNewBook(HashMap<String, Object> HashMap);
     public Integer selectBookIsbn(HashMap<String, Object> HashMap);
     public void insertBook(HashMap<String, Object> HashMap);
