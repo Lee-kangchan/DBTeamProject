@@ -1,4 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" %><!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.List" %>
+<% List<HashMap<String, Object>> review = (List<HashMap<String, Object>>)request.getAttribute("review"); %>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -104,30 +108,16 @@
         </form>
         <h1 style="font-family: Bungee, cursive;color: rgb(68,178,93);font-size: 26px;padding: 20px;">Today's REVIEW</h1>
         <div class="card-group bg-light">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title" style="font-family: 'Roboto Condensed', sans-serif;">리뷰 작성자</h4>
-                    <p class="card-text" style="font-family: 'Roboto Condensed', sans-serif;text-align: center;">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title" style="font-family: 'Roboto Condensed', sans-serif;">Title</h4>
-                        <p class="card-text" style="text-align: center;font-family: 'Roboto Condensed', sans-serif;">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title" style="font-family: 'Roboto Condensed', sans-serif;">Title</h4>
-                        <p class="card-text" style="text-align: center;font-family: 'Roboto Condensed', sans-serif;">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title" style="font-family: 'Roboto Condensed', sans-serif;">Title</h4>
-                        <p class="card-text" style="text-align: center;font-family: 'Roboto Condensed', sans-serif;">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                    </div>
+            <%for(HashMap<String, Object> t : review){%>
+            <div class="card" style="padding:20px;">
+                <div class="card-body" style="width:80%; border-radius:8px; border:3px solid rgb(40,167,69); margin-left:10%">
+                    <a href="#" style="text-decoration:none;"><p class="card-title" style="font-family: 'Roboto Condensed', sans-serif; color:rgb(40,167,69); height:20%; font-weight:bold"><%=t.get("book_name")%></p></a>
+                    <p> </p>
+                    <p class="card-text" style="font-family: 'Roboto Condensed', sans-serif;text-align: center; height:60%"><%=t.get("review_detail")%></p>
+                    <p class="card-title" style="font-family: 'Roboto Condensed', sans-serif;"><%=t.get("customer_nickname")%></p>
                 </div>
             </div>
+            <%}%>
         </div>
     </div>
     <script src="static/assets/js/jquery.min.js"></script>

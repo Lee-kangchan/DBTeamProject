@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class ReviewServiceImpl implements ReviewService {
@@ -12,10 +13,17 @@ public class ReviewServiceImpl implements ReviewService {
     @Autowired
     SqlSession sqlSession;
     @Override
-    public int selectCustomer(HashMap<String, Object> map) {
+    public List<HashMap<String, Object>> selectMainReview() {
         ReviewDAO reviewDAO = new ReviewDAO(sqlSession);
 
-        return reviewDAO.selectCustomer(map);
+        return reviewDAO.selectMainReview();
+    }
+
+    @Override
+    public List<HashMap<String, Object>> selectReviewMain() {
+        ReviewDAO reviewDAO = new ReviewDAO(sqlSession);
+
+        return reviewDAO.selectReviewMain();
     }
 
 

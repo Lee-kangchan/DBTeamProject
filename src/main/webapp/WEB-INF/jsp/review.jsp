@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.List" %>
+<% List<HashMap<String, Object>> review = (List<HashMap<String, Object>>)request.getAttribute("review"); %>
 <!DOCTYPE html>
 <html>
 
@@ -5,23 +9,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>book</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,800">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/--mp---Multiple-items-slider-responsive.css">
-    <link rel="stylesheet" href="assets/css/Comment.css">
-    <link rel="stylesheet" href="assets/css/Footer-Clean.css">
-    <link rel="stylesheet" href="assets/css/Grid-and-List-view-V10-1.css">
-    <link rel="stylesheet" href="assets/css/Grid-and-List-view-V10.css">
+    <link rel="stylesheet" href="static/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="static/assets/css/--mp---Multiple-items-slider-responsive.css">
+    <link rel="stylesheet" href="static/assets/css/Comment.css">
+    <link rel="stylesheet" href="static/assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="static/assets/css/Grid-and-List-view-V10-1.css">
+    <link rel="stylesheet" href="static/assets/css/Grid-and-List-view-V10.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
-    <link rel="stylesheet" href="assets/css/Media-Slider-Bootstrap-3-1.css">
-    <link rel="stylesheet" href="assets/css/Media-Slider-Bootstrap-3.css">
-    <link rel="stylesheet" href="assets/css/Simple-Slider.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="static/assets/css/Media-Slider-Bootstrap-3-1.css">
+    <link rel="stylesheet" href="static/assets/css/Media-Slider-Bootstrap-3.css">
+    <link rel="stylesheet" href="static/assets/css/Simple-Slider.css">
+    <link rel="stylesheet" href="static/assets/css/styles.css">
 </head>
 
 <body>
@@ -61,72 +65,33 @@
         </div>
     </div><strong style="color: rgb(131,135,143);font-size: 20px;margin-bottom: 22px;margin-top: 6px;">도서별 리뷰 보기</strong>
     <div class="container" style="width: 1000px;">
+        <% for(var i = 0; i <= review.length / 3; i++) { %>
         <div class="row">
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목</strong><strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">별점</strong></a>
-            </div>
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목</strong><strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">별점<br></strong></a>
-            </div>
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목</strong><strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">별점</strong></a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목</strong><strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">별점</strong></a>
-            </div>
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목</strong><strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">별점<br></strong></a>
-            </div>
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목</strong><strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">별점</strong></a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목</strong><strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">별점</strong></a>
-            </div>
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목</strong><strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">별점<br></strong></a>
-            </div>
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목</strong><strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">별점</strong></a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목</strong><strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">별점</strong></a>
-            </div>
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목</strong><strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">별점<br></strong></a>
-            </div>
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목</strong><strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">별점</strong></a>
-            </div>
-        </div>
+            <% for(var j = 0; j < 3; j++) { %>
+                <% if(i == (review.length / 3) && j >= (review.length % 3)) %>
+                    <div class="col" style="padding-right: 5px;padding-left: 5px;">
+                    </div>
+                <% } else { %>
+                <div class="col" style="padding-right: 5px;padding-left: 5px;">
+                    <a href="#">
+                    <picture><img style="width: 152px;height: 225px;"></picture>
+                    <strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목</strong>
+                    <strong style="font-size: 16px;text-align: center;color: rgb(40,167,69);">별점</strong>
+                    </a>
+                </div>
+                <% } %>
+            <% } %>
+        <% } %>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/--mp---Multiple-items-slider-responsive-1.js"></script>
-    <script src="assets/js/--mp---Multiple-items-slider-responsive.js"></script>
-    <script src="assets/js/Grid-and-List-view-V10.js"></script>
+    <script src="static/assets/js/jquery.min.js"></script>
+    <script src="static/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/assets/js/bs-init.js"></script>
+    <script src="static/assets/js/--mp---Multiple-items-slider-responsive-1.js"></script>
+    <script src="static/assets/js/--mp---Multiple-items-slider-responsive.js"></script>
+    <script src="static/assets/js/Grid-and-List-view-V10.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
-    <script src="assets/js/Media-Slider-Bootstrap-3.js"></script>
-    <script src="assets/js/Simple-Slider.js"></script>
+    <script src="static/assets/js/Media-Slider-Bootstrap-3.js"></script>
+    <script src="static/assets/js/Simple-Slider.js"></script>
 </body>
 
 </html>
