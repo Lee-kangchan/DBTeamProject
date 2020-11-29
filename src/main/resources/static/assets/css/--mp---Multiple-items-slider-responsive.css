@@ -320,3 +320,33 @@ figcaption {
   position: absolute;
 }
 
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+  display: grid;
+  grid-gap: 1em;
+}
+
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+  display: grid;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+img {
+}
+
+b, strong {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.btn:not(:disabled):not(.disabled) {
+}
+
+.btn:not(:disabled):not(.disabled) {
+  border-radius: 10px;
+}
+

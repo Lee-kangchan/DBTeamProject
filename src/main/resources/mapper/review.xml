@@ -10,7 +10,7 @@
         FROM customer, book, review
         WHERE review.customer_customer_seq = customer.customer_seq AND book_book_isbn = book_isbn
         ORDER BY review_createAt DESC
-        LIMIT 5
+        LIMIT 4
     </select>
 
     <!-- 리뷰 메인 페이지 -->

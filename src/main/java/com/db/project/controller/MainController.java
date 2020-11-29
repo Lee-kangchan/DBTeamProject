@@ -17,6 +17,6 @@ public class MainController {
 
 	@GetMapping("home")
 	public String home(Model model){
-		return "home";
+		return "MAIN";
 	}
 }
