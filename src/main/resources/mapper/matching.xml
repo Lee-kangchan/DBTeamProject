@@ -42,6 +42,7 @@
         update matching set matching_type = #{matching_type}
         where matching_seq = #{matching_seq}
     </update>
+
     <!-- 매칭 대출자, 대여자 상태 변경 -->
     <update id="updateMatchingReset" parameterType="hashmap">
         update matching set matching_rental_yn = 0 , matching_borrow_yn = 0
