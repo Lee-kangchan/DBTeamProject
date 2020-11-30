@@ -35,30 +35,49 @@
     </select>
 
     <!--Spring Scheduler -->
+    <select id="rentalCustomer" resultType="hashmap">
+        SELECT a.customer_seq , count(a.customer_seq) count FROM db2020.customer a
+            join customer_book b on a.customer_seq = b.customer_seq
+            join matching c on b.customer_book_seq = c.customer_book_seq
+            where c.matching_type = "반납"
+            group by a.customer_seq
+            order by count desc
+    </select>
+    <select id="borrowCustomer" resultType="hashmap">
+        SELECT a.customer_seq , count(a.customer_seq) count FROM db2020.customer a
+            join matching c on a.customer_seq= c.customer_seq
+            where c.matching_type = "반납"
+            group by a.customer_seq
+            order by count desc
+    </select>
     <!-- 등급 변경 -->
     <update id="updateRentalMembership" parameterType="hashmap">
         UPDATE customer set rental_membership_seq= #{rental_membership_seq}
+        where customer_seq = #{customer_seq}
     </update>
     <update id="updateBurrowMembership" parameterType="hashmap">
         UPDATE customer set borrow_membership_seq = #{borrow_membership_seq}
+        where customer_seq = #{customer_seq}
     </update>
     <!-- 우수 회원 매기기-->
-    <insert id="insertBestRental" parameterType="hashmap">
+    <insert id="insertBestRental">
         insert best_rental(customer_customer_seq)
         values(SELECT a.customer_seq , count(a.customer_seq) count FROM db2020.customer a
             join customer_book b on a.customer_seq = b.customer_seq
             join matching c on b.customer_book_seq = c.customer_book_seq
             where c.matching_type = "반납"
             group by a.customer_seq
-            order by count desc )
+            order by count desc
+            limit 5)
     </insert>
-    <insert id="insertBestBorrow" parameterType="hashmap">
+    <insert id="insertBestBorrow">
         insert best_borrow(customer_customer_seq)
         values(SELECT a.customer_seq , count(a.customer_seq) count FROM db2020.customer a
             join matching c on a.customer_seq= c.customer_seq
             where c.matching_type = "반납"
             group by a.customer_seq
-            order by count desc )
+            order by count desc
+            limit 5)
     </insert>
     <delete id="deleteBestRental">
         delete from best_rental

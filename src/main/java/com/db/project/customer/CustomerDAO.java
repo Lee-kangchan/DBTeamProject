@@ -31,17 +31,24 @@ public class CustomerDAO {
     public HashMap<String, Object> login(HashMap<String, Object> HashMap){
         return mapper.login(HashMap);
     }
+
+    public List<HashMap<String, Object>> rentalCustomer(){
+        return mapper.rentalCustomer();
+    }
+    public List<HashMap<String, Object>> borrowCustomer(){
+        return  mapper.borrowCustomer();
+    }
     public void updateRentalMembership(HashMap<String, Object> HashMap){
         mapper.updateRentalMembership(HashMap);
     }
     public void updateBurrowMembership(HashMap<String, Object> HashMap){
         mapper.updateBurrowMembership(HashMap);
     }
-    public void insertBestRental(HashMap<String, Object> HashMap){
-        mapper.insertBestRental(HashMap);
+    public void insertBestRental(){
+        mapper.insertBestRental();
     }
-    public void insertBestBorrow(HashMap<String, Object> HashMap){
-        mapper.insertBestBorrow(HashMap);
+    public void insertBestBorrow(){
+        mapper.insertBestBorrow();
     }
     public void deleteBestRental(){
         mapper.deleteBestRental();

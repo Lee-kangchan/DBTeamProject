@@ -4,5 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface CustomerService {
-    public int selectCustomer(HashMap<String, Object> map);
+    public void insertCustomer(List<HashMap<String, Object>> list);
+    public int selectCustomer(HashMap<String, Object> HashMap);
+    public HashMap<String, Object> login(HashMap<String, Object> HashMap);
+    public void Membership(HashMap<String, Object> HashMap);
+    public int customerSales(HashMap<String,Object> HashMap);
 }

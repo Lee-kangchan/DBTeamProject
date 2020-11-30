@@ -49,6 +49,7 @@
     <select id="selectCurrentBook" parameterType="hashmap" resultType="hashmap">
         <![CDATA[
         select * from customer_book a
+        join book c on a.book_isbn = c.book_isbn
         join customer b on a.customer_seq = b.customer_seq
         where b.customer_address_num < #{customer_address_num} + 100
         and b.customer_address_num > #{customer_address_num} - 100

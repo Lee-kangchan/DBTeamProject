@@ -1,3 +1,7 @@
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.List" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" %>
+<% List<HashMap<String, Object>> book = (List<HashMap<String, Object>>)request.getAttribute("book"); %>
 <!DOCTYPE html>
 <html>
 
@@ -5,23 +9,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>book</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,800">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/--mp---Multiple-items-slider-responsive.css">
-    <link rel="stylesheet" href="assets/css/Comment.css">
-    <link rel="stylesheet" href="assets/css/Footer-Clean.css">
-    <link rel="stylesheet" href="assets/css/Grid-and-List-view-V10-1.css">
-    <link rel="stylesheet" href="assets/css/Grid-and-List-view-V10.css">
+    <link rel="stylesheet" href="static/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="static/assets/css/--mp---Multiple-items-slider-responsive.css">
+    <link rel="stylesheet" href="static/assets/css/Comment.css">
+    <link rel="stylesheet" href="static/assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="static/assets/css/Grid-and-List-view-V10-1.css">
+    <link rel="stylesheet" href="static/assets/css/Grid-and-List-view-V10.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
-    <link rel="stylesheet" href="assets/css/Media-Slider-Bootstrap-3-1.css">
-    <link rel="stylesheet" href="assets/css/Media-Slider-Bootstrap-3.css">
-    <link rel="stylesheet" href="assets/css/Simple-Slider.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="static/assets/css/Media-Slider-Bootstrap-3-1.css">
+    <link rel="stylesheet" href="static/assets/css/Media-Slider-Bootstrap-3.css">
+    <link rel="stylesheet" href="static/assets/css/Simple-Slider.css">
+    <link rel="stylesheet" href="static/assets/css/styles.css">
 </head>
 
 <body>
@@ -60,111 +64,104 @@
             </nav>
         </div>
     </div>
-    <div class="container" style="width: 1000px;color: rgb(76,82,75);"><strong style="color: rgb(131,135,143);font-size: 20px;">나의 동네</strong><strong style="color: rgb(131,135,143);font-size: 35px;margin-top: -20px;">부산시 ㅁㅁ구</strong>
-        <div class="col text-justify" style="width: 100px;margin-left: 860px;margin-bottom: 6px;"><a class="text-black-50" href="gridBook1.html" style="border-color: rgb(40,167,69);"><i class="fa fa-th-large" style="font-size: 29px;border-color: rgb(40,167,69);"></i></a><a class="text-black-50" href="listBook1.html" style="border-color: rgb(40,167,69);"><i class="fa fa-th-list" style="margin-left: 10px;font-size: 29px;"></i></a></div>
-        <div
-            class="row">
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목<button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;">대여가능</button></strong>
-                    <strong
-                        style="font-size: 16px;text-align: center;color: rgb(40,167,69);">지역</strong>
-                </a>
-            </div>
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목<button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;background: rgb(255,255,255);border-width: 2px;border-color: rgb(40,167,69);color: rgb(40,167,69);">대여중</button></strong>
-                    <strong
-                        style="font-size: 16px;text-align: center;color: rgb(40,167,69);">지역</strong>
-                </a>
-            </div>
-            <div class="col" style="padding-right: 5px;padding-left: 5px;">
-                <a href="#">
-                    <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목<button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;">Button</button></strong>
-                    <strong
-                        style="font-size: 16px;text-align: center;color: rgb(40,167,69);">지역</strong>
-                </a>
-            </div>
-    </div>
+    <div class="col text-justify" style="width: 100px;margin-left: 860px;margin-bottom: 6px;"><a class="text-black-50" href="gridBook1.html" style="border-color: rgb(40,167,69);"><i class="fa fa-th-large" style="font-size: 29px;border-color: rgb(40,167,69);"></i></a><a class="text-black-50" href="listBook1.html" style="border-color: rgb(40,167,69);"><i class="fa fa-th-list" style="margin-left: 10px;font-size: 29px;"></i></a></div>
+    <% int count = 0; %>
+    <%for(int i =0 ; i<book.size()/3; i++){ %>
     <div class="row">
-        <div class="col" style="padding-right: 5px;padding-left: 5px;">
-            <a href="#">
-                <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목<button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;">대여가능</button></strong>
-                <strong
-                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);">지역</strong>
-            </a>
-        </div>
-        <div class="col" style="padding-right: 5px;padding-left: 5px;">
-            <a href="#">
-                <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목<button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;background: rgb(255,255,255);border-width: 2px;border-color: rgb(40,167,69);color: rgb(40,167,69);">대여중</button></strong>
-                <strong
-                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);">지역</strong>
-            </a>
-        </div>
-        <div class="col" style="padding-right: 5px;padding-left: 5px;">
-            <a href="#">
-                <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목<button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;">Button</button></strong>
-                <strong
-                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);">지역</strong>
-            </a>
-        </div>
+        <% for(int j =0; j<3 ;j++){%>
+                <%if(book.get(count).get("customer_book_type").toString().equals("대여가능")){%>
+                <div class="col" style="padding-right: 5px;padding-left: 5px;">
+                    <a href="#">
+                        <picture><img src="<%=book.get(count).get("book_img")%>"style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);"><%=book.get(count).get("book_name")%>><button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;">대여가능</button></strong>
+                        <strong
+                            style="font-size: 16px;text-align: center;color: rgb(40,167,69);"><%=book.get(count).get("customer_address")%></strong>
+                    </a>
+                </div>
+                <%}%>
+                <%if(book.get(count).get("customer_book_type").toString().equals("예약중")){%>
+                <div class="col" style="padding-right: 5px;padding-left: 5px;">
+                    <a href="#">
+                        <picture><img src="<%=book.get(count).get("book_img")%>" style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);"><%=book.get(count).get("book_name")%><button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;background: rgb(255,255,255);border-width: 2px;border-color: rgb(40,167,69);color: rgb(40,167,69);">대여중</button></strong>
+                        <strong
+                                style="font-size: 16px;text-align: center;color: rgb(40,167,69);"><%=book.get(count).get("customer_address")%></strong>
+                    </a>
+                </div>
+                <%}%>
+            <%count++;%>
+        <%} %>
     </div>
-    <div class="row">
-        <div class="col" style="padding-right: 5px;padding-left: 5px;">
-            <a href="#">
-                <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목<button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;">대여가능</button></strong>
-                <strong
-                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);">지역</strong>
-            </a>
-        </div>
-        <div class="col" style="padding-right: 5px;padding-left: 5px;">
-            <a href="#">
-                <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목<button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;background: rgb(255,255,255);border-width: 2px;border-color: rgb(40,167,69);color: rgb(40,167,69);">대여중</button></strong>
-                <strong
-                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);">지역</strong>
-            </a>
-        </div>
-        <div class="col" style="padding-right: 5px;padding-left: 5px;">
-            <a href="#">
-                <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목<button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;">Button</button></strong>
-                <strong
-                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);">지역</strong>
-            </a>
-        </div>
+    <% } %>
+    <%if(book.size()%3==1){%>
+    <%if(book.get(count).get("customer_book_type").toString().equals("대여가능")){%>
+    <div class="col" style="padding-right: 5px;padding-left: 5px;">
+        <a href="#">
+            <picture><img src="<%=book.get(count).get("book_img")%>"style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);"><%=book.get(count).get("book_name")%>><button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;">대여가능</button></strong>
+            <strong
+                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);"><%=book.get(count).get("customer_address")%></strong>
+        </a>
     </div>
-    <div class="row">
-        <div class="col" style="padding-right: 5px;padding-left: 5px;">
-            <a href="#">
-                <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목<button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;">대여가능</button></strong>
-                <strong
-                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);">지역</strong>
-            </a>
-        </div>
-        <div class="col" style="padding-right: 5px;padding-left: 5px;">
-            <a href="#">
-                <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목<button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;background: rgb(255,255,255);border-width: 2px;border-color: rgb(40,167,69);color: rgb(40,167,69);">대여중</button></strong>
-                <strong
-                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);">지역</strong>
-            </a>
-        </div>
-        <div class="col" style="padding-right: 5px;padding-left: 5px;">
-            <a href="#">
-                <picture><img style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);">도서 제목<button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;">Button</button></strong>
-                <strong
-                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);">지역</strong>
-            </a>
-        </div>
+    <%}%>
+    <%if(book.get(count).get("customer_book_type").toString().equals("예약중")){%>
+    <div class="col" style="padding-right: 5px;padding-left: 5px;">
+        <a href="#">
+            <picture><img src="<%=book.get(count).get("book_img")%>" style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);"><%=book.get(count).get("book_name")%><button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;background: rgb(255,255,255);border-width: 2px;border-color: rgb(40,167,69);color: rgb(40,167,69);">대여중</button></strong>
+            <strong
+                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);"><%=book.get(count).get("customer_address")%></strong>
+        </a>
     </div>
+    <%}%>
+    <%count++;%>
+    <%if(book.get(count).get("customer_book_type").toString().equals("대여가능")){%>
+    <div class="col" style="padding-right: 5px;padding-left: 5px;">
+        <a href="#">
+            <picture><img src="<%=book.get(count).get("book_img")%>"style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);"><%=book.get(count).get("book_name")%>><button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;">대여가능</button></strong>
+            <strong
+                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);"><%=book.get(count).get("customer_address")%></strong>
+        </a>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/--mp---Multiple-items-slider-responsive-1.js"></script>
-    <script src="assets/js/--mp---Multiple-items-slider-responsive.js"></script>
-    <script src="assets/js/Grid-and-List-view-V10.js"></script>
+    <%}%>
+    <%if(book.get(count).get("customer_book_type").toString().equals("예약중")){%>
+    <div class="col" style="padding-right: 5px;padding-left: 5px;">
+        <a href="#">
+            <picture><img src="<%=book.get(count).get("book_img")%>" style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);"><%=book.get(count).get("book_name")%><button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;background: rgb(255,255,255);border-width: 2px;border-color: rgb(40,167,69);color: rgb(40,167,69);">대여중</button></strong>
+            <strong
+                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);"><%=book.get(count).get("customer_address")%></strong>
+        </a>
+    </div>
+    <%}%>
+    <div class="col"></div>
+    <%}%>
+    <%if(book.size()%3==2){%>
+    <%if(book.get(count).get("customer_book_type").toString().equals("대여가능")){%>
+    <div class="col" style="padding-right: 5px;padding-left: 5px;">
+        <a href="#">
+            <picture><img src="<%=book.get(count).get("book_img")%>"style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);"><%=book.get(count).get("book_name")%>><button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;">대여가능</button></strong>
+            <strong
+                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);"><%=book.get(count).get("customer_address")%></strong>
+        </a>
+    </div>
+    <%}%>
+    <%if(book.get(count).get("customer_book_type").toString().equals("예약중")){%>
+    <div class="col" style="padding-right: 5px;padding-left: 5px;">
+        <a href="#">
+            <picture><img src="<%=book.get(count).get("book_img")%>" style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);"><%=book.get(count).get("book_name")%><button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;background: rgb(255,255,255);border-width: 2px;border-color: rgb(40,167,69);color: rgb(40,167,69);">대여중</button></strong>
+            <strong
+                    style="font-size: 16px;text-align: center;color: rgb(40,167,69);"><%=book.get(count).get("customer_address")%></strong>
+        </a>
+    </div>
+    <%}%>
+    <div class="col"></div>
+    <div class="col"></div>
+    <%}%>
+    <script src="static/assets/js/jquery.min.js"></script>
+    <script src="static/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/assets/js/bs-init.js"></script>
+    <script src="static/assets/js/--mp---Multiple-items-slider-responsive-1.js"></script>
+    <script src="static/assets/js/--mp---Multiple-items-slider-responsive.js"></script>
+    <script src="static/assets/js/Grid-and-List-view-V10.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
-    <script src="assets/js/Media-Slider-Bootstrap-3.js"></script>
-    <script src="assets/js/Simple-Slider.js"></script>
+    <script src="static/assets/js/Media-Slider-Bootstrap-3.js"></script>
+    <script src="static/assets/js/Simple-Slider.js"></script>
 </body>
 
 </html>

@@ -9,10 +9,12 @@ public interface CustomerMapper {
     public void insertPreference(HashMap<String, Object> HashMap);
     public int selectCustomerSeq(HashMap<String, Object> HashMap);
     public HashMap<String, Object> login(HashMap<String, Object> HashMap);
+    public List<HashMap<String, Object>> rentalCustomer();
+    public List<HashMap<String, Object>> borrowCustomer();
     public void updateRentalMembership(HashMap<String, Object> HashMap);
     public void updateBurrowMembership(HashMap<String, Object> HashMap);
-    public void insertBestRental(HashMap<String, Object> HashMap);
-    public void insertBestBorrow(HashMap<String, Object> HashMap);
+    public void insertBestRental();
+    public void insertBestBorrow();
     public void deleteBestRental();
     public void deleteBestBorrow();
     public int customerSales(HashMap<String,Object> HashMap);
