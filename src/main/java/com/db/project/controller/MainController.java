@@ -27,13 +27,13 @@ public class MainController {
 
 	@GetMapping("home")
 	public String home(Model model){
-		List<HashMap<String,Object>> result = reviewService.selectMainReview();
-		for(HashMap<String, Object> t :result){
+		List<HashMap<String,Object>> review = reviewService.selectMainReview();
+		for(HashMap<String, Object> t :review){
 			logger.info(t.get("review_title").toString()+"");
 
 		}
 
-		model.addAttribute("review", result);
+		model.addAttribute("review", review);
 		return "MAIN";
 	}
 }
