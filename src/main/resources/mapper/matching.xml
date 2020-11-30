@@ -32,8 +32,8 @@
     </update>
 
     <!--매칭 상태 조회 -->
-    <select id="selectMatchingState" parameterType="hashmap" resultType="String">
-        select matching_type from matching
+    <select id="selectMatchingState" parameterType="hashmap" resultType="hashmap">
+        select * from matching
         where matching_seq = #{matching_seq}
     </select>
 

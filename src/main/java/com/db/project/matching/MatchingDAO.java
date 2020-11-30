@@ -28,7 +28,7 @@ public class MatchingDAO {
     public void updateBorrowMatching(HashMap<String, Object> HashMap){
         mapper.updateBorrowMatching(HashMap);
     }
-    public String selectMatchingState(HashMap<String, Object> HashMap){
+    public HashMap<String, Object> selectMatchingState(HashMap<String, Object> HashMap){
         return mapper.selectMatchingState(HashMap);
     }
     public void updateTypeMatching(HashMap<String, Object> HashMap){
