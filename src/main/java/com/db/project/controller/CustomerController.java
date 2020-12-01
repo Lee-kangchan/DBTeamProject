@@ -1,5 +1,6 @@
 package com.db.project.controller;
 
+import com.db.project.card.CardService;
 import com.db.project.customer.CustomerService;
 import com.db.project.review.ReviewService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
@@ -22,6 +23,9 @@ public class CustomerController {
 
     @Autowired
     CustomerService customerService;
+
+    @Autowired
+    CardService cardService;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -58,5 +62,37 @@ public class CustomerController {
         customerService.insertCustomer(customer, category_seq);
 
         return "redirect:/home";
+    }
+
+    @GetMapping("addCard")
+    public String addCard(Model model) {return "addCard";}
+
+    @PostMapping("addCard")
+    public String addCard(@RequestParam HashMap<String, Object> cardInfo, Model model) {
+
+        cardService.insertCard(cardInfo);
+
+        return "redirect:/addCard";
+    }
+
+    @GetMapping("myCard")
+    public String myCard(Model model, HttpSession session) {
+
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("customer_seq", session.getAttribute("customer_seq"));
+
+        logger.info(session.getAttribute("customer_seq") + "");
+
+        logger.info(map + "");
+
+        List<HashMap<String, Object>> cardInfo = cardService.selectCard(map);
+
+        logger.info(cardInfo + "");
+
+        model.addAttribute("cardInfo", cardInfo);
+
+        return "myCard";
+
     }
 }
