@@ -33,7 +33,7 @@
 <body>
     <div id="navigation-block">
         <nav class="navbar navbar-light navbar-expand-md d-flex">
-            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="MAIN.html">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/home">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <ul
                     class="nav navbar-nav"></ul>
                     <div class="collapse navbar-collapse d-flex" id="navcol-1">
@@ -206,16 +206,13 @@
                         
                     </div>
                     <div class="signup-input-wrap name-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">	
-                        <input placeholder="카드 유효기간" type="text" name="카드 유효기간"></input>
+                        <input placeholder="카드 유효기간" type="text" name="card_validity"></input>
                     </div>
                     <div class="signup-input-wrap nickname-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">	
                         <input placeholder="카드 cvc" type="text" name="card_cvc"></input>
                     </div>
                     <div class="signup-input-wrap phonenumber-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">	
                         <input placeholder="카드 비밀번호" type="password" name="card_pw"></input>
-                    </div>
-                    <div class="signup-input-wrap address-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">	
-                        <input placeholder="결제 비밀번호" type="password" name="card_approval_pw"></input>
                     </div>
                
                     

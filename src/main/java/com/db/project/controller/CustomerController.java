@@ -52,6 +52,7 @@ public class CustomerController {
         return mv;
     }
 
+    // 회원가입
     @GetMapping("signup")
     public String signup(Model model) {return "Signup";}
 
@@ -64,17 +65,20 @@ public class CustomerController {
         return "redirect:/home";
     }
 
+    // 카드 추가
     @GetMapping("addCard")
     public String addCard(Model model) {return "addCard";}
 
     @PostMapping("addCard")
-    public String addCard(@RequestParam HashMap<String, Object> cardInfo, Model model) {
+    public String addCard(@RequestParam HashMap<String, Object> cardInfo, Model model, HttpSession session) {
 
+        cardInfo.put("customer_seq", session.getAttribute("customer_seq"));
         cardService.insertCard(cardInfo);
 
-        return "redirect:/addCard";
+        return "redirect:/myCard";
     }
 
+    // 내 카드 목록
     @GetMapping("myCard")
     public String myCard(Model model, HttpSession session) {
 
@@ -95,4 +99,6 @@ public class CustomerController {
         return "myCard";
 
     }
+
+    // 카드 삭제
 }

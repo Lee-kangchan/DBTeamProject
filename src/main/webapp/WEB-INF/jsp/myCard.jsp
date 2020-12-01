@@ -71,44 +71,17 @@
             <div class="col"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">카드 번호</strong></div>
             <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">카드명</strong></div>
             <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">카드 유효기간</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"></strong></div>
+            <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><a href="/addCard" style="color:black; text-decoration:none;">추가하기</a></strong></div>
         </div>
+        <% for(int i = 0; i < cardInfo.size(); i++) { %>
         <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">0000-0000-0000-0000</strong></div>
-            <div class="col" style="height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">도서 제목</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">0000-00</strong></div>
+            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;"><%=cardInfo.get(i).get("card_num")%></strong></div>
+            <div class="col" style="height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;"><%=cardInfo.get(i).get("card_type")%></strong></div>
+            <div class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;"><%=cardInfo.get(i).get("card_validity")%></strong></div>
             <div class="col" style="height: 100px;"><button class="btn btn-primary btn-sm text-center d-flex" type="button" style="color: rgb(40,167,69);background: rgb(255,255,255);border-width: 3px;margin: 30px;margin-left: 70px;">삭제하기</button></div>
         </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">0000-0000-0000-0000</strong></div>
-            <div class="col" style="height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">도서 제목</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">0000-00</strong></div>
-            <div class="col" style="height: 100px;"><button class="btn btn-primary btn-sm text-center d-flex" type="button" style="color: rgb(40,167,69);background: rgb(255,255,255);border-width: 3px;margin: 30px;margin-left: 70px;">삭제하기</button></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">0000-0000-0000-0000</strong></div>
-            <div class="col" style="height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">도서 제목</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">0000-00</strong></div>
-            <div class="col" style="height: 100px;"><button class="btn btn-primary btn-sm text-center d-flex" type="button" style="color: rgb(40,167,69);background: rgb(255,255,255);border-width: 3px;margin: 30px;margin-left: 70px;">삭제하기</button></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">0000-0000-0000-0000</strong></div>
-            <div class="col" style="height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">도서 제목</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">0000-00</strong></div>
-            <div class="col" style="height: 100px;"><button class="btn btn-primary btn-sm text-center d-flex" type="button" style="color: rgb(40,167,69);background: rgb(255,255,255);border-width: 3px;margin: 30px;margin-left: 70px;">삭제하기</button></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">0000-0000-0000-0000</strong></div>
-            <div class="col" style="height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">도서 제목</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">0000-00</strong></div>
-            <div class="col" style="height: 100px;"><button class="btn btn-primary btn-sm text-center d-flex" type="button" style="color: rgb(40,167,69);background: rgb(255,255,255);border-width: 3px;margin: 30px;margin-left: 70px;">삭제하기</button></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">0000-0000-0000-0000</strong></div>
-            <div class="col" style="height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">도서 제목</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">0000-00</strong></div>
-            <div class="col" style="height: 100px;"><button class="btn btn-primary btn-sm text-center d-flex" type="button" style="color: rgb(40,167,69);background: rgb(255,255,255);border-width: 3px;margin: 30px;margin-left: 70px;">삭제하기</button></div>
-        </div>
+        <% } %>
+
     </div>
     <script src="static/assets/js/jquery.min.js"></script>
     <script src="static/assets/bootstrap/js/bootstrap.min.js"></script>
