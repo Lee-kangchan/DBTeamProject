@@ -2,7 +2,7 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
 <% List<HashMap<String, Object>> review = (List<HashMap<String, Object>>)request.getAttribute("review"); %>
-<% String sess = (String)request.getAttribute("sess"); %>
+<% Integer sess = (Integer)request.getAttribute("sess"); %>
 <!DOCTYPE html>
 <html>
 
