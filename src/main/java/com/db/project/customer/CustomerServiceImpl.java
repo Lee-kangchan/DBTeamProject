@@ -1,6 +1,8 @@
 package com.db.project.customer;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +16,9 @@ public class CustomerServiceImpl implements  CustomerService{
 
     @Autowired
     SqlSession sqlSession;
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Override
     public int selectCustomer(HashMap<String, Object> map) {
         CustomerDAO customerDAO = new CustomerDAO(sqlSession);
@@ -23,14 +28,16 @@ public class CustomerServiceImpl implements  CustomerService{
 
     @Override
     @Transactional
-    public void insertCustomer(List<HashMap<String, Object>> list) {
+    public void insertCustomer(HashMap<String, Object> HashMap, List<Integer> list) {
         CustomerDAO customerDAO = new CustomerDAO(sqlSession);
-        customerDAO.insertCustomer(list.get(0));
 
-        int seq = customerDAO.selectCustomerSeq(list.get(0));
+        customerDAO.insertCustomer(HashMap);
 
-        for (HashMap<String, Object> map : list) {
-            customerDAO.insertPreference(map);
+        int seq = customerDAO.selectCustomerSeq(HashMap);
+        HashMap.put("customer_seq",seq);
+        for (Integer map : list) {
+            HashMap.put("category_seq",map);
+            customerDAO.insertPreference(HashMap);
         }
     }
 
