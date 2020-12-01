@@ -1,6 +1,7 @@
 package com.db.project.card;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.smartcardio.Card;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Service
 public class CardServiceImpl implements CardService{
+    @Autowired
     SqlSession sqlSession;
 
     public void insertCard(HashMap<String, Object> HashMap) {
