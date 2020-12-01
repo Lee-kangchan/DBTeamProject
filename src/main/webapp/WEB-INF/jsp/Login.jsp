@@ -34,7 +34,7 @@
 <body>
     <div id="navigation-block">
         <nav class="navbar navbar-light navbar-expand-md d-flex">
-            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="MAIN.html">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/home">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                
             </div>
         </nav>
@@ -132,7 +132,7 @@
        
        
     
-        <form method="post" action="/Login">
+        <form method="post" action="/login">
             <div class="main-container" style="font-family: 'Do Hyeon', sans-serif;height: 100%; width: 40%; border:2px solid var(--naver-green-border-color); border-radius: 15px;">
                 <div class="main-wrap" >
                 <header>
@@ -155,9 +155,7 @@
                     
                 </section>
                 <div class="side">
-                    <a href="#" style="padding : 0 30px 0; color: rgb(38,166,67);">ID 찾기</a>
-                    <a href="#" style="padding : 0 30px 0; color: rgb(38,166,67);">PW 찾기</a>
-                    <a href="#" style="padding : 0 30px 0; color: rgb(38,166,67);">회원가입</a>
+                    <a href="signup" style="padding : 0 30px 0; color: rgb(38,166,67);">회원가입</a>
                 </div>
             </div>
         </form>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,13 +27,14 @@ public class MainController {
 	}
 
 	@GetMapping("home")
-	public String home(Model model){
+	public String home(Model model, HttpSession session){
 		List<HashMap<String,Object>> review = reviewService.selectMainReview();
 		for(HashMap<String, Object> t :review){
 			logger.info(t.get("review_title").toString()+"");
 
 		}
 
+		model.addAttribute("sess", session.getAttribute("customer_seq"));
 		model.addAttribute("review", review);
 		return "MAIN";
 	}

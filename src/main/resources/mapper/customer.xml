@@ -17,7 +17,7 @@
 
     </select>
     <insert id="insertPreference">
-        insert into (customer_customer_seq, category_category_seq)
+        insert into customer_preference (customer_seq, category_seq)
         values(#{customer_seq}, #{category_seq})
     </insert>
 
@@ -28,10 +28,10 @@
     </select>
 
     <!-- 로그인 -->
-    <select id="login" parameterType="hashmap">
+    <select id="login" parameterType="hashmap" resultType="hashmap">
         SELECT * FROM customer
         WHERE customer_id = #{customer_id}
-        AND customer_password= #{customer_password}
+        AND customer_pw= #{customer_pw}
     </select>
 
     <!--Spring Scheduler -->

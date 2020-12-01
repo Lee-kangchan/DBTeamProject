@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.List" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -30,7 +34,7 @@
 <body>
     <div id="navigation-block">
         <nav class="navbar navbar-light navbar-expand-md d-flex">
-            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="MAIN.html">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/home">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                
             </div>
         </nav>
@@ -156,7 +160,7 @@
         </style>
        
         
-        <form method="post" action="/signUp">
+        <form method="post" action="/signup">
             <div class="main-container" style="font-family: 'Do Hyeon', sans-serif; height: 100%; width: 40%; border:2px solid var(--naver-green-border-color); border-radius: 15px;">
                 <div class="main-wrap" >
                 <header>
@@ -183,13 +187,27 @@
                         <input placeholder="전화번호" type="text" name="customer_phone"></input>
                     </div>
                     <div class="signup-input-wrap address-wrap" style="border-radius: 15px;">	
-                        <input placeholder="우편번호" type="text" name="customer_address"></input>
+                        <input placeholder="우편번호" type="text" name="customer_address_num"></input>
                     </div>
                     <div class="signup-input-wrap dealaddress-wrap" style="border-radius: 15px;">	
-                        <input placeholder="거래주소" type="text" name="customer_deal_address"></input>
+                        <input placeholder="거래주소" type="text" name="customer_address"></input>
                     </div>
                     <div class="signup-input-wrap recommendnumber-wrap" style="border-radius: 15px;">	
-                        <input placeholder="추천인 번호" type="text" name="customer_customer_seq"></input>
+                        <input placeholder="추천인 번호" type="text" name="recommend_seq"></input>
+                    </div>
+                    <div style="width:465px">
+                        <p style="margin-left:10px"><string>선호도</string></p>
+                        <div style="padding-left:10px; padding-right: 10px">
+                            <input type="checkbox" name="category_seq" value="1">수필
+                            <input type="checkbox" name="category_seq" value="2">소설
+                            <input type="checkbox" name="category_seq" value="3">시
+                            <input type="checkbox" name="category_seq" value="4">유아
+                            <input type="checkbox" name="category_seq" value="5">여행
+                            <input type="checkbox" name="category_seq" value="6">역사
+                            <input type="checkbox" name="category_seq" value="7">과학
+                            <input type="checkbox" name="category_seq" value="8">고전
+                            <input type="checkbox" name="category_seq" value="9">외국어
+                        </div>
                     </div>
                     <div class="signup-button-wrap">
                         <button type="submit" value="회원가입">회원가입</button>
