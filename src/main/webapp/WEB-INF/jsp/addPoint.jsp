@@ -1,3 +1,9 @@
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.List" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" %>
+
+<% List<HashMap<String, Object>> cardInfo = (List<HashMap<String, Object>>)request.getAttribute("cardInfo"); %>
+
 <!DOCTYPE html>
 <html>
 
@@ -189,8 +195,10 @@
                     </div>
                     
                     <div class="addPoint-select-wrap card-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">
-                        <select name="card_type" id="" > 
-                            <option value="" >충전할 카드 선택</option>
+                        <select name="card_type" id="" >
+                        <% for(int i = 0; i < cardInfo.size(); i++) { %>
+                            <option value='<%= cardInfo.get(i).get("card_num")%>'><%=cardInfo.get(i).get("card_type")%></option>
+                        <% } %>
                         </select>
                     </div>
                     <div class="addPoint-input-wrap pw-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">	

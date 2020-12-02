@@ -31,9 +31,11 @@ public class CustomerServiceImpl implements  CustomerService{
     public void insertCustomer(HashMap<String, Object> HashMap, List<Integer> list) {
         CustomerDAO customerDAO = new CustomerDAO(sqlSession);
 
+        HashMap.put("recommend_seq", customerDAO.selectCustomerSeq(HashMap));
+
         customerDAO.insertCustomer(HashMap);
 
-        int seq = customerDAO.selectCustomerSeq(HashMap);
+        int seq = customerDAO.selectCustomer(HashMap);
         HashMap.put("customer_seq",seq);
         for (Integer map : list) {
             HashMap.put("category_seq",map);

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -101,4 +102,30 @@ public class CustomerController {
     }
 
     // 카드 삭제
+    @GetMapping("deleteCard/{num}")
+    public String deleteCard(Model model, HttpSession session, @PathVariable("num") int num) {
+
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("card_num", num);
+
+        cardService.deleteCard(map);
+
+        return "redirect:/myCard";
+    }
+
+    // 포인트 충전
+    @GetMapping("addPoint")
+    public String addPoint(Model model, HttpSession session) {
+
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("customer_seq", session.getAttribute("customer_seq"));
+
+        List<HashMap<String, Object>> cardInfo = cardService.selectCard(map);
+
+        model.addAttribute("cardInfo", cardInfo);
+
+        return "addPoint";
+    }
 }

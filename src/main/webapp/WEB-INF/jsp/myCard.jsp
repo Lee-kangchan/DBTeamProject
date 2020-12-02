@@ -78,7 +78,7 @@
             <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;"><%=cardInfo.get(i).get("card_num")%></strong></div>
             <div class="col" style="height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;"><%=cardInfo.get(i).get("card_type")%></strong></div>
             <div class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;"><%=cardInfo.get(i).get("card_validity")%></strong></div>
-            <div class="col" style="height: 100px;"><button class="btn btn-primary btn-sm text-center d-flex" type="button" style="color: rgb(40,167,69);background: rgb(255,255,255);border-width: 3px;margin: 30px;margin-left: 70px;">삭제하기</button></div>
+            <div class="col" style="height: 100px;"><button class="btn btn-primary btn-sm text-center d-flex" type="button" style="color: rgb(40,167,69);background: rgb(255,255,255);border-width: 3px;margin: 30px;margin-left: 70px;" ><a href='/deleteCard/<%=cardInfo.get(i).get("card_num")%>' style="text-decoration:none; color:black;">삭제하기</a></button></div>
         </div>
         <% } %>
 

@@ -17,8 +17,8 @@
     </select>
     <!--카드삭제-->
     <delete id="deleteCard" parameterType="hashmap">
-        delete * from card
-        where customer_seq = #{customer_seq}
+        delete from card
+        where card_num = #{card_num}
     </delete>
     <!--포인트 충전-->
     <update id="updateCustomerPlusPoint" parameterType="hashmap">

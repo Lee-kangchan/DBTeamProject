@@ -193,7 +193,7 @@
                         <input placeholder="거래주소" type="text" name="customer_address"></input>
                     </div>
                     <div class="signup-input-wrap recommendnumber-wrap" style="border-radius: 15px;">	
-                        <input placeholder="추천인 번호" type="text" name="recommend_seq"></input>
+                        <input placeholder="추천인 닉네임" type="text" name="recommend_nickname"></input>
                     </div>
                     <div style="width:465px">
                         <p style="margin-left:10px"><string>선호도</string></p>

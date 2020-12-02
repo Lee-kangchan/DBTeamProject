@@ -24,7 +24,7 @@
     <!-- 추천인 입력-->
     <select id = "selectCustomerSeq" parameterType="hashmap" resultType="int">
         SELECT customer_seq FROM customer
-        WHERE customer_nickname = #{customer_nickname};
+        WHERE customer_nickname = #{recommend_nickname};
     </select>
 
     <!-- 로그인 -->
