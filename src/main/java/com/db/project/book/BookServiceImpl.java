@@ -20,7 +20,10 @@ public class BookServiceImpl implements BookService {
         BookDAO dao = new BookDAO(sqlSession);
         return dao.selectNewBook(HashMap);
     }
-
+    public List<HashMap<String, Object>> selectMainBook(){
+        BookDAO dao = new BookDAO(sqlSession);
+        return dao.selectMainBook();
+    }
     @Override
     public void insertBook(HashMap<String, Object> HashMap) {
         BookDAO dao = new BookDAO(sqlSession);

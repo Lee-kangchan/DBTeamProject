@@ -9,13 +9,21 @@
     </select>
     <!--사용자 맞춤형 새로 나온 6개의 책 -->
     <select id="selectNewBook" parameterType="hashmap" resultType="hashmap">
-       select * from book
-        join category on category_category_seq = category_seq
-        where category_seq =
-        (select category_seq from customer_preference where customer_seq = #{customer_seq})
-        limit 6
+        <![CDATA[
+        select * from customer_book a
+        join book c on a.book_isbn = c.book_isbn
+        join customer b on a.customer_seq = b.customer_seq
+        where b.customer_address_num < #{customer_address_num} + 100
+        and b.customer_address_num > #{customer_address_num} - 100
+        limit 10
+        ]]>
     </select>
-
+    <select id ="selectMainBook"  resultType="hashmap">
+        select * from book
+        join customer_book on book.book_isbn = customer_book.book_isbn
+        order by customer_book_createAt desc
+        limit 10
+    </select>
     <!--isbn찾기 -->
     <select id = "selectBookIsbn" parameterType="hashmap" resultType="Integer">
         select book_isbn from book

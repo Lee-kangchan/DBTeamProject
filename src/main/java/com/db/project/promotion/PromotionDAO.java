@@ -16,8 +16,8 @@ public class PromotionDAO {
     public List<HashMap<String, Object>> selectProcessPromotion(HashMap<String,Object> HashMap){
         return mapper.selectProcessPromotion(HashMap);
     }
-    public List<HashMap<String, Object>> selectPromotion(HashMap<String, Object> HashMap){
-        return mapper.selectPromotion(HashMap);
+    public List<HashMap<String, Object>> selectPromotion(){
+        return mapper.selectPromotion();
     }
     public HashMap<String, Object> selectDetailPromotion(HashMap<String, Object> HashMap){
         return mapper.selectDetailPromotion(HashMap);

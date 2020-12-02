@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
-<% List<HashMap<String, Object>> review = (List<HashMap<String, Object>>)request.getAttribute("review"); %>
 <% Integer sess = (Integer)request.getAttribute("sess"); %>
+<% List<HashMap<String, Object>> review = (List<HashMap<String, Object>>)request.getAttribute("review"); %>
+<% List<HashMap<String, Object>> book = (List<HashMap<String, Object>>)request.getAttribute("book"); %>
+<% List<HashMap<String, Object>> promotion = (List<HashMap<String, Object>>)request.getAttribute("promotion"); %>
+
 <!DOCTYPE html>
 <html>
 
@@ -36,7 +39,7 @@
                 <ul
                     class="nav navbar-nav"></ul>
                     <div class="collapse navbar-collapse d-flex" id="navcol-1">
-                        <form class="form-inline d-flex" style="margin: 0 auto;"><input class="form-control d-flex ml-auto" type="search" placeholder="검색할 내용을 입력해주세요" name="SEARCH" style="padding: 5px;margin: 17px;width: 415px;padding-left: 23px;font-family: 'Roboto Condensed', sans-serif;margin-right: 8px;">
+                        <form action="/search" class="form-inline d-flex" style="margin: 0 auto;"><input class="form-control d-flex ml-auto" type="search" placeholder="검색할 내용을 입력해주세요" name="SEARCH" style="padding: 5px;margin: 17px;width: 415px;padding-left: 23px;font-family: 'Roboto Condensed', sans-serif;margin-right: 8px;">
                             <i
                                 class="fa fa-search" style="width: 20px;height: 20px;font-size: 20px;color: rgb(38,166,67);"></i>
                         </form>
@@ -45,9 +48,9 @@
                             <li class="nav-item"><a class="nav-link active" href="/login" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">LOGIN</a></li>
                             <li class="nav-item"><a class="nav-link" href="/signup" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">SIGNUP</a></li>
                         <% } else { %>
-                            <li class="nav-item"><a class="nav-link active" href="#" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">MY PAGE</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">LOGOUT</a></li>
-                            <li class="nav-item"><a class="nav-link active" href="#" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">도서등록</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="/mypage" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">MY PAGE</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/logout" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">LOGOUT</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="/bookInsert" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">도서등록</a></li>
                         <% } %>
                         </ul>
                     </div>
@@ -60,9 +63,9 @@
                         style="margin: 0 auto;">
                         <form class="form-inline" style="margin: 0 auto;">
                             <ul class="nav navbar-nav">
-                                <li class="nav-item"><a class="nav-link active d-flex" data-bs-hover-animate="bounce" href="gridBook1.jsp" style="padding-right: 20px;font-size: 20px;margin: 0 auto;font-family: Nunito, sans-serif;">우리동네 도서</a></li>
+                                <li class="nav-item"><a class="nav-link active d-flex" data-bs-hover-animate="bounce" href="/book" style="padding-right: 20px;font-size: 20px;margin: 0 auto;font-family: Nunito, sans-serif;">우리동네 도서</a></li>
                                 <li class="nav-item"><a class="nav-link d-flex" data-bs-hover-animate="bounce" href="#" style="padding-left: 20px;padding-right: 20px;font-size: 20px;margin: 0 aitp;font-family: Nunito, sans-serif;">나의 도서 현황</a></li>
-                                <li class="nav-item"><a class="nav-link d-flex" data-bs-hover-animate="bounce" href="review.html" style="font-size: 20px;padding-left: 20px;font-family: Nunito, sans-serif;">도서별 리뷰 보기</a></li>
+                                <li class="nav-item"><a class="nav-link d-flex" data-bs-hover-animate="bounce" href="/review" style="font-size: 20px;padding-left: 20px;font-family: Nunito, sans-serif;">도서별 리뷰 보기</a></li>
                             </ul>
                         </form>
                     </div>
@@ -73,42 +76,40 @@
     <div class="simple-slider">
         <div class="swiper-container">
             <div class="swiper-wrapper" style="height: 420px;">
-                <div class="d-flex swiper-slide" style="background-image: url(https://placeholdit.imgix.net/~text?txtsize=68&amp;txt=Slideshow+Image&amp;w=1920&amp;h=500);background-size: cover;height: 400px;"><img src="static/assets/img/promotion2.jpg" style="height: 400px;margin: 0 auto;"></div>
-                <div class="swiper-slide" style="background-image: url(https://placeholdit.imgix.net/~text?txtsize=68&amp;txt=Slideshow+Image&amp;w=1920&amp;h=500);background-size: cover;height: 400px;"><img class="d-flex" src="static/assets/img/promotion1.jpg" style="width: 977px;margin: 0 auto;height: 400px;"></div>
-                <div class="swiper-slide" style="background-image: url(https://placeholdit.imgix.net/~text?txtsize=68&amp;txt=Slideshow+Image&amp;w=1920&amp;h=500);background-size: cover;height: 400px;"><img class="d-flex" src="static/assets/img/promotion3.jpg" style="margin: 0 auto;height: 400px;"></div>
+                <%for(int num =0 ; num < promotion.size(); num++ ){%>
+                <div class="swiper-button-prev"></div>
+                    <%if(num==0){%>
+                        <div class="d-flex swiper-slide" style="background-image: url(https://placeholdit.imgix.net/~text?txtsize=68&amp;txt=Slideshow+Image&amp;w=1920&amp;h=500);background-size: cover;height: 400px;"><img src="<%= promotion.get(num).get("promotion_image")%>" style="height: 400px;margin: 0 auto;"></div>
+                    <%}else{%>
+                        <div class="swiper-slide" style="background-image: url(https://placeholdit.imgix.net/~text?txtsize=68&amp;txt=Slideshow+Image&amp;w=1920&amp;h=500);background-size: cover;height: 400px;"><img class="d-flex" src="<%= promotion.get(num).get("promotion_image")%>" style="width: 977px;margin: 0 auto;height: 400px;"></div>
+                    <%}%>
+                <%}%>
+
+                <div class="swiper-button-next"></div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
         <form>
-            <h1 style="font-family: Bungee, cursive;color: rgb(40,167,69);font-size: 26px;padding: 20px;">Today's BOOK</h1>
+            <h1 style="font-family: Bungee, cursive;color: rgb(40,167,69);font-size: 26px;padding: 20px;">Current's BOOK</h1>
             <section style="margin-top: 20px;">
                 <div class="d-flex flex-row multiple-item-slider">
-                    <div class="justify-content-center spacer-slider">
-                        <figure class="figure">
-                            <div class="swiper-button-prev"></div><img class="img-fluid figure-img" src="https://picsum.photos/1080/1335?image=0" alt="alt text here"></figure>
-                    </div>
-                    <div class="justify-content-center spacer-slider">
-                        <figure class="figure"><img class="img-fluid figure-img mx-auto d-block" src="https://picsum.photos/1080/1335?image=1083" alt="alt text here"></figure>
-                    </div>
-                    <div class="justify-content-center spacer-slider">
-                        <figure class="figure"><img class="img-fluid figure-img" src="https://picsum.photos/1080/1335?image=1076" alt="alt text here"></figure>
-                    </div>
-                    <div class="justify-content-center spacer-slider">
-                        <figure class="figure"><img class="img-fluid figure-img" src="https://picsum.photos/1080/1335?image=1075" alt="alt text here"></figure>
-                    </div>
-                    <div class="justify-content-center spacer-slider">
-                        <figure class="figure"><img class="img-fluid figure-img" src="https://picsum.photos/1080/1335?image=1074" alt="alt text here"></figure>
-                    </div>
-                    <div class="justify-content-center spacer-slider">
-                        <figure class="figure"><img class="img-fluid figure-img" src="https://picsum.photos/1080/1335?image=1071" alt="alt text here"></figure>
-                    </div>
-                    <div class="justify-content-center spacer-slider">
-                        <figure class="figure"><img class="img-fluid figure-img" src="https://picsum.photos/1080/1335?image=1060" alt="alt text here"></figure>
-                    </div>
-                    <div class="justify-content-center spacer-slider">
-                        <figure class="figure">
-                            <div class="swiper-button-next"></div><img class="img-fluid figure-img d-flex" src="https://picsum.photos/1080/1335?image=1045" alt="alt text here"></figure>
-                    </div>
+                    <%for(int num=0 ; num < book.size(); num++){%>
+                        <%if(num==0){%>
+                            <div class="justify-content-center spacer-slider">
+                                <figure class="figure">
+                                    <img class="img-fluid figure-img" src="<%= book.get(num).get("book_img")%>" alt="alt text here"></figure>
+                            </div>
+                        <%}else if(num == book.size()-1){%>
+                            <div class="justify-content-center spacer-slider">
+                                <img class="img-fluid figure-img" src="<%= book.get(num).get("book_img")%>" alt="alt text here">
+                            </div>
+                        <%}else{%>
+                            <div class="justify-content-center spacer-slider">
+                                <figure class="figure">
+                                    <img class="img-fluid figure-img d-flex" src="<%= book.get(num).get("book_img")%>" alt="alt text here"></figure>
+                            </div>
+                        <%}%>
+                    <%}%>
                 </div>
             </section>
         </form>

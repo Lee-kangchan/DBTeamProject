@@ -16,6 +16,9 @@ public class BookDAO {
     public List<HashMap<String, Object>> selectBook(){
         return mapper.selectBook();
     }
+    public List<HashMap<String, Object>> selectMainBook(){
+        return mapper.selectMainBook();
+    }
     public List<HashMap<String, Object>> selectNewBook(HashMap<String, Object> HashMap){
         return mapper.selectNewBook(HashMap);
     }

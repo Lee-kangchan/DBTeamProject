@@ -350,3 +350,7 @@ b, strong {
   border-radius: 10px;
 }
 
+.btn:not(:disabled):not(.disabled) {
+  text-align: center;
+}
+

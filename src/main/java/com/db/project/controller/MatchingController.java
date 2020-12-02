@@ -25,19 +25,19 @@ public class MatchingController {
         matchingService.insertMatching(map);
         return "redirect:/home";
     }
-    @GetMapping("/select/matching/rental")
+    @GetMapping("rental")
     public String selectRentalMatching(Model model,HttpSession session){
         HashMap<String , Object> map = new HashMap<>();
         map.put("customer_seq", session.getAttribute("customer_seq"));
         model.addAttribute("matching",matchingService.selectRentalMatching(map));
-        return "matching";
+        return "RentalBook";
     }
-    @GetMapping("/select/matching/borrow")
+    @GetMapping("borrow")
     public String selectBorrowMatching(Model model, HttpSession session){
         HashMap<String , Object> map = new HashMap<>();
         map.put("customer_seq", session.getAttribute("customer_seq"));
         model.addAttribute("matching",matchingService.selectRentalMatching(map));
-        return "matching";
+        return "borrowBook";
     }
     @PostMapping("/update/rental/check")
     public String  updateRentalCheck(Model model, HttpSession session){

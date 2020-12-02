@@ -10,4 +10,5 @@ public interface BookService {
     public List<HashMap<String, Object>> selectCustomerBook(HashMap<String, Object> HashMap);
     public List<HashMap<String, Object>> selectCurrentBook(HashMap<String, Object> HashMap);
     public void deleteCustomerBook(HashMap<String, Object> HashMap);
+    public List<HashMap<String, Object>> selectMainBook();
 }

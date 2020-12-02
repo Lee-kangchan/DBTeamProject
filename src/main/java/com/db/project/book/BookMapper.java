@@ -7,6 +7,7 @@ public interface BookMapper {
 
     public List<HashMap<String, Object>> selectBook();
     public List<HashMap<String, Object>> selectNewBook(HashMap<String, Object> HashMap);
+    public List<HashMap<String, Object>> selectMainBook();
     public Integer selectBookIsbn(HashMap<String, Object> HashMap);
     public void insertBook(HashMap<String, Object> HashMap);
     public void insertCustomerBook(HashMap<String, Object> HashMap);

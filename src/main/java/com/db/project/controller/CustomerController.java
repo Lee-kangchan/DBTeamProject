@@ -33,6 +33,9 @@ public class CustomerController {
     // 로그인 화면
     @GetMapping("login")
     public String login(Model model){
+
+
+        model.addAttribute("message","");
         return "Login";
     }
 
@@ -43,13 +46,18 @@ public class CustomerController {
         ModelAndView mv = new ModelAndView();
         HashMap<String, Object> result = customerService.login(customer);
 
-
-        session.setAttribute("customer_seq", result.get("customer_seq"));
-        session.setAttribute("customer_id", result.get("customer_id"));
-        session.setAttribute("customer_name", result.get("customer_name"));
-        session.setAttribute("customer_nickname", result.get("customer_nickname"));
-        session.setAttribute("customer_address_num", result.get("customer_address_num"));
-        mv.setViewName("redirect:/home");
+        if(result!=null) {
+            session.setAttribute("customer_seq", result.get("customer_seq"));
+            session.setAttribute("customer_id", result.get("customer_id"));
+            session.setAttribute("customer_name", result.get("customer_name"));
+            session.setAttribute("customer_nickname", result.get("customer_nickname"));
+            session.setAttribute("customer_address_num", result.get("customer_address_num"));
+            mv.setViewName("redirect:/home");
+        }
+        else {
+            mv.addObject("message","아이디 및 비밀번호를 확인 해주세요");
+            mv.setViewName("/Login");
+        }
         return mv;
     }
 
