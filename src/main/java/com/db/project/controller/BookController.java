@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -48,6 +49,17 @@ public class BookController {
         model.addAttribute("book", book);
 
         return "booklist";
+    }
+
+    @GetMapping("/book/insert")
+    public String bookInsert(Model model, HttpSession session){
+
+        return "addBook";
+    }
+    @GetMapping("/book/{seq}")
+    public String bookDetail(@PathVariable Integer seq ,  Model model, HttpSession session){
+
+        return "Book_borrow1";
     }
 
 }
