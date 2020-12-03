@@ -80,7 +80,7 @@
                 <% } else { %>
                 <div class="col" style="padding-right: 5px;padding-left: 5px;">
                     <a href="#" style="text-decoration:none;">
-                    <picture><img style="width: 152px;height: 225px;"></picture>
+                    <picture><img style="width: 152px;height: 225px;" src ='<%= review.get((i * 3) + j).get("book_img") %>'></picture>
                     <strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);"><%= review.get((i * 3) + j).get("book_name") %></strong>
                     <strong style="font-size: 16px;text-align: center;color: rgb(8,9,9);">리뷰 수 : <%= review.get((i * 3) + j).get("review_count") %></strong>
                     <% if (review.get((i * 3) + j).get("score") != null) { %>
