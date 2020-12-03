@@ -47,6 +47,7 @@ public class MainController {
 
 		if(id!=null){
 			params.put("customer_seq", session.getAttribute("customer_seq"));
+			params.put("customer_address_num",session.getAttribute("customer_address_num"));
 			book= bookService.selectNewBook(params);
 		}else{
 			book = bookService.selectMainBook();
