@@ -49,6 +49,7 @@ public class CustomerController {
         if(result!=null) {
             session.setAttribute("customer_seq", result.get("customer_seq"));
             session.setAttribute("customer_id", result.get("customer_id"));
+            session.setAttribute("customer_pw", result.get("customer_pw"));
             session.setAttribute("customer_name", result.get("customer_name"));
             session.setAttribute("customer_nickname", result.get("customer_nickname"));
             session.setAttribute("customer_address_num", result.get("customer_address_num"));
@@ -135,5 +136,40 @@ public class CustomerController {
         model.addAttribute("cardInfo", cardInfo);
 
         return "addPoint";
+    }
+
+    @PostMapping("addPoint")
+    public String addPoint(@RequestParam HashMap<String, Object> pointInfo, Model model, HttpSession session) {
+
+        pointInfo.put("customer_seq", session.getAttribute("customer_seq"));
+        pointInfo.put("approval_point", pointInfo.get("customer_point"));
+        pointInfo.put("approval_yn", "+");
+        pointInfo.put("approval_detail", "충전");
+        pointInfo.put("sales_money", pointInfo.get("customer_point"));
+        pointInfo.put("sales_type", "+");
+        pointInfo.put("sales_detail", pointInfo.get("card_num") + "으로 충전");
+
+        cardService.updateCustomerPlusPoint(pointInfo);
+
+        return "redirect:/myPoint";
+    }
+
+    @GetMapping("myPoint")
+    public String myPoint(Model model, HttpSession session) {
+
+        HashMap<String, Object> seq = new HashMap<>();
+
+        seq.put("customer_seq", session.getAttribute("customer_seq"));
+        seq.put("customer_id", session.getAttribute("customer_id"));
+        seq.put("customer_pw", session.getAttribute("customer_pw"));
+
+        HashMap<String, Object> userInfo = customerService.login(seq);
+
+        List<HashMap<String, Object>> point = cardService.selectApproval(seq);
+
+        model.addAttribute("userInfo", userInfo);
+        model.addAttribute("point", point);
+
+        return "point";
     }
 }

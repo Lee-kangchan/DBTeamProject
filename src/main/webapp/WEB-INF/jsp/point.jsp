@@ -2,6 +2,8 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
 <% Integer sess = (Integer)request.getAttribute("sess"); %>
+<% List<HashMap<String, Object>> point = (List<HashMap<String, Object>>)request.getAttribute("point"); %>
+<% HashMap<String, Object> userInfo = (HashMap<String, Object>)request.getAttribute("userInfo"); %>
 <!DOCTYPE html>
 <html>
 
@@ -70,56 +72,24 @@
         </nav>
     </div>
 </div>
-    <div class="container" style="width: 1000px;color: rgb(76,82,75);"><strong style="color: rgb(131,135,143);font-size: 20px;font-family: 'Do Hyeon', sans-serif;">나의 포인트</strong><strong style="color: rgb(131,135,143);font-size: 30px;margin-top: -20px;font-family: 'Do Hyeon', sans-serif;">000p</strong></div>
+    <div class="container" style="width: 1000px;color: rgb(76,82,75);"><strong style="color: rgb(131,135,143);font-size: 20px;font-family: 'Do Hyeon', sans-serif;">나의 포인트</strong><strong style="color: rgb(131,135,143);font-size: 30px;margin-top: -20px;font-family: 'Do Hyeon', sans-serif;"><%=userInfo.get("customer_point")%>p</strong></div>
     <div
         class="container" style="margin-top: 3px;border-bottom-style: none;border-bottom-color: rgb(40,167,69);width: 1000px;">
         <div class="row" style="border-bottom-style: solid;border-bottom-color: rgb(40,167,69);padding-bottom: 15px;">
             <div class="col"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">결제 일자</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">도서명</strong></div>
+            <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">지출 내용</strong></div>
             <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">지출/지급 여부</strong></div>
         </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">2020.00.00<br>00:00:00</strong></div>
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 25px;font-family: 'Do Hyeon', sans-serif;font-size: 14px;">도서 대여</strong><strong class="text-center" style="margin-top: 8px;font-family: 'Do Hyeon', sans-serif;">도서 제목</strong></div>
-            <div
-                class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">+ 000p</strong></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">2020.00.00<br>00:00:00</strong></div>
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 25px;font-family: 'Do Hyeon', sans-serif;font-size: 14px;">도서 대출</strong><strong class="text-center" style="margin-top: 8px;font-family: 'Do Hyeon', sans-serif;">도서 제목</strong></div>
-            <div
-                class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">- 000p</strong></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">2020.00.00<br>00:00:00</strong></div>
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 25px;font-family: 'Do Hyeon', sans-serif;font-size: 14px;">포인트 충전</strong><strong class="text-center" style="margin-top: 8px;font-family: 'Do Hyeon', sans-serif;"></strong></div>
-            <div
-                class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">+ 000p</strong></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">2020.00.00<br>00:00:00</strong></div>
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 25px;font-family: 'Do Hyeon', sans-serif;font-size: 14px;">도서 대여</strong><strong class="text-center" style="margin-top: 8px;font-family: 'Do Hyeon', sans-serif;">도서 제목</strong></div>
-            <div
-                class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">+ 000p</strong></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">2020.00.00<br>00:00:00</strong></div>
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 25px;font-family: 'Do Hyeon', sans-serif;font-size: 14px;">도서 대여</strong><strong class="text-center" style="margin-top: 8px;font-family: 'Do Hyeon', sans-serif;">도서 제목</strong></div>
-            <div
-                class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">+ 000p</strong></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">2020.00.00<br>00:00:00</strong></div>
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 25px;font-family: 'Do Hyeon', sans-serif;font-size: 14px;">도서 대여</strong><strong class="text-center" style="margin-top: 8px;font-family: 'Do Hyeon', sans-serif;">도서 제목</strong></div>
-            <div
-                class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">+ 000p</strong></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">2020.00.00<br>00:00:00</strong></div>
-            <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 25px;font-family: 'Do Hyeon', sans-serif;font-size: 14px;">도서 대여</strong><strong class="text-center" style="margin-top: 8px;font-family: 'Do Hyeon', sans-serif;">도서 제목</strong></div>
-            <div
-                class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;">+ 000p</strong></div>
-        </div>
+        <% for(int i = 0; i < point.size(); i++) { %>
+            <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
+                <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;"><%=point.get(i).get("approval_createAt")%></strong></div>
+                <div class="col" style="height: 100px;"><strong class="text-center text-body" style="margin-top: 25px;font-family: 'Do Hyeon', sans-serif;font-size: 14px;"></strong>
+                <strong class="text-center" style="margin-top: 8px;font-family: 'Do Hyeon', sans-serif;"><%=point.get(i).get("approval_detail")%></strong></div>
+                <div class="col" style="font-family: 'Do Hyeon', sans-serif;height: 100px;"><strong class="text-center" style="margin-top: 30px;font-family: 'Do Hyeon', sans-serif;"><%=point.get(i).get("approval_yn")%> <%=point.get(i).get("approval_point")%>p</strong></div>
+
+            </div>
+        <% } %>
+
         </div>
         <script src="static/assets/js/jquery.min.js"></script>
         <script src="static/assets/bootstrap/js/bootstrap.min.js"></script>

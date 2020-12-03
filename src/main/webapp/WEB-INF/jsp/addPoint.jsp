@@ -197,18 +197,18 @@
     
                     
                     <div class="addPoint-input-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif; ">	
-                        <input placeholder="충전할 포인트 금액" type="text" name="이건 뭐넣어야하죠..?" ></input>
+                        <input placeholder="충전할 포인트 금액" type="text" name="customer_point" ></input>
                     </div>
                     
                     <div class="addPoint-select-wrap card-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">
-                        <select name="card_type" id="" >
+                        <select name="card_num" id="" >
                         <% for(int i = 0; i < cardInfo.size(); i++) { %>
                             <option value='<%= cardInfo.get(i).get("card_num")%>'><%=cardInfo.get(i).get("card_type")%></option>
                         <% } %>
                         </select>
                     </div>
                     <div class="addPoint-input-wrap pw-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">	
-                        <input placeholder="결제 비밀번호" type="text" name="card_approval_pw"></input>
+                        <input placeholder="결제 비밀번호" type="text" name="card_pw"></input>
                     
                     <div class="addPoint-button-wrap">
                         <button type="submit" value="충전하기" style="font-family: 'Do Hyeon', sans-serif;">충전하기</button>
