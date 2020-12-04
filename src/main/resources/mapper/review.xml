@@ -42,4 +42,10 @@
         review(customer_seq, book_isbn, review_title, review_detail, review_score)
         VALUES (#{customer_seq}, #{book_isbn}, #{review_title}, #{review_detail}, #{review_score})
     </insert>
+
+    <select id="myReview" parameterType="hashmap" resultType="hashmap">
+        SELECT *
+        FROM review
+        WHERE customer_seq = #{customer_seq}
+    </select>
 </mapper>

@@ -2,7 +2,7 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
 <% Integer sess = (Integer)request.getAttribute("sess"); %>
-
+<% HashMap<String, Object> customerInfo = (HashMap<String, Object>)request.getAttribute("customerInfo"); %>
 <% List<HashMap<String, Object>> cardInfo = (List<HashMap<String, Object>>)request.getAttribute("cardInfo"); %>
 
 <!DOCTYPE html>
@@ -34,116 +34,116 @@
 
 <body>
 <style type="text/css">
-            :root{
-                --body-background-color: white;
-                --font-color: #4e4e4e;
-                --border-gray-color : #dadada;
-                --naver-green-color: rgb(38,166,67);
-                --naver-green-border-color: rgb(38,166,67);
-            }
+    :root{
+        --body-background-color: white;
+        --font-color: #4e4e4e;
+        --border-gray-color : #dadada;
+        --naver-green-color: rgb(38,166,67);
+        --naver-green-border-color: rgb(38,166,67);
+    }
 
 
-            *{
-                margin:0;
-                padding:0;
-            }
+    *{
+        margin:0;
+        padding:0;
+    }
 
-            .main-container{
-                width:100%;
-                display:flex;
-                flex-direction:column;
-                align-items:center;
-                margin-top: 150px;
-                margin: 0 auto;
-                padding-bottom: 100px;
+    .main-container{
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        margin-top: 150px;
+        margin: 0 auto;
+        padding-bottom: 100px;
 
-            }
-            .main-container .main-wrap{
-                width:768px;
+    }
+    .main-container .main-wrap{
+        width:768px;
 
-            }
+    }
 
-            .main-container .main-wrap .logo-wrap{
-                padding-top:55px;
-                color:rgb(38,166,67);
-                padding-bottom: 60px;
-            }
-
-
-            .main-container .main-wrap header .sel-lang-wrap{
-                display:flex;
-                justify-content:flex-end;
-            }
-
-            .main-container .main-wrap header .logo-wrap{
-                display:flex;
-                flex-direction: column;
-                align-items: center;
-
-            }
+    .main-container .main-wrap .logo-wrap{
+        padding-top:55px;
+        color:rgb(38,166,67);
+        padding-bottom: 60px;
+    }
 
 
-            .addPoint-input-wrap{
-                width: 465px;
-                height :48px;
-                border: solid 1px var(	--border-gray-color );
-                background: white;
-            }
-            .addPoint-select-wrap{
-                width: 465px;
-                height :48px;
-                border: solid 1px var(	--border-gray-color );
-                background: white;
-            }
-            .card-wrap{
-                margin-top: 13px;
-                margin-bottom: 13px;
-            }
+    .main-container .main-wrap header .sel-lang-wrap{
+        display:flex;
+        justify-content:flex-end;
+    }
 
-            .pw-wrap{
-                width: 465px;
-                height :48px;
-                border: solid 1px var(	--border-gray-color );
-                background: white;
-            }
+    .main-container .main-wrap header .logo-wrap{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
 
-            .addPoint-input-wrap input{
-                border: none;
-                width:430px;
-                margin-top: 10px;
-                font-size: 14px;
-                margin-left: 10px;
-                height:30px;
-            }
-            .addPoint-select-wrap select{
-                border: none;
-                width:430px;
-                margin-top: 10px;
-                font-size: 14px;
-                margin-left: 10px;
-                height:30px;
-            }
-            .addPoint-button-wrap {
-                padding-top: 13px;
-            }
-            .addPoint-button-wrap button{
-                width: 465px;
-                height :48px;
-                font-size: 18px;
-                background: var(--naver-green-color);
-                color: white;
-                border: solid 1px var(--naver-green-border-color);
-                border-radius: 15px;
-                margin-bottom: 50px;
-                margin-top: 20px;
+    }
 
-            }
 
-            </style>
+    .addPoint-input-wrap{
+        width: 465px;
+        height :48px;
+        border: solid 1px var(	--border-gray-color );
+        background: white;
+    }
+    .addPoint-select-wrap{
+        width: 465px;
+        height :48px;
+        border: solid 1px var(	--border-gray-color );
+        background: white;
+    }
+    .card-wrap{
+        margin-top: 13px;
+        margin-bottom: 13px;
+    }
+
+    .pw-wrap{
+        width: 465px;
+        height :48px;
+        border: solid 1px var(	--border-gray-color );
+        background: white;
+    }
+
+    .addPoint-input-wrap input{
+        border: none;
+        width:430px;
+        margin-top: 10px;
+        font-size: 14px;
+        margin-left: 10px;
+        height:30px;
+    }
+    .addPoint-select-wrap select{
+        border: none;
+        width:430px;
+        margin-top: 10px;
+        font-size: 14px;
+        margin-left: 10px;
+        height:30px;
+    }
+    .addPoint-button-wrap {
+        padding-top: 13px;
+    }
+    .addPoint-button-wrap button{
+        width: 465px;
+        height :48px;
+        font-size: 18px;
+        background: var(--naver-green-color);
+        color: white;
+        border: solid 1px var(--naver-green-border-color);
+        border-radius: 15px;
+        margin-bottom: 50px;
+        margin-top: 20px;
+
+    }
+
+    </style>
 
     <div id="navigation-block">
         <nav class="navbar navbar-light navbar-expand-md d-flex">
-            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="MAIN.html">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/home">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <ul
                     class="nav navbar-nav"></ul>
                     <div class="collapse navbar-collapse d-flex" id="navcol-1">
@@ -179,24 +179,23 @@
     <div class="container" style="font-family: 'Do Hyeon', sans-serif;">
         <div class="col" style="border: 4px solid rgb(40,167,69);width: 700px;margin-left: 200px;margin-top: 20px;font-family: 'Do Hyeon', sans-serif;">
             <div class="row">
-                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 대출등급</small><strong style="font-size: 20px;">Bold</strong></div>
-                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">대출 중인 도서</small><strong style="font-size: 20px;">Bold</strong></div>
-                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 대여등급</small><strong style="font-size: 20px;">Bold</strong></div>
-                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">&nbsp;대여중인 도서</small><strong style="font-size: 20px;">Bold</strong></div>
-                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 12px;">나의 포인트</small><strong style="font-size: 20px;">Bold</strong></div>
-                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 추천인수</small><strong style="font-size: 20px;">Bold</strong></div>
+                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 대출등급</small><strong style="font-size: 20px;"><%=customerInfo.get("rental_membership_name")%></strong></div>
+                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">대출 중인 도서</small><strong style="font-size: 20px;"><%=customerInfo.get("rentalCount")%></strong></div>
+                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 대여등급</small><strong style="font-size: 20px;"><%=customerInfo.get("borrow_membership_name")%></strong></div>
+                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">&nbsp;대여중인 도서</small><strong style="font-size: 20px;"><%=customerInfo.get("borrowCount")%></strong></div>
+                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 12px;">나의 포인트</small><strong style="font-size: 20px;"><%=customerInfo.get("customer_point")%>p</strong></div>
+                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 추천인수</small><strong style="font-size: 20px;"><%=customerInfo.get("recommendCount")%></strong></div>
             </div>
         </div>
         <div class="row" style="padding-top: 40px;font-family: 'Do Hyeon', sans-serif;">
-        <!--여기를 고치면 됨 -->
             <div class="col" style="padding-right: 15px;width: 300px;max-width: 300px;">
                 <a href="/myPage" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">대여/대출 목록</strong></div>
                 </div></a>
-                <a href="#" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
+                <a href="/updateUser" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">회원 정보 수정</strong></div>
                 </div></a>
-                <a href="#" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
+                <a href="/myReserve" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">예약 목록</strong></div>
                 </div></a>
                 <a href="/addPoint" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px; border-style: solid;border-color: rgb(40,167,69);">
@@ -211,7 +210,7 @@
                 <a href="/myReview" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">나의 리뷰</strong></div>
                 </div></a>
-                <a href="#" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
+                <a href="/myReport" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">신고 목록</strong></div>
                 </div></a>
             </div>

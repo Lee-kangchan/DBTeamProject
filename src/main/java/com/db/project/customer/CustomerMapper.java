@@ -21,5 +21,5 @@ public interface CustomerMapper {
     public HashMap<String, Object> customerMembership(HashMap<String, Object> HashMap);
     public Integer borrowCount(HashMap<String, Object> HashMap);
     public Integer rentalCount(HashMap<String, Object> HashMap);
-
+    public HashMap<String, Object> recommendCount(HashMap<String, Object> HashMap);
 }

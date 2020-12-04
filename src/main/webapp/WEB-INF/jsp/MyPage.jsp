@@ -34,7 +34,7 @@
 <body>
     <div id="navigation-block">
         <nav class="navbar navbar-light navbar-expand-md d-flex">
-            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="MAIN.html">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/home">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <ul
                     class="nav navbar-nav"></ul>
                     <div class="collapse navbar-collapse d-flex" id="navcol-1">
@@ -74,8 +74,8 @@
                 <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">대출 중인 도서</small><strong style="font-size: 20px;"><%=customerInfo.get("rentalCount")%></strong></div>
                 <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 대여등급</small><strong style="font-size: 20px;"><%=customerInfo.get("borrow_membership_name")%></strong></div>
                 <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">&nbsp;대여중인 도서</small><strong style="font-size: 20px;"><%=customerInfo.get("borrowCount")%></strong></div>
-                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 12px;">나의 포인트</small><strong style="font-size: 20px;">Bold</strong></div>
-                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 추천인수</small><strong style="font-size: 20px;">Bold</strong></div>
+                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 12px;">나의 포인트</small><strong style="font-size: 20px;"><%=customerInfo.get("customer_point")%>p</strong></div>
+                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 추천인수</small><strong style="font-size: 20px;"><%=customerInfo.get("recommendCount")%></strong></div>
             </div>
         </div>
         <div class="row" style="padding-top: 40px;font-family: 'Do Hyeon', sans-serif;">
@@ -83,10 +83,10 @@
                 <a href="/myPage" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px; border-style: solid;border-color: rgb(40,167,69);">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">대여/대출 목록</strong></div>
                 </div></a>
-                <a href="#" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
+                <a href="/updateUser" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">회원 정보 수정</strong></div>
                 </div></a>
-                <a href="#" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
+                <a href="/myReserve" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">예약 목록</strong></div>
                 </div></a>
                 <a href="/addPoint" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
@@ -101,12 +101,12 @@
                 <a href="/myReview" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">나의 리뷰</strong></div>
                 </div></a>
-                <a href="#" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
+                <a href="/myReport" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">신고 목록</strong></div>
                 </div></a>
             </div>
             <div class="col" style="width: 70px;border-style: solid;border-color: rgb(40,167,69);">
-                <section><strong style="color: rgb(131,135,143);font-size: 20px;font-family: 'Do Hyeon', sans-serif;margin-top: 20px;">나의 대여 등급</strong><strong style="color: rgb(131,135,143);font-size: 35px;margin-top: 4px;font-family: 'Do Hyeon', sans-serif;">OOOO</strong>
+                <section><strong style="color: rgb(131,135,143);font-size: 20px;font-family: 'Do Hyeon', sans-serif;margin-top: 20px;">나의 대여 등급</strong><strong style="color: rgb(131,135,143);font-size: 35px;margin-top: 4px;font-family: 'Do Hyeon', sans-serif;"><%=customerInfo.get("borrow_membership_name")%></strong>
                     <div class="row" style="border-bottom-style: solid;border-bottom-color: rgb(40,167,69);padding-bottom: 15px;margin-top: 15px;">
                         <div class="col"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">도서 사진</strong></div>
                         <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">도서명</strong></div>
@@ -125,7 +125,7 @@
                     <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 40px;font-family: 'Do Hyeon', sans-serif;">2020.00.00<br>~2020.00.00</strong></div>
                 </div>
 
-                <section><strong style="color: rgb(131,135,143);font-size: 20px;font-family: 'Do Hyeon', sans-serif;margin-top: 20px;">나의 대출 등급</strong><strong style="color: rgb(131,135,143);font-size: 35px;margin-top: 4px;font-family: 'Do Hyeon', sans-serif;">OOOO</strong>
+                <section><strong style="color: rgb(131,135,143);font-size: 20px;font-family: 'Do Hyeon', sans-serif;margin-top: 20px;">나의 대출 등급</strong><strong style="color: rgb(131,135,143);font-size: 35px;margin-top: 4px;font-family: 'Do Hyeon', sans-serif;"><%=customerInfo.get("rental_membership_name")%></strong>
                     <div class="row" style="border-bottom-style: solid;border-bottom-color: rgb(40,167,69);padding-bottom: 15px;">
                         <div class="col"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">도서 사진</strong></div>
                         <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">도서명</strong></div>

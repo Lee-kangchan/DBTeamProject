@@ -109,8 +109,13 @@ public class CustomerServiceImpl implements  CustomerService{
 
         int borrowCount = customerDAO.borrowCount(HashMap);
         int rentalCount = customerDAO.rentalCount(HashMap);
+
+        HashMap<String, Object> map = customerDAO.recommendCount(HashMap);
+
         result.put("borrowCount", borrowCount);
         result.put("rentalCount", rentalCount);
+        result.put("customer_point", map.get("customer_point"));
+        result.put("recommendCount", map.get("recommendCount"));
 
         return result;
     }

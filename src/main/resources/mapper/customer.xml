@@ -124,4 +124,10 @@
         where c.matching_type = "대출" AND a.customer_seq = #{customer_seq}
         ]]>
     </select>
+
+    <select id="recommendCount" parameterType="hashmap" resultType="hashmap">
+        SELECT count(recommend_seq) AS recommendCount, (SELECT customer_point FROM customer WHERE customer_seq = #{customer_seq}) AS customer_point
+        FROM customer
+        WHERE recommend_seq = #{customer_seq}
+    </select>
 </mapper>

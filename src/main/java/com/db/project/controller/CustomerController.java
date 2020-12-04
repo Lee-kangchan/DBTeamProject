@@ -77,7 +77,17 @@ public class CustomerController {
 
     // 카드 추가
     @GetMapping("addCard")
-    public String addCard(Model model) {return "addCard";}
+    public String addCard(Model model, HttpSession session) {
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("customer_seq", session.getAttribute("customer_seq"));
+
+        HashMap<String, Object> customerInfo = customerService.customerMyPage(map);
+
+        model.addAttribute("customerInfo", customerInfo);
+
+        return "addCard";
+    }
 
     @PostMapping("addCard")
     public String addCard(@RequestParam HashMap<String, Object> cardInfo, Model model, HttpSession session) {
@@ -96,14 +106,11 @@ public class CustomerController {
 
         map.put("customer_seq", session.getAttribute("customer_seq"));
 
-        logger.info(session.getAttribute("customer_seq") + "");
-
-        logger.info(map + "");
+        HashMap<String, Object> customerInfo = customerService.customerMyPage(map);
 
         List<HashMap<String, Object>> cardInfo = cardService.selectCard(map);
 
-        logger.info(cardInfo + "");
-
+        model.addAttribute("customerInfo", customerInfo);
         model.addAttribute("cardInfo", cardInfo);
 
         return "myCard";
@@ -131,8 +138,11 @@ public class CustomerController {
 
         map.put("customer_seq", session.getAttribute("customer_seq"));
 
+        HashMap<String, Object> customerInfo = customerService.customerMyPage(map);
+
         List<HashMap<String, Object>> cardInfo = cardService.selectCard(map);
 
+        model.addAttribute("customerInfo", customerInfo);
         model.addAttribute("cardInfo", cardInfo);
 
         return "addPoint";
@@ -164,9 +174,11 @@ public class CustomerController {
         seq.put("customer_pw", session.getAttribute("customer_pw"));
 
         HashMap<String, Object> userInfo = customerService.login(seq);
+        HashMap<String, Object> customerInfo = customerService.customerMyPage(seq);
 
         List<HashMap<String, Object>> point = cardService.selectApproval(seq);
 
+        model.addAttribute("customerInfo", customerInfo);
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("point", point);
 

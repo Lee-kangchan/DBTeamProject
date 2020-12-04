@@ -62,4 +62,5 @@ public class CustomerDAO {
     public HashMap<String, Object> customerMembership(HashMap<String, Object> HashMap) {return mapper.customerMembership(HashMap);}
     public Integer borrowCount(HashMap<String, Object> HashMap) {return mapper.borrowCount(HashMap);}
     public Integer rentalCount(HashMap<String, Object> HashMap) {return mapper.rentalCount(HashMap);}
+    public HashMap<String, Object> recommendCount(HashMap<String, Object> HashMap) {return mapper.recommendCount(HashMap);}
 }

@@ -32,129 +32,9 @@
 </head>
 
 <body>
-<style type="text/css">
-    :root{
-        --body-background-color: white;
-        --font-color: #4e4e4e;
-        --border-gray-color : #dadada;
-        --naver-green-color: rgb(38,166,67);
-        --naver-green-border-color: rgb(38,166,67);
-    }
-
-
-    *{
-        margin:0;
-        padding:0;
-    }
-
-    .main-container{
-        width:100%;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        margin-top: 150px;
-        margin: 0 auto;
-        padding-bottom: 100px;
-
-    }
-    .main-container .main-wrap{
-        width:768px;
-
-    }
-
-    .main-container .main-wrap .logo-wrap{
-        padding-top:55px;
-        color: rgb(38,166,67);
-    }
-
-
-    .main-container .main-wrap header .sel-lang-wrap{
-        display:flex;
-        justify-content:flex-end;
-    }
-
-    .main-container .main-wrap header .logo-wrap{
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-
-    }
-    .signup-input-section-wrap{
-        padding-top: 60px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .signup-input-wrap{
-        width: 465px;
-        height :48px;
-        border: solid 1px var(	--border-gray-color );
-        background: white;
-    }
-    .password-wrap{
-        margin-top: 13px;
-        margin-bottom: 13px;
-    }
-
-    .name-wrap{
-        width: 465px;
-        height :48px;
-        border: solid 1px var(	--border-gray-color );
-        background: white;
-    }
-    .nickname-wrap{
-        margin-top: 13px;
-        margin-bottom: 13px;
-    }
-    .phonenumber-wrap{
-        width: 465px;
-        height :48px;
-        border: solid 1px var(	--border-gray-color );
-        background: white;
-    }
-    .address-wrap{
-        margin-top: 13px;
-        margin-bottom: 13px;
-    }
-    .dealaddress-wrap{
-        width: 465px;
-        height :48px;
-        border: solid 1px var(	--border-gray-color );
-        background: white;
-    }
-    .recommendnumber-wrap{
-        margin-top: 13px;
-        margin-bottom: 13px;
-    }
-
-    .signup-input-wrap input{
-        border: none;
-        width:430px;
-        margin-top: 10px;
-        font-size: 14px;
-        margin-left: 10px;
-        height:30px;
-    }
-    .signup-button-wrap {
-        padding-top: 13px;
-    }
-    .signup-button-wrap button{
-        width: 465px;
-        height :48px;
-        font-size: 18px;
-        background: var(--naver-green-color);
-        color: white;
-        border: solid 1px var(--naver-green-border-color);
-        border-radius: 15px;
-        margin-bottom: 50px;
-
-    }
-    </style>
-
     <div id="navigation-block">
         <nav class="navbar navbar-light navbar-expand-md d-flex">
-            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="MAIN.html">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/home">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <ul
                     class="nav navbar-nav"></ul>
                     <div class="collapse navbar-collapse d-flex" id="navcol-1">
@@ -190,24 +70,23 @@
     <div class="container" style="font-family: 'Do Hyeon', sans-serif;">
         <div class="col" style="border: 4px solid rgb(40,167,69);width: 700px;margin-left: 200px;margin-top: 20px;font-family: 'Do Hyeon', sans-serif;">
             <div class="row">
-                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 대출등급</small><strong style="font-size: 20px;">Bold</strong></div>
-                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">대출 중인 도서</small><strong style="font-size: 20px;">Bold</strong></div>
-                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 대여등급</small><strong style="font-size: 20px;">Bold</strong></div>
-                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">&nbsp;대여중인 도서</small><strong style="font-size: 20px;">Bold</strong></div>
-                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 12px;">나의 포인트</small><strong style="font-size: 20px;">Bold</strong></div>
-                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 추천인수</small><strong style="font-size: 20px;">Bold</strong></div>
+                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 대출등급</small><strong style="font-size: 20px;"><%=customerInfo.get("rental_membership_name")%></strong></div>
+                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">대출 중인 도서</small><strong style="font-size: 20px;"><%=customerInfo.get("rentalCount")%></strong></div>
+                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 대여등급</small><strong style="font-size: 20px;"><%=customerInfo.get("borrow_membership_name")%></strong></div>
+                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">&nbsp;대여중인 도서</small><strong style="font-size: 20px;"><%=customerInfo.get("borrowCount")%></strong></div>
+                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 12px;">나의 포인트</small><strong style="font-size: 20px;"><%=customerInfo.get("customer_point")%>p</strong></div>
+                <div class="col" style="padding: 13px;"><small style="font-size: 12px;margin-top: 3px;margin-left: 10px;">나의 추천인수</small><strong style="font-size: 20px;"><%=customerInfo.get("recommendCount")%></strong></div>
             </div>
         </div>
         <div class="row" style="padding-top: 40px;font-family: 'Do Hyeon', sans-serif;">
-        <!--여기를 고치면 됨 -->
             <div class="col" style="padding-right: 15px;width: 300px;max-width: 300px;">
                 <a href="/myPage" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">대여/대출 목록</strong></div>
                 </div></a>
-                <a href="#" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
+                <a href="/updateUser" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">회원 정보 수정</strong></div>
                 </div></a>
-                <a href="#" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
+                <a href="/myReserve" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">예약 목록</strong></div>
                 </div></a>
                 <a href="/addPoint" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
@@ -216,50 +95,34 @@
                 <a href="/myPoint" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">결재 내역</strong></div>
                 </div></a>
-                <a href="/myCard" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px; border-style: solid;border-color: rgb(40,167,69);">
+                <a href="/myCard" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">나의 카드</strong></div>
                 </div></a>
                 <a href="/myReview" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">나의 리뷰</strong></div>
                 </div></a>
-                <a href="#" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px;">
+                <a href="/myReport" style="text-decoration:none; color:#212529"><div class="row" style="width: 250px;margin-left: -7px; border-style: solid;border-color: rgb(40,167,69);">
                     <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><strong style="width: 250px;margin-left: -7px;">신고 목록</strong></div>
                 </div></a>
             </div>
-            <div class="col" style="display:flex; flex-direction:column; justify-content:center;border-style: solid;border-color: rgb(40,167,69);">
-                <section>
-                    <strong><h2 style="margin-top:20px;font-family: 'Do Hyeon', sans-serif;">카드 추가</h2></strong>
+            <div class="col" style="width: 70px;border-style: solid;border-color: rgb(40,167,69);">
+                <section><strong style="color: rgb(131,135,143);font-size: 30px;font-family: 'Roboto Condensed', sans-serif;padding: 10px;padding-bottom: 18px;margin: 20px;">신고 목록</strong>
+                    <div class="row" style="border-bottom-style: solid;border-bottom-color: rgb(40,167,69);padding-bottom: 15px;margin-bottom: 8px;">
+                        <div class="col"><strong style="font-family: 'Roboto Condensed', sans-serif;font-size: 20px;">신고일자</strong></div>
+                        <div class="col" style="font-family: 'Roboto Condensed', sans-serif;font-size: 20px;"><strong style="font-family: 'Roboto Condensed', sans-serif;font-size: 20px;">신고자</strong></div>
+                        <div class="col" style="font-family: 'Roboto Condensed', sans-serif;font-size: 20px;"><strong style="font-family: 'Roboto Condensed', sans-serif;font-size: 20px;">신고 내용</strong></div>
+                        <div class="col" style="font-family: 'Roboto Condensed', sans-serif;font-size: 20px;"><strong style="font-family: 'Roboto Condensed', sans-serif;font-size: 20px;">처리 여부</strong></div>
+                    </div>
+                    <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
+                        <div class="col" style="height: 120px;"><strong class="text-center text-body" style="margin-top: 35px;font-family: 'Roboto Condensed', sans-serif;font-size: 16px;">2020.00.00<br>00:00:00</strong></div>
+                        <div class="col" style="height: 120px;"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Roboto Condensed', sans-serif;font-size: 18px;">신고자명</strong></div>
+                        <div class="col" style="font-family: 'Roboto Condensed', sans-serif;height: 120px;"><b class="text-center" style="margin-top: 45px;font-family: 'Roboto Condensed', sans-serif;font-size: 16px;">내용</b></div>
+                        <div class="col" style="font-family: 'Roboto Condensed', sans-serif;height: 120px;"><b class="text-center" style="margin-top: 45px;font-family: 'Roboto Condensed', sans-serif;font-size: 16px;">처리중/처리완료</b></div>
+                    </div>
+
                 </section>
-
-            <!--여기를 고치면 됨 -->
-            <div style="display:flex; flex-direction:column; justify-content:center; margin:0 auto">
-                <form method="post" action="/addPoint">
-                    <div class="signup-input-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif; ">
-                         <input placeholder="카드번호" type="text" name="card_num"></input>
-                    </div>
-                    <div class="signup-input-wrap password-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">
-                        <input placeholder="카드사" type="text" name="card_type"></input>
-
-                    </div>
-                    <div class="signup-input-wrap name-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">
-                        <input placeholder="카드 유효기간" type="text" name="card_validity"></input>
-                    </div>
-                    <div class="signup-input-wrap nickname-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">
-                        <input placeholder="카드 cvc" type="text" name="card_cvc"></input>
-                    </div>
-                    <div class="signup-input-wrap phonenumber-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">
-                        <input placeholder="카드 비밀번호" type="password" name="card_pw"></input>
-                    </div>
-
-
-                    <div class="signup-button-wrap">
-                        <button type="submit" style="font-family: 'Do Hyeon', sans-serif;" type="카드등록">카드 등록</button>
-                    </div>
-
-                </form>
             </div>
         </div>
-    </div>
     </div>
     <script src="static/assets/js/jquery.min.js"></script>
     <script src="static/assets/bootstrap/js/bootstrap.min.js"></script>
