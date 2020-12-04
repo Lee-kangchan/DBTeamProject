@@ -12,7 +12,7 @@
         VALUES (#{customer_id},#{customer_pw},#{customer_name},#{customer_nickname}, #{customer_address_num}, #{customer_phone}, #{customer_address}, #{recommend_seq})
     </insert>
     <!--방금 생성한 회원 seq 찾기-->
-    <select id="selectCustomer" parameterType="hashmap" resultType="int">
+    <select id="selectCustomer" parameterType="hashmap" resultType="integer">
         select max(customer_seq)as customer_seq from customer
 
     </select>
@@ -22,7 +22,7 @@
     </insert>
 
     <!-- 추천인 입력-->
-    <select id = "selectCustomerSeq" parameterType="hashmap" resultType="int">
+    <select id = "selectCustomerSeq" parameterType="hashmap" resultType="integer">
         SELECT customer_seq FROM customer
         WHERE customer_nickname = #{recommend_nickname};
     </select>
@@ -91,5 +91,37 @@
         select borrow_membership_benefit from customer a
         join borrow_membership b on a.borrow_membership_seq = b.borrow_membership_seq
         where a.customer_seq = #{customer_seq}
+    </select>
+
+    <!-- 나의 등급 정보 확인 -->
+    <select id="customerMembership" parameterType="hashmap" resultType="hashmap">
+        SELECT *
+        FROM borrow_membership, rental_membership
+        WHERE borrow_membership_seq = (SELECT borrow_membership_seq
+                                       FROM customer
+                                       WHERE customer_seq = #{customer_seq})
+        AND rental_membership_seq = (SELECT rental_membership_seq
+                                     FROM customer
+                                     WHERE customer_seq = #{customer_seq})
+    </select>
+
+    <select id="borrowCount" parameterType="hashmap" resultType="integer" >
+        <![CDATA[
+        SELECT count(c.matching_seq) count
+        FROM db2020.customer a
+        join matching c
+        on a.customer_seq= c.customer_seq AND c.matching_endAt > NOW()
+        where c.matching_type = "대여" AND a.customer_seq = #{customer_seq}
+        ]]>
+    </select>
+
+    <select id="rentalCount" parameterType="hashmap" resultType="integer" >
+        <![CDATA[
+        SELECT count(c.matching_seq) count
+        FROM db2020.customer a
+        join matching c
+        on a.customer_seq= c.customer_seq AND c.matching_endAt > NOW()
+        where c.matching_type = "대출" AND a.customer_seq = #{customer_seq}
+        ]]>
     </select>
 </mapper>

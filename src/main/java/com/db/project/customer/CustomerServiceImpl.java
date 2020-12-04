@@ -100,4 +100,18 @@ public class CustomerServiceImpl implements  CustomerService{
 
         return customerDAO.customerSales(HashMap);
     }
+
+    @Override
+    public HashMap<String, Object> customerMyPage(HashMap<String, Object> HashMap) {
+        CustomerDAO customerDAO = new CustomerDAO(sqlSession);
+
+        HashMap<String, Object> result = customerDAO.customerMembership(HashMap);
+
+        int borrowCount = customerDAO.borrowCount(HashMap);
+        int rentalCount = customerDAO.rentalCount(HashMap);
+        result.put("borrowCount", borrowCount);
+        result.put("rentalCount", rentalCount);
+
+        return result;
+    }
 }

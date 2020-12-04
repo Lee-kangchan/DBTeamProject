@@ -9,4 +9,5 @@ public interface CustomerService {
     public HashMap<String, Object> login(HashMap<String, Object> HashMap);
     public void Membership(HashMap<String, Object> HashMap);
     public int customerSales(HashMap<String,Object> HashMap);
+    public HashMap<String, Object> customerMyPage(HashMap<String, Object> HashMap);
 }

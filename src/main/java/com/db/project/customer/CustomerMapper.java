@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface CustomerMapper {
     public void insertCustomer(HashMap<String, Object> HashMap);
-    public int selectCustomer(HashMap<String, Object> HashMap);
+    public Integer selectCustomer(HashMap<String, Object> HashMap);
     public void insertPreference(HashMap<String, Object> HashMap);
-    public int selectCustomerSeq(HashMap<String, Object> HashMap);
+    public Integer selectCustomerSeq(HashMap<String, Object> HashMap);
     public HashMap<String, Object> login(HashMap<String, Object> HashMap);
     public List<HashMap<String, Object>> rentalCustomer();
     public List<HashMap<String, Object>> borrowCustomer();
@@ -17,6 +17,9 @@ public interface CustomerMapper {
     public void insertBestBorrow();
     public void deleteBestRental();
     public void deleteBestBorrow();
-    public int customerSales(HashMap<String,Object> HashMap);
+    public Integer customerSales(HashMap<String,Object> HashMap);
+    public HashMap<String, Object> customerMembership(HashMap<String, Object> HashMap);
+    public Integer borrowCount(HashMap<String, Object> HashMap);
+    public Integer rentalCount(HashMap<String, Object> HashMap);
 
 }

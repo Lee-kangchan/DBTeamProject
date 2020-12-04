@@ -91,22 +91,7 @@
             </div>
             <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 40px;font-family: 'Do Hyeon', sans-serif;">2020.00.00<br>~2020.00.00</strong></div>
         </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col"><a href="#"></a><img style="height: 120px;"></div>
-            <div class="col"><a href="#"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">도서명</strong></a></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">대여 중</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;">
-                <div><button class="btn btn-primary btn-sm" type="button" style="margin-top: 25px;margin-left: 50px;font-family: 'Do Hyeon', sans-serif;height: 35px;">반납확인</button><button class="btn btn-primary btn-sm" type="button" style="margin-top: 60px;margin-left: 50px;font-family: 'Do Hyeon', sans-serif;height: 35px;">신고하기</button></div>
-            </div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 39px;font-family: 'Do Hyeon', sans-serif;">2020.00.00<br>~2020.00.00</strong></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col"><a href="#"></a><img style="height: 120px;"></div>
-            <div class="col"><a href="#"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">도서명</strong></a></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">대여 가능</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 40px;font-family: 'Do Hyeon', sans-serif;">2020.00.00<br>~2020.00.00</strong></div>
-        </div>
+
     </div>
     <script src="static/assets/js/jquery.min.js"></script>
     <script src="static/assets/bootstrap/js/bootstrap.min.js"></script>
