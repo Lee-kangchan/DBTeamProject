@@ -40,11 +40,11 @@
         insert into customer_book(customer_seq, book_isbn, customer_book_deposit, customer_book_comment, customer_book_secret_number)
         values (#{customer_seq}, #{book_isbn}, #{customer_book_deposit}, #{customer_book_comment}, #{customer_book_secret_number} )
     </insert>
-
-    <!--책 상태 사진 등록하기-->
+    <select id="selectCustomerBookSeq" resultType="integer">
+        select Max(customer_book_seq) as customer_book_seq from customer_book
+    </select>
     <insert id="insertCustomerBookImage" parameterType="hashmap">
-        insert into customer_book_image(customer_book_seq, customer_book_name)
-        values (#{customer_book_seq}, #{customer_book_name})
+        insert into customer_book_image(customer_book_seq, customer_book_img) values(#{customer_book_seq}, #{customer_book_img})
     </insert>
 
     <!--나의 도서 현황-->

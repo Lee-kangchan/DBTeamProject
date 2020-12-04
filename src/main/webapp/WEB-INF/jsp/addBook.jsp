@@ -197,7 +197,7 @@
         
         </style>
     
-    <form method="post" action="/addBook">
+    <form method="post" action="/addBook" enctype="multipart/form-data">
         <div class="main-container" style=" margin-bottom:20px;width: 700px; border:2px solid var(--naver-green-border-color); border-radius: 15px;" >
             <div class="main-wrap" >
             <header>
@@ -208,12 +208,15 @@
             </header>
             </div>
             <section class="addBook-input-section-wrap">
-
+                <div class="addBook-input-wrap author-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">
+                    <input placeholder="ISBN" type="text" name="book_isbn"></input>
+                </div>
                 <div class="addBook-input-wrap" style="border-radius: 15px; font-family: 'Do Hyeon', sans-serif; ">	
                     <input placeholder="도서명" type="text" name="book_name" id="book_name"></input>
                 </div>
+
                 <div class="addBook-input-wrap author-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">	
-                    <input placeholder="작가" type="password" name="book_author"></input>
+                    <input placeholder="작가" type="text" name="book_author"></input>
                 </div>
                 <div class="addBook-input-wrap publisher-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">	
                     <input placeholder="출판사" type="text" name="book_publisher"></input>
