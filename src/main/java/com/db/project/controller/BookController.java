@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -56,10 +58,23 @@ public class BookController {
 
         return "addBook";
     }
+    @PostMapping("/book/insert")
+    public String bookInsert(Model model, HttpSession session , @RequestParam HashMap<String, Object> map){
+
+        return "redirect:/home";
+    }
     @GetMapping("/book/{seq}")
     public String bookDetail(@PathVariable Integer seq ,  Model model, HttpSession session){
 
         return "Book_borrow1";
+    }
+    @GetMapping("/book/{seq}/check")
+    public String bookCheck(@PathVariable Integer seq, Model model, HttpSession session){
+        return "Book_borrow2";
+    }
+    @PostMapping("book/{seq}")
+    public String bookCheckInsert(@RequestParam HashMap<String, Object> map, HttpSession session, Model model){
+        return "";
     }
 
 }

@@ -9,23 +9,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>도서 등록</title>
-    <link rel="stylesheet" href="static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,800">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
-    <link rel="stylesheet" href="static/assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="static/assets/css/--mp---Multiple-items-slider-responsive.css">
-    <link rel="stylesheet" href="static/assets/css/Comment.css">
-    <link rel="stylesheet" href="static/assets/css/Footer-Clean.css">
-    <link rel="stylesheet" href="static/assets/css/Grid-and-List-view-V10-1.css">
-    <link rel="stylesheet" href="static/assets/css/Grid-and-List-view-V10.css">
+    <link rel="stylesheet" href="/static/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/assets/css/--mp---Multiple-items-slider-responsive.css">
+    <link rel="stylesheet" href="/static/assets/css/Comment.css">
+    <link rel="stylesheet" href="/static/assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="/static/assets/css/Grid-and-List-view-V10-1.css">
+    <link rel="stylesheet" href="/static/assets/css/Grid-and-List-view-V10.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
-    <link rel="stylesheet" href="static/assets/css/Media-Slider-Bootstrap-3-1.css">
-    <link rel="stylesheet" href="static/assets/css/Media-Slider-Bootstrap-3.css">
-    <link rel="stylesheet" href="static/assets/css/Simple-Slider.css">
-    <link rel="stylesheet" href="static/assets/css/styles.css">
+    <link rel="stylesheet" href="/static/assets/css/Media-Slider-Bootstrap-3-1.css">
+    <link rel="stylesheet" href="/static/assets/css/Media-Slider-Bootstrap-3.css">
+    <link rel="stylesheet" href="/static/assets/css/Simple-Slider.css">
+    <link rel="stylesheet" href="/static/assets/css/styles.css">
     <link rel = "preconnect"href = "https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">   
@@ -125,7 +125,11 @@
             flex-direction: column;
             align-items: center;
         }
-    
+        input[type="radio"] {
+            margin-top: -1px;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
         .addBook-input-wrap{
             width: 465px;
             height :48px;
@@ -194,7 +198,7 @@
         </style>
     
     <form method="post" action="/addBook">
-        <div class="main-container" style="height: 100%; width: 40%; border:2px solid var(--naver-green-border-color); border-radius: 15px;">
+        <div class="main-container" style=" margin-bottom:20px;width: 700px; border:2px solid var(--naver-green-border-color); border-radius: 15px;" >
             <div class="main-wrap" >
             <header>
                
@@ -204,9 +208,7 @@
             </header>
             </div>
             <section class="addBook-input-section-wrap">
-                
 
-                
                 <div class="addBook-input-wrap" style="border-radius: 15px; font-family: 'Do Hyeon', sans-serif; ">	
                     <input placeholder="도서명" type="text" name="book_name" id="book_name"></input>
                 </div>
@@ -219,37 +221,69 @@
                 <div class="addBook-input-wrap publishyear-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">	
                     <input placeholder="출판연도" type="text" name="book_year"></input>
                 </div>
-                <div class="addBook-input-wrap category-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">	
-                    <input placeholder="장르" type="text" name="book_board_genre"></input>
-                </div>
                 <div class="addBook-input-wrap deposit-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">	
-                    <input placeholder="예치금" type="text" name="book_board_deposit"></input>
-                </div>
-                
-                <div class="addBook-input-wrap bookimage-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">
-                    <input type="file" placeholder="도서 이미지" name="book_board_image" accept="image/*" ></input>
+                    <input placeholder="예치금" type="text" name="customer_book_deposit"></input>
                 </div>
                 <div class="addBook-input-wrap comment-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">	
-                    <input placeholder="코멘트" type="text" name="book_board_comment"></input>
+                    <input placeholder="코멘트" type="text" name="customer_book_comment">
                 </div>
+
+                <label  style="font-weight: bold; text-align: left ; width:100%">장르</label>
+                <div class=" " style="font-family: 'Do Hyeon', sans-serif;">
+
+                    <input type="radio" name="category_seq" value="1">수필
+                    <input type="radio" name="category_seq" value="2">소설
+                    <input type="radio" name="category_seq" value="3">시
+                    <input type="radio" name="category_seq" value="4">유아
+                    <input type="radio" name="category_seq" value="5">여행
+                    <input type="radio" name="category_seq" value="6">역사
+                    <input type="radio" name="category_seq" value="7">과학
+                    <input type="radio" name="category_seq" value="8">고전
+                    <input type="radio" name="category_seq" value="9">외국어
+                </div>
+                <label  style="margin-top: 10px ;font-weight: bold; text-align: left ; width:100%">책 이미지</label>
+                <div class="addBook-input-wrap bookimage-wrap" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">
+                    <input type="file" placeholder="도서 이미지" name="book_image" accept="image/*" >
+                </div>
+                <br>
+                <label style="font-weight: bold; text-align: left ; width:100%">책 실물 사진 <button type="button" id="bookplus" class="btn btn-primary" style=" padding-top:3px;margin-left:10px;padding-bottom: 20px ; font-size: 13px;  height: 25px ">추가 </button></label>
+                <div id="customerBook">
+                    <div class="addBook-input-wrap bookimage-wrap" id = "bookPicture" style="border-radius: 15px;font-family: 'Do Hyeon', sans-serif;">
+                        <input type="file" placeholder="도서 이미지" name="customer_book_img" accept="image/*" >
+                    </div>
+                </div>
+
                 <div class="addBook-button-wrap">
                     <button type="submit" style="font-family: 'Do Hyeon', sans-serif;">도서 등록</button>
                 </div>
-                
+                <div id="customerBook2" style="visibility: hidden">
+                    <div class="addBook-input-wrap bookimage-wrap" id = "bookPicture2" style="border-radius: 15px;margin-top:10px;font-family: 'Do Hyeon', sans-serif;">
+                        <input type="file" placeholder="도서 이미지" name="customer_book_img" accept="image/*" >
+                    </div>
+                </div>
             </section>
             
         </div>
         
     </form>
-    <script src="static/assets/js/jquery.min.js"></script>
-    <script src="static/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="static/assets/js/bs-init.js"></script>
-    <script src="static/assets/js/--mp---Multiple-items-slider-responsive-1.js"></script>
-    <script src="static/assets/js/--mp---Multiple-items-slider-responsive.js"></script>
-    <script src="static/assets/js/Grid-and-List-view-V10.js"></script>
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/assets/js/bs-init.js"></script>
+    <script src="/static/assets/js/--mp---Multiple-items-slider-responsive-1.js"></script>
+    <script src="/static/assets/js/--mp---Multiple-items-slider-responsive.js"></script>
+    <script src="/static/assets/js/Grid-and-List-view-V10.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
-    <script src="static/assets/js/Media-Slider-Bootstrap-3.js"></script>
-    <script src="static/assets/js/Simple-Slider.js"></script>
+    <script src="/static/assets/js/Media-Slider-Bootstrap-3.js"></script>
+    <script src="/static/assets/js/Simple-Slider.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+      $(document).ready(function(){
+            $("#bookplus").click(function(){
+                var picture = $("#customerBook2").html();
+                $("#customerBook").append(picture)
+            })
+        });
+    </script>
 </body>
 
 </html>
