@@ -31,6 +31,9 @@ public class BookDAO {
     public void insertCustomerBook(HashMap<String, Object> HashMap){
         mapper.insertCustomerBook(HashMap);
     }
+    public Integer selectCustomerBookSeq(){
+        return mapper.selectCustomerBookSeq();
+    }
     public void insertCustomerBookImage(HashMap<String, Object> HashMap){
         mapper.insertCustomerBookImage(HashMap);
     }

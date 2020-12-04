@@ -37,6 +37,16 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public void insertBookImage(List<HashMap<String, Object>> map) {
+        BookDAO dao = new BookDAO(sqlSession);
+        Integer customer_book_seq = dao.selectCustomerBookSeq();
+        for(HashMap<String, Object> HashMap : map) {
+            HashMap.put("customer_book_seq", customer_book_seq);
+            dao.insertCustomerBookImage(HashMap);
+        }
+    }
+
+    @Override
     public List<HashMap<String, Object>> selectCustomerBook(HashMap<String, Object> HashMap) {
         BookDAO dao = new BookDAO(sqlSession);
         return dao.selectCustomerBook(HashMap);

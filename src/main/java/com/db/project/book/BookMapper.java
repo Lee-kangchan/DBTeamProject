@@ -11,6 +11,7 @@ public interface BookMapper {
     public Integer selectBookIsbn(HashMap<String, Object> HashMap);
     public void insertBook(HashMap<String, Object> HashMap);
     public void insertCustomerBook(HashMap<String, Object> HashMap);
+    public Integer selectCustomerBookSeq();
     public void insertCustomerBookImage(HashMap<String, Object> HashMap);
     public List<HashMap<String, Object>> selectCustomerBook(HashMap<String, Object> HashMap);
     public List<HashMap<String, Object>> selectCurrentBook(HashMap<String, Object> HashMap);

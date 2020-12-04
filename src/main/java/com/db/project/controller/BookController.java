@@ -10,10 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class BookController {
@@ -53,14 +59,36 @@ public class BookController {
         return "booklist";
     }
 
-    @GetMapping("/book/insert")
-    public String bookInsert(Model model, HttpSession session){
+    @GetMapping("/bookInsert")
+    public String bookInsert(@RequestParam HashMap<String, Object> map, HttpSession session){
 
         return "addBook";
     }
-    @PostMapping("/book/insert")
-    public String bookInsert(Model model, HttpSession session , @RequestParam HashMap<String, Object> map){
+    @PostMapping("/addBook")
+    public String bookInsert(HttpServletRequest request, Model model, HttpSession session , @RequestParam HashMap<String, Object> map, @RequestParam("book_image") MultipartFile book_image, @RequestParam("customer_book_img") List<MultipartFile> customer_book_img) throws IOException {
 
+        UUID uuid ;
+        uuid = UUID.randomUUID();
+
+        String root_path = request.getSession().getServletContext().getRealPath("/");
+        logger.info(root_path);
+        String path = "C:/Users/abc/AllWorkBench/TeamWorkBench/DBTeamProject/src/main/resources";
+        String book_image_path = "/static/img/"+uuid+".jpg";
+        map.put("book_img",book_image_path);
+        map.put("customer_seq", session.getAttribute("customer_seq"));
+        book_image.transferTo(new File(path, book_image_path));
+        bookService.insertBook(map);
+        List<HashMap<String, Object>> list = new ArrayList<>();
+        HashMap<String, Object> image = new HashMap<>();
+        for(MultipartFile file : customer_book_img){
+            uuid = UUID.randomUUID();
+            String book_image_path2 = "/static/img/"+uuid+".jpg";
+            image.put("customer_book_img",book_image_path2);
+            file.transferTo(new File(path, book_image_path2));
+            list.add(image);
+        }
+
+        bookService.insertBookImage(list);
         return "redirect:/home";
     }
     @GetMapping("/book/{seq}")
