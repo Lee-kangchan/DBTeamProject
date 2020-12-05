@@ -3,10 +3,13 @@ package com.db.project.controller;
 import com.db.project.customer.CustomerService;
 import com.db.project.matching.MatchingService;
 import com.db.project.review.ReviewService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,6 +28,8 @@ public class MyPageController {
 
     @Autowired
     MatchingService matchingService;
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping("myPage")
     public String myPage(Model model, HttpSession session) {
@@ -78,7 +83,9 @@ public class MyPageController {
         map.put("customer_seq", session.getAttribute("customer_seq"));
 
         HashMap<String, Object> customerInfo = customerService.customerMyPage(map);
+        List<HashMap<String, Object>> reservationInfo = matchingService.selectMyReservation(map);
 
+        model.addAttribute("reservationInfo", reservationInfo);
         model.addAttribute("sess", session.getAttribute("customer_seq"));
         model.addAttribute("customerInfo", customerInfo);
         return "myReserve";
@@ -113,5 +120,17 @@ public class MyPageController {
         model.addAttribute("customerInfo", customerInfo);
 
         return "myReview";
+    }
+
+    @GetMapping("deleteReview/{num}")
+    public String deleteReview(Model model, HttpSession session, @PathVariable("num") int num) {
+
+        HashMap<String, Object> seq = new HashMap<>();
+
+        seq.put("review_seq", num);
+
+        reviewService.deleteReview(seq);
+
+        return "redirect:/myReview";
     }
 }

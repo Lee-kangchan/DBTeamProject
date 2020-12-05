@@ -31,7 +31,7 @@
 
 <!-- 리뷰 내용 들고오기 -->
 <select id="selectReviewContent" parameterType="hashmap" resultType="hashmap">
-        SELECT review_title, review_detail, review_score, review_createAt
+        SELECT review_seq, review_title, review_detail, review_score, review_createAt
         FROM review
         WHERE book_isbn = #{book_isbn}
     </select>
@@ -48,4 +48,11 @@
         FROM review
         WHERE customer_seq = #{customer_seq}
     </select>
+
+    <!-- 리뷰 삭제하기 -->
+    <delete id="deleteReview" parameterType="hashmap">
+        delete from review
+        where reivew_seq = #{review_seq}
+    </delete>
+
 </mapper>

@@ -12,6 +12,7 @@ public interface ReviewMapper {
     public HashMap<String, Object> selectReviewContent(HashMap<String, Object> HashMap);
     public void insertReview(HashMap<String, Object> HashMap);
     public List<HashMap<String, Object>> myReview(HashMap<String, Object> HashMap);
+    public void deleteReview(HashMap<String, Object> HashMap);
 
 
 }

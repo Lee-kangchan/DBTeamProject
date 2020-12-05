@@ -9,4 +9,5 @@ public interface MatchingService {
     public List<HashMap<String, Object>> selectBorrowMatching(HashMap<String, Object> HashMap);
     public void updateRentalMatching(HashMap<String, Object> HashMap);
     public void updateBorrowMatching(HashMap<String, Object> HashMap);
+    public List<HashMap<String, Object>> selectMyReservation(HashMap<String, Object> HashMap);
 }

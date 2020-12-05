@@ -37,4 +37,8 @@ public class MatchingDAO {
     public void updateMatchingReset(HashMap<String, Object> HashMap){
         mapper.updateMatchingReset(HashMap);
     }
+
+    public List<HashMap<String, Object>> selectReservation(HashMap<String, Object> HashMap) {return mapper.selectReservation(HashMap);}
+    public List<HashMap<String, Object>> selectRank(HashMap<String, Object> HashMap) {return mapper.selectRank(HashMap);}
+
 }

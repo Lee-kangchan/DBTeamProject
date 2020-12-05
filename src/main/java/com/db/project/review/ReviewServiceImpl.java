@@ -32,4 +32,11 @@ public class ReviewServiceImpl implements ReviewService {
 
         return reviewDAO.myReview(HashMap);
     }
+
+    @Override
+    public void deleteReview(HashMap<String, Object> HashMap) {
+        ReviewDAO reviewDAO = new ReviewDAO(sqlSession);
+
+        reviewDAO.deleteReview(HashMap);
+    }
 }

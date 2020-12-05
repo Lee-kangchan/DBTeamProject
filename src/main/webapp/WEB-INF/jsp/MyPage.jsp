@@ -3,6 +3,8 @@
 <%@ page import="java.util.List" %>
 <% Integer sess = (Integer)request.getAttribute("sess"); %>
 <% HashMap<String, Object> customerInfo = (HashMap<String, Object>)request.getAttribute("customerInfo"); %>
+<% List<HashMap<String, Object>> borrow = (List<HashMap<String, Object>>)request.getAttribute("borrow"); %>
+<% List<HashMap<String, Object>> rental = (List<HashMap<String, Object>>)request.getAttribute("rental"); %>
 
 <!DOCTYPE html>
 <html>
@@ -117,18 +119,26 @@
                         <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">도서명</strong></div>
                         <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">대여상태</strong></div>
                         <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"></strong></div>
-                        <div class="col"><strong>대출날짜</strong></div>
+                        <div class="col"><strong>반납 예정 날짜</strong></div>
                     </div>
                 </section>
+                <% for(int i = 0; i < rental.size(); i++) { %>
                 <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-                    <div class="col"><a href="#"></a><img style="height: 120px;"></div>
-                    <div class="col"><a href="#"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">도서명</strong></a></div>
-                    <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">대여 대기</strong></div>
+                    <div class="col"><a href="#"></a><img src='<%=rental.get(i).get("book_img")%>>' style="height: 120px;"></div>
+                    <div class="col"><a href="#"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;"><%=rental.get(i).get("book_name")%>></strong></a></div>
+                    <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;"><%=rental.get(i).get("matching_type")%>></strong></div>
                     <div class="col" style="font-family: 'Do Hyeon', sans-serif;">
                         <div style="display:flex; flex-direction:column; justify-content:center;"><button class="btn btn-primary btn-sm" type="button" style="margin-top:20px;position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;">대여확인</button><button class="btn btn-primary btn-sm" type="button" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;">신고하기</button></div>
                     </div>
-                    <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 40px;font-family: 'Do Hyeon', sans-serif;">2020.00.00<br>~2020.00.00</strong></div>
+                    <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 40px;font-family: 'Do Hyeon', sans-serif;"><%=rental.get(i).get("matching_endAt")%>></strong></div>
                 </div>
+                <% } %>
+
+                <% if(rental.size() == 0) { %>
+                <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">대여 도서가 없습니다..</strong></div>
+                <% }%>
+
+                <div style="height:60px; border-bottom: 2px solid rgb(40,167,69)"></div>
 
                 <section><strong style="color: rgb(131,135,143);font-size: 20px;font-family: 'Do Hyeon', sans-serif;margin-top: 20px;">나의 대출 등급</strong><strong style="color: rgb(131,135,143);font-size: 35px;margin-top: 4px;font-family: 'Do Hyeon', sans-serif;"><%=customerInfo.get("rental_membership_name")%></strong>
                     <div class="row" style="border-bottom-style: solid;border-bottom-color: rgb(40,167,69);padding-bottom: 15px;">
@@ -136,23 +146,24 @@
                         <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">도서명</strong></div>
                         <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">대출상태</strong></div>
                         <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"></strong></div>
-                        <div class="col"><strong>대출날짜</strong></div>
+                        <div class="col"><strong>반납 예정 날짜</strong></div>
                     </div>
                 </section>
 
-
+                <% for(int i = 0; i < borrow.size(); i++) { %>
                 <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-                    <div class="col"><a href="#"></a><img style="height: 120px;"></div>
-                    <div class="col"><a href="#"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">도서명</strong></a></div>
-                    <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">대출 대기</strong></div>
+                    <div class="col"><a href="#"></a><img src="<%=borrow.get(i).get("book_img")%>" style="height: 120px;"></div>
+                    <div class="col"><a href="#"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;"><%=borrow.get(i).get("book_name")%></strong></a></div>
+                    <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;"><%=borrow.get(i).get("matching_type")%></strong></div>
                     <div class="col" style="font-family: 'Do Hyeon', sans-serif;">
                         <div><button class="btn btn-primary btn-sm" type="button" style="margin-top: 10px;margin-left: 50px;font-family: 'Do Hyeon', sans-serif;height: 35px;">대출확인</button><button class="btn btn-primary btn-sm" type="button" style="margin-top: 45px;margin-left: 50px;font-family: 'Do Hyeon', sans-serif;height: 35px;">대출연장</button>
                             <button
                                 class="btn btn-primary btn-sm" type="button" style="margin-top: 79px;margin-left: 50px;font-family: 'Do Hyeon', sans-serif;height: 35px;">신고하기</button>
                         </div>
                     </div>
-                    <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 40px;font-family: 'Do Hyeon', sans-serif;">2020.00.00<br>~2020.00.00</strong></div>
+                    <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 40px;font-family: 'Do Hyeon', sans-serif;"><%=borrow.get(i).get("matching_endAt")%></strong></div>
                 </div>
+                <% } %>
         </div>
 
 

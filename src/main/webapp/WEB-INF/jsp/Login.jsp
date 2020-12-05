@@ -155,7 +155,12 @@
             border: solid 1px var(--naver-green-border-color);
             border-radius: 15px;
             margin-bottom: 50px;
+            outline: none;
         
+        }
+
+        input {
+            outline: none;
         }
     
         a { text-decoration:none } 

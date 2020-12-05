@@ -12,4 +12,6 @@ public interface MatchingMapper {
     public HashMap<String,Object> selectMatchingState(HashMap<String, Object> HashMap);
     public void updateTypeMatching(HashMap<String, Object> HashMap);
     public void updateMatchingReset(HashMap<String, Object> HashMap);
+    public List<HashMap<String, Object>> selectReservation(HashMap<String, Object> HashMap);
+    public List<HashMap<String, Object>> selectRank(HashMap<String, Object> HashMap);
 }

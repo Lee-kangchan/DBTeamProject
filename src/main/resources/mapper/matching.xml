@@ -11,15 +11,15 @@
 
     <!--나의 매칭 목록(대출)-->
     <select id="selectRentalMatching" parameterType="hashmap" resultType="hashmap">
-        select b.book_img, b.book_name, m.matching_type, m.matching_endAt
+        select m.matching_seq, b.book_img, b.book_name, m.matching_type, m.matching_endAt
         from matching m, customer_book cb, book b
-        where cb.book_isbn = b.book_isbn AND m.customer_book_seq = cb.customer_book_seq AND m.customer_seq = 3
+        where cb.book_isbn = b.book_isbn AND m.customer_book_seq = cb.customer_book_seq AND m.customer_seq = #{customer_seq}
     </select>
     <!--나의 매칭 목록(대여)-->
     <select id="selectBorrowMatching" parameterType="hashmap" resultType="hashmap">
-        select * from customer_book a
-        join matching b on a.customer_book_seq = b.customer_book_seq
-        where a.customer_seq = #{customer_seq}
+        select m.matching_seq, b.book_img, b.book_name, m.matching_type ,m.matching_endAt
+        FROM book b, matching m, customer_book cb
+        WHERE m.customer_book_seq = cb.customer_book_seq AND b.book_isbn = cb.book_isbn AND cb.customer_seq = #{customer_seq}
     </select>
     <!--대여자 상태 변경-->
     <update id="updateRentalMatching" parameterType="hashmap">
@@ -49,4 +49,18 @@
         update matching set matching_rental_yn = 0 , matching_borrow_yn = 0
         where matching_seq = #{matching_seq}
     </update>
+
+    <!-- 예약한 책 찾아오기 -->
+    <select id="selectReservation" parameterType="hashmap" resultType="hashmap">
+        SELECT r.reservation_seq, r.customer_book_seq, r.customer_seq, r.reservation_createAt, b.book_name
+        FROM reservation r, customer_book cb, book b
+        WHERE r.customer_book_seq = cb.customer_book_seq AND b.book_isbn = cb.book_isbn AND r.customer_seq = #{customer_seq} AND r.reservation_yn = 'n'
+    </select>
+
+    <!-- 예약한 책의 랭킹 찾아오기 -->
+    <select id="selectRank" parameterType="hashmap" resultType="hashmap">
+        SELECT customer_seq, ROW_NUMBER() OVER(ORDER BY reservation_createAt) AS rank
+        FROM reservation
+        WHERE customer_book_seq = #{customer_book_seq} AND reservation_yn = 'n'
+    </select>
 </mapper>

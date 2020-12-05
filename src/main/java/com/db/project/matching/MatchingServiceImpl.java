@@ -1,9 +1,12 @@
 package com.db.project.matching;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,6 +14,9 @@ import java.util.List;
 public class MatchingServiceImpl implements MatchingService {
     @Autowired
     SqlSession sqlSession;
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Override
     public void insertMatching(HashMap<String, Object> HashMap) {
         MatchingDAO matchingDAO = new MatchingDAO(sqlSession);
@@ -59,5 +65,34 @@ public class MatchingServiceImpl implements MatchingService {
             matchingDAO.updateTypeMatching(map);
             matchingDAO.updateMatchingReset(map);
         }
+    }
+
+    @Override
+    public List<HashMap<String, Object>> selectMyReservation(HashMap<String, Object> HashMap) {
+
+        MatchingDAO matchingDAO = new MatchingDAO(sqlSession);
+
+        List<HashMap<String, Object>> res = matchingDAO.selectReservation(HashMap);
+
+        logger.info(res.toString());
+
+        int seq = (int)res.get(0).get("customer_seq");
+
+
+
+        for(int i = 0; i < res.size(); i++) {
+            List<HashMap<String, Object>> rank = matchingDAO.selectRank(res.get(i));
+
+            for(int j = 0; j < rank.size(); j++) {
+                if(seq == (int)rank.get(j).get("customer_seq")) {
+                    res.get(i).put("rank", rank.get(j).get("rank"));
+                    break;
+                }
+            }
+        }
+
+        logger.info(res.toString());
+
+        return res;
     }
 }
