@@ -39,14 +39,19 @@
                 <ul
                     class="nav navbar-nav"></ul>
                     <div class="collapse navbar-collapse d-flex" id="navcol-1">
-                        <form class="form-inline d-flex" style="margin: 0 auto;"><input class="form-control d-flex ml-auto" type="search" placeholder="검색할 내용을 입력해주세요" name="SEARCH" style="padding: 5px;margin: 17px;width: 415px;padding-left: 23px;font-family: 'Do Hyeon', sans-serif;margin-right: 8px;">
+                        <form action="/search" class="form-inline d-flex" style="margin: 0 auto;"><input class="form-control d-flex ml-auto" type="search" placeholder="검색할 내용을 입력해주세요" name="SEARCH" style="padding: 5px;margin: 17px;width: 415px;padding-left: 23px;font-family: 'Roboto Condensed', sans-serif;margin-right: 8px;">
                             <i
                                 class="fa fa-search" style="width: 20px;height: 20px;font-size: 20px;color: rgb(38,166,67);"></i>
                         </form>
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item"><a class="nav-link active" href="#" style="font-size: 19px;font-family: 'Do Hyeon', sans-serif;">MYPAGE</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#" style="font-size: 19px;font-family: 'Do Hyeon', sans-serif;">LOGOUT</a></li>
-                            <li class="nav-item"><a class="nav-link active" href="#" style="font-size: 19px;font-family: 'Do Hyeon', sans-serif;">도서등록</a></li>
+                        <% if(sess == null) { %>
+                            <li class="nav-item"><a class="nav-link active" href="/login" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">LOGIN</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/signup" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">SIGNUP</a></li>
+                        <% } else { %>
+                            <li class="nav-item"><a class="nav-link active" href="/myPage" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">MY PAGE</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/logout" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">LOGOUT</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="/bookInsert" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">도서등록</a></li>
+                        <% } %>
                         </ul>
                     </div>
             </div>
@@ -58,9 +63,9 @@
                         style="margin: 0 auto;">
                         <form class="form-inline" style="margin: 0 auto;">
                             <ul class="nav navbar-nav">
-                                <li class="nav-item"><a class="nav-link active d-flex" data-bs-hover-animate="bounce" href="gridBook1.html" style="padding-right: 20px;font-size: 20px;margin: 0 auto;font-family: Do Hyeon, sans-serif;">우리동네 도서</a></li>
-                                <li class="nav-item"><a class="nav-link d-flex" data-bs-hover-animate="bounce" href="#" style="padding-left: 20px;padding-right: 20px;font-size: 20px;margin: 0 aitp;font-family: Do Hyeon, sans-serif;">나의 도서 현황</a></li>
-                                <li class="nav-item"><a class="nav-link d-flex" data-bs-hover-animate="bounce" href="#" style="font-size: 20px;padding-left: 20px;font-family: Do Hyeon, sans-serif;">도서별 리뷰 보기</a></li>
+                                <li class="nav-item"><a class="nav-link active d-flex" data-bs-hover-animate="bounce" href="/book" style="padding-right: 20px;font-size: 20px;margin: 0 auto;font-family: Nunito, sans-serif;">우리동네 도서</a></li>
+                                <li class="nav-item"><a class="nav-link d-flex" data-bs-hover-animate="bounce" href="/myBook" style="padding-left: 20px;padding-right: 20px;font-size: 20px;margin: 0 aitp;font-family: Nunito, sans-serif;">나의 도서 현황</a></li>
+                                <li class="nav-item"><a class="nav-link d-flex" data-bs-hover-animate="bounce" href="/review" style="font-size: 20px;padding-left: 20px;font-family: Nunito, sans-serif;">도서별 리뷰 보기</a></li>
                             </ul>
                         </form>
                     </div>

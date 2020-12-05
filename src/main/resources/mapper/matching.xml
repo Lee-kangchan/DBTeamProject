@@ -11,8 +11,9 @@
 
     <!--나의 매칭 목록(대출)-->
     <select id="selectRentalMatching" parameterType="hashmap" resultType="hashmap">
-        select * from matching
-        where customer_seq = #{customer_seq}
+        select b.book_img, b.book_name, m.matching_type, m.matching_endAt
+        from matching m, customer_book cb, book b
+        where cb.book_isbn = b.book_isbn AND m.customer_book_seq = cb.customer_book_seq AND m.customer_seq = 3
     </select>
     <!--나의 매칭 목록(대여)-->
     <select id="selectBorrowMatching" parameterType="hashmap" resultType="hashmap">

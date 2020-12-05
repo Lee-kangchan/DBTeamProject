@@ -1,6 +1,7 @@
 package com.db.project.controller;
 
 import com.db.project.customer.CustomerService;
+import com.db.project.matching.MatchingService;
 import com.db.project.review.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class MyPageController {
     @Autowired
     ReviewService reviewService;
 
+    @Autowired
+    MatchingService matchingService;
+
     @GetMapping("myPage")
     public String myPage(Model model, HttpSession session) {
 
@@ -35,8 +39,14 @@ public class MyPageController {
 
         HashMap<String, Object> pointInfo = customerService.login(map);
 
+        List<HashMap<String, Object>> rental = matchingService.selectRentalMatching(map);
+        List<HashMap<String, Object>> borrow = matchingService.selectBorrowMatching(map);
+
         customerInfo.put("customer_point", pointInfo.get("customer_point"));
 
+        model.addAttribute("rental", rental);
+        model.addAttribute("borrow", borrow);
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
         model.addAttribute("customerInfo", customerInfo);
 
         return "MyPage";
@@ -50,6 +60,7 @@ public class MyPageController {
 
         HashMap<String, Object> customerInfo = customerService.customerMyPage(map);
 
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
         model.addAttribute("customerInfo", customerInfo);
         return "updateUserinfo";
     }
@@ -68,6 +79,7 @@ public class MyPageController {
 
         HashMap<String, Object> customerInfo = customerService.customerMyPage(map);
 
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
         model.addAttribute("customerInfo", customerInfo);
         return "myReserve";
     }
@@ -80,6 +92,7 @@ public class MyPageController {
 
         HashMap<String, Object> customerInfo = customerService.customerMyPage(map);
 
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
         model.addAttribute("customerInfo", customerInfo);
 
         return "myReport";
@@ -95,6 +108,7 @@ public class MyPageController {
 
         List<HashMap<String, Object>> myReview = reviewService.myReview(map);
 
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
         model.addAttribute("myReview", myReview);
         model.addAttribute("customerInfo", customerInfo);
 

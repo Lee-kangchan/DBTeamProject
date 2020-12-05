@@ -64,7 +64,8 @@ public class CustomerController {
 
     // 회원가입
     @GetMapping("signup")
-    public String signup(Model model) {return "Signup";}
+    public String signup(Model model) {
+        return "Signup";}
 
     @PostMapping("signup")
     public String signup(@RequestParam HashMap<String, Object> customer, @RequestParam List<Integer> category_seq, Model model) {
@@ -84,6 +85,7 @@ public class CustomerController {
 
         HashMap<String, Object> customerInfo = customerService.customerMyPage(map);
 
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
         model.addAttribute("customerInfo", customerInfo);
 
         return "addCard";
@@ -110,6 +112,7 @@ public class CustomerController {
 
         List<HashMap<String, Object>> cardInfo = cardService.selectCard(map);
 
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
         model.addAttribute("customerInfo", customerInfo);
         model.addAttribute("cardInfo", cardInfo);
 
@@ -142,6 +145,7 @@ public class CustomerController {
 
         List<HashMap<String, Object>> cardInfo = cardService.selectCard(map);
 
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
         model.addAttribute("customerInfo", customerInfo);
         model.addAttribute("cardInfo", cardInfo);
 
@@ -178,6 +182,7 @@ public class CustomerController {
 
         List<HashMap<String, Object>> point = cardService.selectApproval(seq);
 
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
         model.addAttribute("customerInfo", customerInfo);
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("point", point);
