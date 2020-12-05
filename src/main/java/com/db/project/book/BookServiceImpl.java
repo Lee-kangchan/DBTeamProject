@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Book;
 import java.util.HashMap;
 import java.util.List;
 
@@ -62,5 +63,22 @@ public class BookServiceImpl implements BookService {
     public void deleteCustomerBook(HashMap<String, Object> HashMap) {
         BookDAO dao = new BookDAO(sqlSession);
         dao.deleteCustomerBook(HashMap);
+    }
+
+    @Override
+    public HashMap<String, Object> selectDetailBook(HashMap<String, Object> map) {
+        HashMap<String ,Object> hashMap = new HashMap<>();
+        BookDAO dao = new BookDAO(sqlSession);
+
+        hashMap = dao.selectDetailBook(map);
+        Integer count = dao.selectBookReservation(map);
+        hashMap.put("count", String.valueOf(count));
+        return hashMap;
+    }
+
+    @Override
+    public void insertBookReservation(HashMap<String, Object> map) {
+        BookDAO dao = new BookDAO(sqlSession);
+        dao.insertBookReservation(map);
     }
 }

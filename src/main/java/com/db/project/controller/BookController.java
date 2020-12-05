@@ -1,6 +1,8 @@
 package com.db.project.controller;
 
 import com.db.project.book.BookService;
+import com.db.project.customer.CustomerService;
+import com.db.project.matching.MatchingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +18,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 public class BookController {
     @Autowired
     BookService bookService;
 
+    @Autowired
+    CustomerService customerService;
+    @Autowired
+    MatchingService matchingService;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping("/book")
@@ -93,16 +96,48 @@ public class BookController {
     }
     @GetMapping("/book/{seq}")
     public String bookDetail(@PathVariable Integer seq ,  Model model, HttpSession session){
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("customer_book_seq", seq);
+        model.addAttribute("book",bookService.selectDetailBook(map));
 
         return "Book_borrow1";
     }
     @GetMapping("/book/{seq}/check")
     public String bookCheck(@PathVariable Integer seq, Model model, HttpSession session){
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("customer_book_seq", seq);
+        map.put("customer_seq", session.getAttribute("customer_seq"));
+        model.addAttribute("book",bookService.selectDetailBook(map));
+        model.addAttribute("sale", customerService.customerSales(map));
         return "Book_borrow2";
     }
     @PostMapping("book/{seq}")
-    public String bookCheckInsert(@RequestParam HashMap<String, Object> map, HttpSession session, Model model){
-        return "";
+    public String bookMatching( HttpSession session, Model model,@PathVariable Integer seq){
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("customer_book_seq", seq);
+        map.put("customer_seq",session.getAttribute("customer_seq"));
+        Random rd = new Random();
+        int front =0;
+        int back = 0;
+        for(int i=0; i<4; i++){
+            front = front + rd.nextInt(rd.nextInt(10));
+            front = front *10;
+        }
+        for(int i=0; i<4; i++){
+            back = back + rd.nextInt(rd.nextInt(10));
+            back = back *10;
+        }
+        map.put("customer_secret_num", "070"+String.valueOf(front)+String.valueOf(back));
+        matchingService.insertMatching(map);
+        return "redirect:/home";
+    }
+    @PostMapping("book/reservation/{seq}")
+    public String bookReservation(@PathVariable Integer seq, HttpSession session){
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("customer_book_seq", seq);
+        map.put("customer_seq",session.getAttribute("customer_seq"));
+        bookService.insertBookReservation(map);
+        return "redirect:/home";
     }
 
 }
