@@ -47,6 +47,21 @@
         insert into customer_book_image(customer_book_seq, customer_book_img) values(#{customer_book_seq}, #{customer_book_img})
     </insert>
 
+    <select id="selectDetailBook" parameterType="hashmap" resultType="hashmap">
+        SELECT * FROM book a
+        join customer_book b on a.book_isbn = b.book_isbn
+        join category c on a.category_seq = c.category_seq
+        join customer d on b.customer_seq = d.customer_seq
+        where b.customer_book_seq = #{customer_book_seq}
+    </select>
+    <select id="selectBookReservation" parameterType="hashmap" resultType="integer">
+        select count(*) count from reservation a
+        where customer_book_seq = #{customer_book_seq}
+    </select>
+    <insert id="insertBookReservation" parameterType="hashmap">
+        insert into reservation(customer_seq, customer_book_seq)
+        values(#{customer_seq}, #{customer_book_seq})
+    </insert>
     <!--나의 도서 현황-->
     <select id="selectCustomerBook" parameterType="hashmap" resultType="hashmap">
         select * from customer_book

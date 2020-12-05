@@ -16,4 +16,8 @@ public interface BookMapper {
     public List<HashMap<String, Object>> selectCustomerBook(HashMap<String, Object> HashMap);
     public List<HashMap<String, Object>> selectCurrentBook(HashMap<String, Object> HashMap);
     public void deleteCustomerBook(HashMap<String, Object> HashMap);
+
+    public HashMap<String , Object> selectDetailBook(HashMap<String, Object> map);
+    public Integer selectBookReservation(HashMap<String, Object> map);
+    public void insertBookReservation(HashMap<String, Object> map);
 }

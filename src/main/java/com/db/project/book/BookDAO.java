@@ -46,4 +46,14 @@ public class BookDAO {
     public void deleteCustomerBook(HashMap<String, Object> HashMap){
         mapper.deleteCustomerBook(HashMap);
     }
+
+    public HashMap<String , Object> selectDetailBook(HashMap<String, Object> map){
+        return mapper.selectDetailBook(map);
+    }
+    public Integer selectBookReservation(HashMap<String, Object> map){
+        return mapper.selectBookReservation(map);
+    }
+    public void insertBookReservation(HashMap<String, Object> map){
+        mapper.insertBookReservation(map);
+    }
 }
