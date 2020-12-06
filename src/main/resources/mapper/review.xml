@@ -30,10 +30,10 @@
     </select>
 
 <!-- 리뷰 내용 들고오기 -->
-<select id="selectReviewContent" parameterType="hashmap" resultType="hashmap">
-        SELECT review_seq, review_title, review_detail, review_score, review_createAt
-        FROM review
-        WHERE book_isbn = #{book_isbn}
+    <select id="selectReviewContent" parameterType="hashmap" resultType="hashmap">
+        SELECT reivew_seq, review_title, review_detail, review_score, review_createAt, customer_nickname
+        FROM review, customer
+        WHERE book_isbn = #{book_isbn} AND review.customer_seq = customer.customer_seq
     </select>
 
 <!-- 리뷰 작성하기 -->

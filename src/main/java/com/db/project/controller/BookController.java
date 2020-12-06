@@ -140,4 +140,29 @@ public class BookController {
         return "redirect:/home";
     }
 
+    @GetMapping("myBook")
+    public String myBook(Model model, HttpSession session) {
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("customer_seq", session.getAttribute("customer_seq"));
+
+        List<HashMap<String, Object>> bookInfo = bookService.selectCustomerBook(map);
+
+        model.addAttribute("bookInfo", bookInfo);
+
+        return "myBook";
+    }
+
+    @GetMapping("deleteBook/{num}")
+    public String deleteBook(@PathVariable Integer num, Model model, HttpSession session) {
+
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("customer_book_seq", num);
+
+        bookService.deleteCustomerBook(map);
+
+        return "redirect:/myBook";
+    }
+
 }

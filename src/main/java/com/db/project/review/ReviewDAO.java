@@ -19,7 +19,7 @@ public class ReviewDAO {
     public List<HashMap<String, Object>> selectReviewMain(){return mapper.selectReviewMain();}
     public HashMap<String, Object> selectReviewScore(HashMap<String, Object> HashMap){return mapper.selectReviewScore(HashMap);}
     public HashMap<String, Object> selectReviewCount(HashMap<String, Object> HashMap){return mapper.selectReviewCount(HashMap);}
-    public HashMap<String, Object> selectReviewContent(HashMap<String, Object> HashMap){return mapper.selectReviewContent(HashMap);}
+    public List<HashMap<String, Object>> selectReviewContent(HashMap<String, Object> HashMap){return mapper.selectReviewContent(HashMap);}
     public void insertReview(HashMap<String, Object> HashMap){mapper.insertReview(HashMap);}
     public List<HashMap<String, Object>> myReview(HashMap<String, Object> HashMap) {return mapper.myReview(HashMap);}
     public void deleteReview(HashMap<String, Object> HashMap){mapper.deleteReview(HashMap);}
