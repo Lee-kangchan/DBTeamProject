@@ -47,6 +47,7 @@ public class MyPageController {
         List<HashMap<String, Object>> rental = matchingService.selectRentalMatching(map);
         List<HashMap<String, Object>> borrow = matchingService.selectBorrowMatching(map);
 
+        logger.info(borrow + "");
         customerInfo.put("customer_point", pointInfo.get("customer_point"));
 
         model.addAttribute("rental", rental);

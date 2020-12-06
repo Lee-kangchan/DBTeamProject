@@ -37,22 +37,24 @@ public class MatchingController {
     public String selectBorrowMatching(Model model, HttpSession session){
         HashMap<String , Object> map = new HashMap<>();
         map.put("customer_seq", session.getAttribute("customer_seq"));
-        model.addAttribute("matching",matchingService.selectRentalMatching(map));
+        model.addAttribute("matching",matchingService.selectBorrowMatching(map));
         return "borrowBook";
     }
-    @GetMapping("/matching/{seq}/rental/check")
-    public String  updateRentalCheck(@PathVariable Integer seq, Model model, HttpSession session){
+    @GetMapping("/matching/{seq}/rental/check/{yn}")
+    public String  updateRentalCheck(@PathVariable Integer seq, @PathVariable Integer yn, Model model, HttpSession session){
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("customer_seq",session.getAttribute("customer_seq"));
         hashMap.put("matching_seq", seq);
+        hashMap.put("matching_rental_yn", yn);
         matchingService.updateRentalMatching(hashMap);
         return "redirect:/myPage";
     }
-    @GetMapping("/matching/{seq}/borrow/chcek")
-    public String  updateBorrowCheck(@PathVariable Integer seq, Model model, HttpSession session){
+    @GetMapping("/matching/{seq}/borrow/check/{yn}")
+    public String  updateBorrowCheck(@PathVariable Integer seq, @PathVariable Integer yn, Model model, HttpSession session){
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("customer_seq",session.getAttribute("customer_seq"));
         hashMap.put("matching_seq",seq);
+        hashMap.put("matching_borrow_yn", yn);
         matchingService.updateBorrowMatching(hashMap);
         return "redirect:/myPage";
     }
@@ -62,7 +64,7 @@ public class MatchingController {
         hashMap.put("customer_Seq", session.getAttribute("customer_seq"));
         hashMap.put("matching_seq", seq);
         hashMap.put("matching_type", "거래취소");
-
+        matchingService.updateCancelMatching(hashMap);
         return "redirect:/myPage";
     }
 

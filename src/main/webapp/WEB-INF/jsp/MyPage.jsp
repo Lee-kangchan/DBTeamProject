@@ -129,14 +129,16 @@
                     <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;"><%=rental.get(i).get("matching_type")%></strong></div>
                     <div class="col" style="font-family: 'Do Hyeon', sans-serif;">
                         <div style="display:flex; flex-direction:column; justify-content:center;">
-                            <%if(rental.get(i).get("matching_type").equals("거래완료")){%><button class="btn btn-primary btn-sm" type="button" style="margin-top:20px;position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;" onclick="location.href = '/matching/<%= borrow.get(i).get("matching_seq")%>/rental/check'">대여확인</button>
-                            <%}else if(rental.get(i).get("matching_type").equals("대여")){%><button class="btn btn-primary btn-sm" type="button" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;" onclick="location.href = '/matching/<%= borrow.get(i).get("matching_seq")%>/rental/check'">반납확인</button><%}%>
+                            <%if(rental.get(i).get("matching_rental_yn").equals("1")){%> <button class="btn btn-primary btn-sm" type="button" style="margin-top:20px;position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;" onclick="location.href = '/matching/<%= borrow.get(i).get("matching_seq")%>/rental/check/0'">확인취소</button>
+                            <%}else if(rental.get(i).get("matching_type").equals("거래완료")){%><button class="btn btn-primary btn-sm" type="button" style="margin-top:20px;position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;" onclick="location.href = '/matching/<%= borrow.get(i).get("matching_seq")%>/rental/check/1'">대여확인</button>
+                            <%}else if(rental.get(i).get("matching_type").equals("대여")){%><button class="btn btn-primary btn-sm" type="button" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;" onclick="location.href = '/matching/<%= borrow.get(i).get("matching_seq")%>/rental/check/1'">반납확인</button><%}%>
+
                             <button class="btn btn-primary btn-sm" type="button" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;">신고하기</button>
                             <%if(rental.get(i).get("matching_type").equals("거래완료")){%><button class="btn btn-primary btn-sm" type="button" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;" onclick="location.href = '/matching/<%= borrow.get(i).get("matching_seq")%>/cancel'">취소하기</button><%}%>
                             <%if(rental.get(i).get("matching_type").equals("반납")){%><button class="btn btn-primary btn-sm" type="button" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;">리뷰작성</button><%}%>
                         </div>
                     </div>
-                    <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 40px;font-family: 'Do Hyeon', sans-serif;"><%=rental.get(i).get("matching_endAt")%></strong></div>
+                    <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 40px;font-family: 'Do Hyeon', sans-serif;"><%if(rental.get(i).get("matching_endAt")!=null){%><%=rental.get(i).get("matching_endAt")%><%}%></strong></div>
                 </div>
                 <% } %>
 
@@ -163,11 +165,12 @@
                     <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;"><%=borrow.get(i).get("matching_type")%></strong></div>
                     <div class="col" style="font-family: 'Do Hyeon', sans-serif;">
                         <div style="margin-top: 20px " >
-                            <%if(borrow.get(i).get("matching_type").equals("거래완료")){%><button class="btn btn-primary btn-sm" type="button" style="margin-top:20px;position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;">대여확인</button>
-                            <%}else if(borrow.get(i).get("matching_type").equals("대여")){%><button class="btn btn-primary btn-sm" type="button" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;">반납확인</button><%}%>
+                            <%if(borrow.get(i).get("matching_borrow_yn").toString().equals("1")){%> <button class="btn btn-primary btn-sm" type="button" style="margin-top:20px;position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;" onclick="location.href = '/matching/<%= borrow.get(i).get("matching_seq")%>/borrow/check/0'">확인취소</button>
+                            <%}else if(borrow.get(i).get("matching_type").equals("거래완료")){%><button class="btn btn-primary btn-sm" type="button" style="margin-top:20px;position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;" onclick="location.href = '/matching/<%= borrow.get(i).get("matching_seq")%>/borrow/check/1'">대출확인</button>
+                            <%}else if(borrow.get(i).get("matching_type").equals("대여")){%><button class="btn btn-primary btn-sm" type="button" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;" onclick="location.href = '/matching/<%= borrow.get(i).get("matching_seq")%>/borrow/check/1'">반납확인</button><%}%>
                             <button class="btn btn-primary btn-sm" type="button" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;">신고하기</button>
-                            <%if(borrow.get(i).get("matching_type").equals("거래완료")){%><button class="btn btn-primary btn-sm" type="button" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;">취소하기</button><%}%>
-                            <%if(borrow.get(i).get("matching_type").equals("반납")){%><button class="btn btn-primary btn-sm" type="button" onclick="location.href='addReview/<%=borrow.get(i).get("book_isbn")%>'" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;">리뷰작성하기</button><%}%>
+                            <%if(borrow.get(i).get("matching_type").equals("거래완료")){%><button class="btn btn-primary btn-sm" type="button" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;" onclick="location.href = '/matching/<%= borrow.get(i).get("matching_seq")%>/cancel'">취소하기</button><%}%>
+                            <%if(borrow.get(i).get("matching_type").equals("반납")){%><button class="btn btn-primary btn-sm" type="button" onclick="location.href='addReview/<%=borrow.get(i).get("book_isbn")%>'" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;" >리뷰작성하기</button><%}%>
                         </div>
                     </div>
                     <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 40px;font-family: 'Do Hyeon', sans-serif;"><%=borrow.get(i).get("matching_endAt")%></strong></div>

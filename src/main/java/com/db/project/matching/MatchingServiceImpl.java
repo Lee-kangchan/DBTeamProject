@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -54,16 +58,35 @@ public class MatchingServiceImpl implements MatchingService {
     @Override
     public void updateBorrowMatching(HashMap<String, Object> HashMap) {
         MatchingDAO matchingDAO = new MatchingDAO(sqlSession);
+
         matchingDAO.updateBorrowMatching(HashMap);
         HashMap<String, Object> map = matchingDAO.selectMatchingState(HashMap);
         if(map.get("matching_borrow_yn").toString().equals("1") && map.get("matching_rental_yn").toString().equals("1")){
             if(map.get("matching_type").equals("거래완료")){
                 map.put("matching_type","대여");
+                //시간 구하기
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = new Date();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                cal.add(Calendar.DATE, 7);
+                //시간 구했음
+                map.put("matching_endAt",df.format(cal.getTime()));
+                matchingDAO.updateMatchingDate(map);
             }else if(map.get("matching_type").equals("대여")){
                 map.put("matching_type","반납");
             }
             matchingDAO.updateTypeMatching(map);
             matchingDAO.updateMatchingReset(map);
+        }
+
+    }
+
+    @Override
+    public void updateCancelMatching(HashMap<String, Object> map) {
+        MatchingDAO matchingDAO = new MatchingDAO(sqlSession);
+        if(map.get("matching_type").toString().equals("거래취소")){
+            matchingDAO.updateTypeMatching(map);
         }
     }
 
