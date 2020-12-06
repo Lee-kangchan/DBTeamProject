@@ -44,9 +44,9 @@
     </insert>
 
     <select id="myReview" parameterType="hashmap" resultType="hashmap">
-        SELECT *
-        FROM review
-        WHERE customer_seq = #{customer_seq}
+        SELECT r.*, b.book_name
+        FROM review r, book b
+        WHERE customer_seq = #{customer_seq} AND r.book_isbn = b.book_isbn
     </select>
 
     <!-- 리뷰 삭제하기 -->

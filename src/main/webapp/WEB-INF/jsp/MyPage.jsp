@@ -167,6 +167,7 @@
                             <%}else if(borrow.get(i).get("matching_type").equals("대여")){%><button class="btn btn-primary btn-sm" type="button" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;">반납확인</button><%}%>
                             <button class="btn btn-primary btn-sm" type="button" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;">신고하기</button>
                             <%if(borrow.get(i).get("matching_type").equals("거래완료")){%><button class="btn btn-primary btn-sm" type="button" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;">취소하기</button><%}%>
+                            <%if(borrow.get(i).get("matching_type").equals("반납")){%><button class="btn btn-primary btn-sm" type="button" onclick="location.href='addReview/<%=borrow.get(i).get("book_isbn")%>'" style="position:relative;font-family: 'Do Hyeon', sans-serif;height: 35px;">리뷰작성하기</button><%}%>
                         </div>
                     </div>
                     <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 40px;font-family: 'Do Hyeon', sans-serif;"><%=borrow.get(i).get("matching_endAt")%></strong></div>

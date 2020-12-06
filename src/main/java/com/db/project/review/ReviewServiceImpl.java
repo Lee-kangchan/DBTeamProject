@@ -46,4 +46,11 @@ public class ReviewServiceImpl implements ReviewService {
 
         return reviewDAO.selectReviewContent(HashMap);
     }
+
+    @Override
+    public void insertReview(HashMap<String, Object> HashMap) {
+        ReviewDAO reviewDAO = new ReviewDAO(sqlSession);
+
+        reviewDAO.insertReview(HashMap);
+    }
 }

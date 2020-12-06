@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -43,16 +45,32 @@ public class ReviewController {
 
         List<HashMap<String, Object>> reviewInfo = reviewService.selectReviewContent(map);
 
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
         model.addAttribute("bookInfo", bookInfo);
         model.addAttribute("reviewInfo", reviewInfo);
 
         return "bookReview";
     }
 
-    @GetMapping("explain")
-    public String explane() {
+    @GetMapping("addReview/{num}")
+    public String addReview(@PathVariable Integer num, Model model, HttpSession session) {
 
-        return "review_explain";
+
+        model.addAttribute("book_isbn", num);
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
+
+        return "addReview";
+    }
+
+    @PostMapping("addReview/{num}")
+    public String addReview(@PathVariable Integer num, @RequestParam HashMap<String, Object> reviewInfo, HttpSession session) {
+
+        reviewInfo.put("book_isbn", num);
+        reviewInfo.put("customer_seq", session.getAttribute("customer_seq"));
+
+        reviewService.insertReview(reviewInfo);
+
+        return "redirect:/myReview";
     }
 
 }
