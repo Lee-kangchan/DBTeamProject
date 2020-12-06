@@ -128,7 +128,7 @@
             </div>
         </div>
         <div class="row" style="margin-bottom: 50px;margin-top: 50px;padding-bottom: 15px;">
-            <div class="col"><button class="btn btn-primary" onclick="location.href='/book/<%=map.get("customer_seq")%>/check ' " type="button" style="padding-right: 80px;padding-left: 80px;padding-top: 10px;padding-bottom: 10px;margin-bottom: 31px;font-size: 20px;text-align: center;margin-top: 0px;">대출 신청</button></div>
+            <div class="col"><button class="btn btn-primary" onclick="location.href='/book/<%=map.get("customer_book_seq")%>/check ' " type="button" style="padding-right: 80px;padding-left: 80px;padding-top: 10px;padding-bottom: 10px;margin-bottom: 31px;font-size: 20px;text-align: center;margin-top: 0px;">대출 신청</button></div>
         </div>
         <div class="row" style="text-align: center;margin-top: 31px;">
             <div class="col" style="width: 200px;border-top-style: solid;border-top-color: rgb(40,167,69);border-bottom-style: solid;border-bottom-color: rgb(40,167,69);"><strong style="font-size: 22px;text-align: center;margin: 21px;">코멘트</strong></div>
