@@ -1,6 +1,7 @@
 package com.db.project.controller;
 
 import com.db.project.matching.MatchingService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,19 +40,30 @@ public class MatchingController {
         model.addAttribute("matching",matchingService.selectRentalMatching(map));
         return "borrowBook";
     }
-    @PostMapping("/update/rental/check")
-    public String  updateRentalCheck(Model model, HttpSession session){
+    @GetMapping("/matching/{seq}/rental/check")
+    public String  updateRentalCheck(@PathVariable Integer seq, Model model, HttpSession session){
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("customer_seq",session.getAttribute("customer_seq"));
+        hashMap.put("matching_seq", seq);
         matchingService.updateRentalMatching(hashMap);
-        return "redirect:/select/matching/rental";
+        return "redirect:/myPage";
     }
-    @PostMapping("/update/borrow/chcek")
-    public String  updateBorrowCheck(Model model, HttpSession session){
+    @GetMapping("/matching/{seq}/borrow/chcek")
+    public String  updateBorrowCheck(@PathVariable Integer seq, Model model, HttpSession session){
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("customer_seq",session.getAttribute("customer_seq"));
+        hashMap.put("matching_seq",seq);
         matchingService.updateBorrowMatching(hashMap);
-        return "redirect:/select/matching/borrow";
+        return "redirect:/myPage";
+    }
+    @GetMapping("/matching/{seq}/cancel")
+    public String cancel(@PathVariable Integer seq, Model model, HttpSession session){
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("customer_Seq", session.getAttribute("customer_seq"));
+        hashMap.put("matching_seq", seq);
+        hashMap.put("matching_type", "거래취소");
+
+        return "redirect:/myPage";
     }
 
 }
