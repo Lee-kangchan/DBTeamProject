@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" %>
 <!DOCTYPE html>
 <html>
 
@@ -5,25 +6,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>book</title>
-    <link rel="stylesheet" href="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,800">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
-    <link rel="stylesheet" href="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/css/--mp---Multiple-items-slider-responsive.css">
-    <link rel="stylesheet" href="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/css/Comment.css">
-    <link rel="stylesheet" href="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/css/Footer-Clean.css">
-    <link rel="stylesheet" href="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/css/Grid-and-List-view-V10-1.css">
-    <link rel="stylesheet" href="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/css/Grid-and-List-view-V10.css">
+    <link rel="stylesheet" href="/static/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/assets/css/--mp---Multiple-items-slider-responsive.css">
+    <link rel="stylesheet" href="/static/assets/css/Comment.css">
+    <link rel="stylesheet" href="/static/assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="/static/assets/css/Grid-and-List-view-V10-1.css">
+    <link rel="stylesheet" href="/static/assets/css/Grid-and-List-view-V10.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
-    <link rel="stylesheet" href="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/css/Media-Slider-Bootstrap-3-1.css">
-    <link rel="stylesheet" href="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/css/Media-Slider-Bootstrap-3.css">
-    <link rel="stylesheet" href="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/css/Simple-Slider.css">
-    <link rel="stylesheet" href="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/css/styles.css">
-    <link rel="stylesheet" href="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/css/TextEditor.css">
+    <link rel="stylesheet" href="/static/assets/css/Media-Slider-Bootstrap-3-1.css">
+    <link rel="stylesheet" href="/static/assets/css/Media-Slider-Bootstrap-3.css">
+    <link rel="stylesheet" href="/static/assets/css/Simple-Slider.css">
+    <link rel="stylesheet" href="/static/assets/css/styles.css">
+    <link rel="stylesheet" href="/static/assets/css/TextEditor.css">
 </head>
 
 <body>
@@ -91,17 +92,17 @@
             </table>
         </div>
     </div><button class="btn btn-primary text-center border rounded-0" type="button">등록하기</button>
-    <script src="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/js/jquery.min.js"></script>
-    <script src="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/js/bs-init.js"></script>
-    <script src="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/js/--mp---Multiple-items-slider-responsive-1.js"></script>
-    <script src="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/js/--mp---Multiple-items-slider-responsive.js"></script>
-    <script src="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/js/Grid-and-List-view-V10.js"></script>
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/assets/js/bs-init.js"></script>
+    <script src="/static/assets/js/--mp---Multiple-items-slider-responsive-1.js"></script>
+    <script src="/static/assets/js/--mp---Multiple-items-slider-responsive.js"></script>
+    <script src="/static/assets/js/Grid-and-List-view-V10.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
-    <script src="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/js/Media-Slider-Bootstrap-3.js"></script>
-    <script src="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/js/Simple-Slider.js"></script>
-    <script src="../../../../../../../Documents/카카오톡%20받은%20파일/관리자1/assets/js/TextEditor.js"></script>
+    <script src="/static/assets/js/Media-Slider-Bootstrap-3.js"></script>
+    <script src="/static/assets/js/Simple-Slider.js"></script>
+    <script src="/static/assets/js/TextEditor.js"></script>
 </body>
 
 </html>
