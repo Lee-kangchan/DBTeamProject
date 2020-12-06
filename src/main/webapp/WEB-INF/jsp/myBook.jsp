@@ -2,6 +2,8 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
 <% Integer sess = (Integer)request.getAttribute("sess"); %>
+<% List<HashMap<String, Object>> bookInfo = (List<HashMap<String, Object>>)request.getAttribute("bookInfo"); %>
+
 <!DOCTYPE html>
 <html>
 
@@ -70,7 +72,7 @@
         </nav>
     </div>
 </div>
-    <div class="container" style="width: 1000px;color: rgb(76,82,75);"><strong style="color: rgb(131,135,143);font-size: 20px;font-family: 'Do Hyeon', sans-serif;">나의 도서</strong><strong style="color: rgb(131,135,143);font-size: 30px;margin-top: -20px;font-family: 'Do Hyeon', sans-serif;">총 0권의 도서 보유</strong>
+    <div class="container" style="width: 1000px;color: rgb(76,82,75);"><strong style="color: rgb(131,135,143);font-size: 20px;font-family: 'Do Hyeon', sans-serif;">나의 도서</strong><strong style="color: rgb(131,135,143);font-size: 30px;margin-top: -20px;font-family: 'Do Hyeon', sans-serif;">총 <%=bookInfo.get(0).get("bookCount")%>권의 도서 보유</strong>
         <div
             class="col text-justify" style="width: 100px;margin-left: 860px;margin-bottom: 6px;"><a class="text-success" href="gridBook1.html"><i class="fa fa-th-large" style="font-size: 29px;"></i></a><a class="text-success" href="listBook1.jsp"><i class="fa fa-th-list" style="margin-left: 10px;font-size: 29px;"></i></a></div>
     </div>
@@ -81,42 +83,16 @@
             <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">대여상태</strong></div>
             <div class="col"><strong></strong></div>
         </div>
+
+        <% for(int i = 0; i < bookInfo.size(); i++) { %>
         <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col"><a href="#"></a><img style="height: 120px;"></div>
-            <div class="col"><a href="#"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">도서명</strong></a></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">대여중</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col"><a href="#"></a><img style="height: 120px;"></div>
-            <div class="col"><a href="#"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">도서명</strong></a></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">대여가능</strong></div>
+            <div class="col"><a href="#"></a><img src='<%=bookInfo.get(i).get("book_img")%>' style="height: 120px;"></div>
+            <div class="col"><a href="#"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;"><%=bookInfo.get(i).get("book_name")%></strong></a></div>
+            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;"><%=bookInfo.get(i).get("customer_book_type")%></strong></div>
             <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><button class="btn btn-primary" type="button" style="margin-top: 40px;margin-left: 40px;font-family: 'Do Hyeon', sans-serif;height: 35px;text-align: right;background: rgb(255,255,255);color: rgb(40,167,69);border-width: 2px;border-color: rgb(40,167,69);padding-bottom: 18px;">삭제하기</button></div>
         </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col"><a href="#"></a><img style="height: 120px;"></div>
-            <div class="col"><a href="#"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">도서명</strong></a></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">대여가능</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><button class="btn btn-primary" type="button" style="margin-top: 40px;margin-left: 40px;font-family: 'Do Hyeon', sans-serif;height: 35px;text-align: right;background: rgb(255,255,255);color: rgb(40,167,69);border-width: 2px;border-color: rgb(40,167,69);padding-bottom: 18px;">삭제하기</button></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col"><a href="#"></a><img style="height: 120px;"></div>
-            <div class="col"><a href="#"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">도서명</strong></a></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">대여가능</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><button class="btn btn-primary" type="button" style="margin-top: 40px;margin-left: 40px;font-family: 'Do Hyeon', sans-serif;height: 35px;text-align: right;background: rgb(255,255,255);color: rgb(40,167,69);border-width: 2px;border-color: rgb(40,167,69);padding-bottom: 18px;">삭제하기</button></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col"><a href="#"></a><img style="height: 120px;"></div>
-            <div class="col"><a href="#"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">도서명</strong></a></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">대여가능</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><button class="btn btn-primary" type="button" style="margin-top: 40px;margin-left: 40px;font-family: 'Do Hyeon', sans-serif;height: 35px;text-align: right;background: rgb(255,255,255);color: rgb(40,167,69);border-width: 2px;border-color: rgb(40,167,69);padding-bottom: 18px;">삭제하기</button></div>
-        </div>
-        <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-            <div class="col"><a href="#"></a><img style="height: 120px;"></div>
-            <div class="col"><a href="#"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">도서명</strong></a></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">대여가능</strong></div>
-            <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><button class="btn btn-primary" type="button" style="margin-top: 40px;margin-left: 40px;font-family: 'Do Hyeon', sans-serif;height: 35px;text-align: right;background: rgb(255,255,255);color: rgb(40,167,69);border-width: 2px;border-color: rgb(40,167,69);padding-bottom: 18px;">삭제하기</button></div>
-        </div>
+        <% } %>
+
     </div>
     <script src="static/assets/js/jquery.min.js"></script>
     <script src="static/assets/bootstrap/js/bootstrap.min.js"></script>

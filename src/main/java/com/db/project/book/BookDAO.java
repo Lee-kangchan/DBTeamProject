@@ -56,4 +56,6 @@ public class BookDAO {
     public void insertBookReservation(HashMap<String, Object> map){
         mapper.insertBookReservation(map);
     }
+
+    public HashMap<String, Object> reviewBook(HashMap<String, Object> map) {return mapper.reviewBook(map);}
 }

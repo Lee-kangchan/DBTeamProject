@@ -64,8 +64,9 @@
     </insert>
     <!--나의 도서 현황-->
     <select id="selectCustomerBook" parameterType="hashmap" resultType="hashmap">
-        select * from customer_book
-        where customer_seq = #{customer_seq}
+        select cb.customer_book_seq, cb.book_isbn, cb.customer_book_type, b.book_img, b.book_name, (select count(*) from customer_book where customer_seq = #{customer_seq}) AS bookCount
+        from customer_book cb, book b
+        where cb.book_isbn = b.book_isbn AND customer_seq = #{customer_seq}
     </select>
 
     <!--우리 동네 도서-->
@@ -82,9 +83,14 @@
     <!--자신이 등록한 도서 삭제-->
     <delete id="deleteCustomerBook" parameterType="hashmap">
         delete from customer_book
-        where custoomer_book_seq = #{customer_book_seq}
+        where customer_book_seq = #{customer_book_seq}
     </delete>
 
-    <!---->
+    <!--도서의 리뷰 상세 화면-->
+    <select id="reviewBook" parameterType="hashmap" resultType="hashmap">
+        select b.book_isbn, b.book_img, b.book_name, (SELECT count(*) FROM review WHERE book_isbn = #{book_isbn}) AS review_count, (SELECT round(avg(review_score), 1) FROM review WHERE book_isbn = #{book_isbn}) AS score
+        from book b
+        where b.book_isbn = #{book_isbn}
+    </select>
 
 </mapper>

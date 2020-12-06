@@ -39,4 +39,11 @@ public class ReviewServiceImpl implements ReviewService {
 
         reviewDAO.deleteReview(HashMap);
     }
+
+    @Override
+    public List<HashMap<String, Object>> selectReviewContent(HashMap<String, Object> HashMap) {
+        ReviewDAO reviewDAO = new ReviewDAO(sqlSession);
+
+        return reviewDAO.selectReviewContent(HashMap);
+    }
 }

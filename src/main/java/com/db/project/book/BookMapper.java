@@ -20,4 +20,6 @@ public interface BookMapper {
     public HashMap<String , Object> selectDetailBook(HashMap<String, Object> map);
     public Integer selectBookReservation(HashMap<String, Object> map);
     public void insertBookReservation(HashMap<String, Object> map);
+
+    public HashMap<String, Object> reviewBook(HashMap<String, Object> map);
 }
