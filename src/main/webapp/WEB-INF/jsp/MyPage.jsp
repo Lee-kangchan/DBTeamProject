@@ -156,7 +156,7 @@
                     <div class="col"><a href="#"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;"><%=borrow.get(i).get("book_name")%></strong></a></div>
                     <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;"><%=borrow.get(i).get("matching_type")%></strong></div>
                     <div class="col" style="font-family: 'Do Hyeon', sans-serif;">
-                        <div><button class="btn btn-primary btn-sm" type="button" style="margin-top: 10px;margin-left: 50px;font-family: 'Do Hyeon', sans-serif;height: 35px;">대출확인</button><button class="btn btn-primary btn-sm" type="button" style="margin-top: 45px;margin-left: 50px;font-family: 'Do Hyeon', sans-serif;height: 35px;">대출연장</button>
+                        <div><button class="btn btn-primary btn-sm" type="button" style="margin-top: 10px;margin-left: 50px;font-family: 'Do Hyeon', sans-serif;height: 35px;">대출확인</button>
                             <button
                                 class="btn btn-primary btn-sm" type="button" style="margin-top: 79px;margin-left: 50px;font-family: 'Do Hyeon', sans-serif;height: 35px;">신고하기</button>
                         </div>
