@@ -61,7 +61,7 @@
                     <form class="form-inline" style="margin: 0 auto;">
                         <ul class="nav navbar-nav">
                             <li class="nav-item"><a class="nav-link active d-flex" data-bs-hover-animate="bounce" href="/book" style="padding-right: 20px;font-size: 20px;margin: 0 auto;font-family: Nunito, sans-serif;">우리동네 도서</a></li>
-                            <li class="nav-item"><a class="nav-link d-flex" data-bs-hover-animate="bounce" href="#" style="padding-left: 20px;padding-right: 20px;font-size: 20px;margin: 0 aitp;font-family: Nunito, sans-serif;">나의 도서 현황</a></li>
+                            <li class="nav-item"><a class="nav-link d-flex" data-bs-hover-animate="bounce" href="/myBook" style="padding-left: 20px;padding-right: 20px;font-size: 20px;margin: 0 aitp;font-family: Nunito, sans-serif;">나의 도서 현황</a></li>
                             <li class="nav-item"><a class="nav-link d-flex" data-bs-hover-animate="bounce" href="/review" style="font-size: 20px;padding-left: 20px;font-family: Nunito, sans-serif;">도서별 리뷰 보기</a></li>
                         </ul>
                     </form>
@@ -69,6 +69,7 @@
             </div>
         </nav>
     </div>
+</div>
 </div><strong style="color: rgb(131,135,143);font-size: 20px;margin-bottom: 22px;margin-top: 6px;">도서별 리뷰 보기</strong>
     <div class="container" style="width: 1000px;">
         <% for(int i = 0; i <= review.size() / 3; i++) { %>

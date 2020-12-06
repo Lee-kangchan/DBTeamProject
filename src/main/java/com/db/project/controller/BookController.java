@@ -3,6 +3,7 @@ package com.db.project.controller;
 import com.db.project.book.BookService;
 import com.db.project.customer.CustomerService;
 import com.db.project.matching.MatchingService;
+import jdk.jfr.Unsigned;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -119,16 +120,22 @@ public class BookController {
         Random rd = new Random();
         int front =0;
         int back = 0;
+
         for(int i=0; i<4; i++){
-            front = front + rd.nextInt(rd.nextInt(10));
+            front = front + rd.nextInt(rd.nextInt(10) + 1);
             front = front *10;
+
+            logger.info(front + "");
         }
+        front = front / 10;
         for(int i=0; i<4; i++){
-            back = back + rd.nextInt(rd.nextInt(10));
+            back = back + rd.nextInt(rd.nextInt(10) + 1);
             back = back *10;
         }
-        map.put("customer_secret_num", "070"+String.valueOf(front)+String.valueOf(back));
+        back /= 10;
+        map.put("customer_secret_num", "070-"+String.valueOf(front)+ "-" + String.valueOf(back));
         matchingService.insertMatching(map);
+
         return "redirect:/home";
     }
     @PostMapping("book/reservation/{seq}")

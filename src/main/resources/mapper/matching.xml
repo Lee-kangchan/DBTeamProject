@@ -58,15 +58,20 @@
     </update>
     <!-- 예약한 책 찾아오기 -->
     <select id="selectReservation" parameterType="hashmap" resultType="hashmap">
-        SELECT r.reservation_seq, r.customer_book_seq, r.customer_seq, r.reservation_createAt, b.book_name
+        SELECT r.reservation_seq, r.customer_book_seq, r.customer_seq, r.reservation_createAt, b.book_name, (SELECT matching_endAt FROM matching WHERE r.customer_book_seq = matching.customer_book_seq ORDER BY matching_endAt DESC LIMIT 1) AS matching_endAt
         FROM reservation r, customer_book cb, book b
         WHERE r.customer_book_seq = cb.customer_book_seq AND b.book_isbn = cb.book_isbn AND r.customer_seq = #{customer_seq} AND r.reservation_yn = 'n'
     </select>
 
     <!-- 예약한 책의 랭킹 찾아오기 -->
     <select id="selectRank" parameterType="hashmap" resultType="hashmap">
-        SELECT customer_seq, ROW_NUMBER() OVER(ORDER BY reservation_createAt) AS rank
-        FROM reservation
+        <![CDATA[
+        SELECT customer_seq
+        ,@RANKT := IF(@LAST < reservation_createAt, @RANK := @RANK + 1, @RANK) AS rank
+        ,@LAST := reservation_createAt
+        FROM reservation, (SELECT @RANK := 1) XX
         WHERE customer_book_seq = #{customer_book_seq} AND reservation_yn = 'n'
+        ORDER BY reservation_createAt
+        ]]>
     </select>
 </mapper>

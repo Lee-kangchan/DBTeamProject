@@ -119,10 +119,10 @@
                         <div class="col" style="font-family: 'Roboto Condensed', sans-serif;font-size: 20px;"><strong style="font-family: 'Roboto Condensed', sans-serif;font-size: 20px;">처리 여부</strong></div>
                     </div>
                     <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
-                        <div class="col" style="height: 120px;"><strong class="text-center text-body" style="margin-top: 35px;font-family: 'Roboto Condensed', sans-serif;font-size: 16px;">2020.00.00<br>00:00:00</strong></div>
-                        <div class="col" style="height: 120px;"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Roboto Condensed', sans-serif;font-size: 18px;">신고자명</strong></div>
-                        <div class="col" style="font-family: 'Roboto Condensed', sans-serif;height: 120px;"><b class="text-center" style="margin-top: 45px;font-family: 'Roboto Condensed', sans-serif;font-size: 16px;">내용</b></div>
-                        <div class="col" style="font-family: 'Roboto Condensed', sans-serif;height: 120px;"><b class="text-center" style="margin-top: 45px;font-family: 'Roboto Condensed', sans-serif;font-size: 16px;">처리중/처리완료</b></div>
+                        <div class="col" style="height: 120px;"><strong class="text-center text-body" style="margin-top: 35px;font-family: 'Roboto Condensed', sans-serif;font-size: 16px;">2020.12.08<br>13:12:20</strong></div>
+                        <div class="col" style="height: 120px;"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Roboto Condensed', sans-serif;font-size: 18px;">우돈치</strong></div>
+                        <div class="col" style="font-family: 'Roboto Condensed', sans-serif;height: 120px;"><b class="text-center" style="margin-top: 45px;font-family: 'Roboto Condensed', sans-serif;font-size: 16px;">책이 찢어져있었는데<br>아니라고 우김</b></div>
+                        <div class="col" style="font-family: 'Roboto Condensed', sans-serif;height: 120px;"><b class="text-center" style="margin-top: 45px;font-family: 'Roboto Condensed', sans-serif;font-size: 16px;">처리중</b></div>
                     </div>
 
                 </section>
