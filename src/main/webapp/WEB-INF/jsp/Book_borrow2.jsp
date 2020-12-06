@@ -104,7 +104,7 @@
             <%if(map.get("customer_book_type").toString().equals("대여가능")){%>
             <div class="col">
                 <form action="/book/<%=map.get("customer_book_seq")%>" method="post">
-                <button  class="btn btn-primary" type="submit" style="padding-right: 80px;padding-left: 80px;padding-top: 10px;padding-bottom: 10px;margin-bottom: 31px;font-size: 20px;text-align: center;margin-top: 0px;border-bottom-color: rgb(40,167,69);">예약하기</button>
+                <button  class="btn btn-primary" type="submit" style="padding-right: 80px;padding-left: 80px;padding-top: 10px;padding-bottom: 10px;margin-bottom: 31px;font-size: 20px;text-align: center;margin-top: 0px;border-bottom-color: rgb(40,167,69);">대여하기</button>
 
                 </form>
             </div>

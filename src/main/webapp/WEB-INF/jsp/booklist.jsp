@@ -140,7 +140,7 @@
     <%if(book.size()%3==2){%>
     <%if(book.get(count).get("customer_book_type").toString().equals("대여가능")){%>
     <div class="col" style="padding-right: 5px;padding-left: 5px;">
-        <a href="#" style="text-decoration:none;">
+        <a href="/book/<%=book.get(count).get("customer_book_seq")%>" style="text-decoration:none;">
             <picture><img src="<%=book.get(count).get("book_img")%>"style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);"><%=book.get(count).get("book_name")%><button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;">대여가능</button></strong>
             <strong
                     style="font-size: 16px;text-align: center;color: rgb(40,167,69);"><%=book.get(count).get("customer_address")%> <strong style="font-size:15px;color:black"><%=book.get(count).get("distance")%></strong></strong>

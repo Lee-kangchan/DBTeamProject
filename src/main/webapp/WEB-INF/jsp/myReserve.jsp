@@ -129,6 +129,11 @@
                         <div class="col" style="font-family: 'Roboto Condensed', sans-serif;height: 120px;"><button class="btn btn-primary btn-sm" type="button" style="margin-top: 45px;font-family: 'Roboto Condensed', sans-serif;height: 23px;text-align: right;background: rgb(255,255,255);color: rgb(40,167,69);padding-bottom: 18px;padding-top: -2px;border: 3px solid rgb(40,167,69);margin-right: 30px;">예약취소</button></div>
                     </div>
                     <% } %>
+
+                    <% if(reservationInfo.size() == 0) { %>
+                    <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><strong class="text-center" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">예약 도서가 없습니다..</strong></div>
+                    <% } %>
+
                 </section>
             </div>
         </div>

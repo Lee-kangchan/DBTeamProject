@@ -76,17 +76,18 @@ public class MatchingServiceImpl implements MatchingService {
 
         logger.info(res.toString());
 
-        int seq = (int)res.get(0).get("customer_seq");
+        if(res.size() > 0) {
+            int seq = (int) res.get(0).get("customer_seq");
 
 
+            for (int i = 0; i < res.size(); i++) {
+                List<HashMap<String, Object>> rank = matchingDAO.selectRank(res.get(i));
 
-        for(int i = 0; i < res.size(); i++) {
-            List<HashMap<String, Object>> rank = matchingDAO.selectRank(res.get(i));
-
-            for(int j = 0; j < rank.size(); j++) {
-                if(seq == (int)rank.get(j).get("customer_seq")) {
-                    res.get(i).put("rank", rank.get(j).get("rank"));
-                    break;
+                for (int j = 0; j < rank.size(); j++) {
+                    if (seq == (int) rank.get(j).get("customer_seq")) {
+                        res.get(i).put("rank", rank.get(j).get("rank"));
+                        break;
+                    }
                 }
             }
         }
