@@ -83,7 +83,7 @@ public class BookController {
         String book_image_path = "/static/img/"+uuid+".jpg";
         map.put("book_img",book_image_path);
         map.put("customer_seq", session.getAttribute("customer_seq"));
-        book_image.transferTo(new File(path, book_image_path));
+        book_image.transferTo(new File("",book_image_path));
         bookService.insertBook(map);
         List<HashMap<String, Object>> list = new ArrayList<>();
         HashMap<String, Object> image = new HashMap<>();
@@ -91,7 +91,7 @@ public class BookController {
             uuid = UUID.randomUUID();
             String book_image_path2 = "/static/img/"+uuid+".jpg";
             image.put("customer_book_img",book_image_path2);
-            file.transferTo(new File(path, book_image_path2));
+            file.transferTo(new File("",book_image_path2));
             list.add(image);
         }
 
@@ -116,8 +116,8 @@ public class BookController {
         return "Book_borrow2";
     }
     @PostMapping("book/{seq}")
-    public String bookMatching( HttpSession session, Model model,@PathVariable Integer seq){
-        HashMap<String, Object> map = new HashMap<>();
+    public String bookMatching( HttpSession session, Model model,@PathVariable Integer seq, @RequestParam HashMap<String, Object> map){
+
         map.put("customer_book_seq", seq);
         map.put("customer_seq",session.getAttribute("customer_seq"));
         Random rd = new Random();
@@ -138,8 +138,14 @@ public class BookController {
         back /= 10;
         map.put("customer_secret_num", "070-"+String.valueOf(front)+ "-" + String.valueOf(back));
         matchingService.insertMatching(map);
-
+        map.put("approval_point",map.get("money"));
+        map.put("approval_detail", "매칭금액");
         cardService.updateCustomerMinusPoint(map);
+
+        map.put("approval_point",map.get("deposit"));
+        map.put("approval_detail", "예치금");
+        cardService.updateCustomerMinusPoint(map);
+
         return "redirect:/home";
     }
     @PostMapping("book/reservation/{seq}")

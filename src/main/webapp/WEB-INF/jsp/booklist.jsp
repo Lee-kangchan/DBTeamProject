@@ -97,7 +97,7 @@
         <%} %>
     </div>
     <% } %>
-    <%if(book.size()%3==1){%>
+    <%if(book.size()%3==2){%>
     <%if(book.get(count).get("customer_book_type").toString().equals("대여가능")){%>
     <div class="col" style="padding-right: 5px;padding-left: 5px;">
         <a href="/book/<%=book.get(count).get("customer_book_seq")%>" style="text-decoration:none;">
@@ -137,7 +137,7 @@
     <%}%>
     <div class="col"></div>
     <%}%>
-    <%if(book.size()%3==2){%>
+    <%if(book.size()%3==1){%>
     <%if(book.get(count).get("customer_book_type").toString().equals("대여가능")){%>
     <div class="col" style="padding-right: 5px;padding-left: 5px;">
         <a href="/book/<%=book.get(count).get("customer_book_seq")%>" style="text-decoration:none;">
@@ -156,8 +156,8 @@
         </a>
     </div>
     <%}%>
-    <div class="col"></div>
-    <div class="col"></div>
+    <div class="col">&nbsp;</div>
+    <div class="col">&nbsp;</div>
     <%}%>
     <script src="static/assets/js/jquery.min.js"></script>
     <script src="static/assets/bootstrap/js/bootstrap.min.js"></script>

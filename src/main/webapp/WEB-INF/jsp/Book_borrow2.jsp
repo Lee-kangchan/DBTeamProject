@@ -104,7 +104,9 @@
             <%if(map.get("customer_book_type").toString().equals("대여가능")){%>
             <div class="col">
                 <form action="/book/<%=map.get("customer_book_seq")%>" method="post">
-                <button  class="btn btn-primary" type="submit" style="padding-right: 80px;padding-left: 80px;padding-top: 10px;padding-bottom: 10px;margin-bottom: 31px;font-size: 20px;text-align: center;margin-top: 0px;border-bottom-color: rgb(40,167,69);">대출하기</button>
+                    <input type="hidden" name ="money" value="<%=1500- 1500/100 * sale %>">
+                    <input type="hidden" name="deposit" value="<%=map.get("customer_book_deposit")%>">
+                     <button  class="btn btn-primary" type="submit" style="padding-right: 80px;padding-left: 80px;padding-top: 10px;padding-bottom: 10px;margin-bottom: 31px;font-size: 20px;text-align: center;margin-top: 0px;border-bottom-color: rgb(40,167,69);">대출하기</button>
 
                 </form>
             </div>
@@ -113,6 +115,7 @@
             <%}else if(map.get("customer_book_type").toString().equals("대여불가")){%>%>
             <div class="col"><button disabled='disabled' class="btn btn-primary" type="button" style="padding-right: 80px;padding-left: 80px;padding-top: 10px;padding-bottom: 10px;margin-bottom: 31px;font-size: 20px;text-align: center;margin-top: 0px;border-bottom-color: rgb(40,167,69);">대출불가</button></div>
             <%}%>
+            </form>
         </div>
     </div>
     <script src="/static/assets/js/jquery.min.js"></script>

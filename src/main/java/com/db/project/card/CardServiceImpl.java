@@ -31,14 +31,12 @@ public class CardServiceImpl implements CardService{
         CardDAO dao = new CardDAO(sqlSession);
         dao.updateCustomerPlusPoint(HashMap);
         dao.insertApproval(HashMap);
-        dao.insertSales(HashMap);
     }
 
     public void updateCustomerMinusPoint(HashMap<String, Object> HashMap){
         CardDAO dao = new CardDAO(sqlSession);
         dao.updateCustomerMinusPoint(HashMap);
         dao.insertApproval(HashMap);
-        dao.insertSales(HashMap);
     }
 
 

@@ -47,6 +47,15 @@ public class MatchingServiceImpl implements MatchingService {
         if(map.get("matching_borrow_yn").toString().equals("1") && map.get("matching_rental_yn").toString().equals("1")){
             if(map.get("matching_type").equals("거래완료")){
                 map.put("matching_type","대여");
+                //시간 구하기
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = new Date();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                cal.add(Calendar.DATE, 7);
+                //시간 구했음
+                map.put("matching_endAt",df.format(cal.getTime()));
+                matchingDAO.updateMatchingDate(map);
             }else if(map.get("matching_type").equals("대여")){
                 map.put("matching_type","반납");
             }
