@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.db.project.manager.ManagerMapper">
+
+    <select id="selectManagerBook" resultType="hashmap">
+        select * from customer_book a
+        join customer b on a.customer_seq = b.customer_seq
+		join book c on c.book_isbn = a.book_isbn
+    </select>
+    <select id="selectManagerPromotion" resultType="hashmap">
+        select * from promotion
+    </select>
+    <select id="selectManagerCustomerReport" resultType="hashmap">
+        select * from customer_report a
+        join matching c on c.matching_seq = a.matching_seq
+        join customer b on c.customer_seq = b.customer_seq
+    </select>
+    <select id="selectManagerReviewReport" resultType="hashmap">
+         select * from review_report a
+        join review b on a.reivew_seq= b.reivew_seq
+        join customer c on b.customer_seq = c.customer_seq
+    </select>
+
+
+</mapper>

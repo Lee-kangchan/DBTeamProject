@@ -1,7 +1,10 @@
 package com.db.project.controller;
 
+import com.db.project.manager.ManagerService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,33 +15,30 @@ import java.util.HashMap;
 @Controller
 public class ManagerController {
 
+    @Autowired
+    ManagerService managerService;
 
     @GetMapping("/manager/promotion")
-    public String managerPromotion(){
-
+    public String managerPromotion(Model model){
+        model.addAttribute("promotion", managerService.selectManagerPromotion());
         return "manager_promotion";
     }
     @GetMapping("/manager/book")
-    public String managerBook(){
-
+    public String managerBook(Model model){
+        model.addAttribute("book", managerService.selectManagerBook());
         return "manager_book";
     }
     @GetMapping("/manager/main")
-    public String managerMain(){
+    public String managerMain(Model model){
 
         return "manager_main";
     }
     @GetMapping("/manager/report")
-    public String managerReport(){
+    public String managerReport(Model model)
+    {
+        model.addAttribute("customer", managerService.selectManagerCustomerReport());
+        model.addAttribute("review", managerService.selectManagerReviewReport());
         return "manager_report";
     }
-    @GetMapping("/manager/login")
-    public String managerLogin(){
-        return "manager_login";
-    }
-    @PostMapping("/manager/login")
-    public String managerLogin(HttpSession session, @RequestParam HashMap<String, Object> map){
 
-        return "redirect:/manager/book";
-    }
 }

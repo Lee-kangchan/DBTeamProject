@@ -30,12 +30,12 @@
 <body>
     <div id="navigation-block">
         <nav class="navbar navbar-light navbar-expand-md d-flex" style="border-bottom-style: solid;border-bottom-color: rgb(40,167,69);">
-            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="MAIN.html">Local libarary</a>
+            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/manager/main">Local libarary</a>
                 <div class="collapse navbar-collapse d-flex" id="navcol-1">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link active" href="#" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">관리자 님</a></li>
                         <li class="nav-item"></li>
-                        <li class="nav-item"><a class="nav-link active" href="#" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">로그아웃</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/home" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">로그아웃</a></li>
                     </ul>
                 </div>
             </div>
@@ -44,12 +44,12 @@
     <div>
         <div class="container" style="width: 1000px;">
             <div class="row" style="margin-top: 60px;">
-                <div class="col-md-6"><a href="manager_book.jsp"><strong style="font-size: 26px;padding: 80px;color: rgb(0,0,0);border-style: solid;border-color: rgb(40,167,69);border-radius: 30px;width: 350px;">도서 목록</strong></a></div>
-                <div class="col-md-6"><a href="manager_promotion.jsp"><strong style="font-size: 26px;padding: 80px;color: rgb(0,0,0);border-style: solid;border-color: rgb(40,167,69);border-radius: 30px;width: 350px;">프로모션 목록</strong></a></div>
+                <div class="col-md-6"><a href="/manager/book"><strong style="font-size: 26px;padding: 80px;color: rgb(0,0,0);border-style: solid;border-color: rgb(40,167,69);border-radius: 30px;width: 350px;">도서 목록</strong></a></div>
+                <div class="col-md-6"><a href="/manager/promotion"><strong style="font-size: 26px;padding: 80px;color: rgb(0,0,0);border-style: solid;border-color: rgb(40,167,69);border-radius: 30px;width: 350px;">프로모션 목록</strong></a></div>
             </div>
             <div class="row" style="margin-top: 50px;">
-                <div class="col-md-6"><a href="manager_report.jsp"><strong style="font-size: 26px;padding: 80px;color: rgb(0,0,0);border-style: solid;border-color: rgb(40,167,69);border-radius: 30px;width: 350px;">신고 목록</strong></a></div>
-                <div class="col-md-6"><a href="#"><strong style="font-size: 26px;padding: 80px;color: rgb(0,0,0);border-style: solid;border-color: rgb(40,167,69);border-radius: 30px;width: 350px;">매출 통계</strong></a></div>
+                <div class="col-md-6"><a href="/manager/report"><strong style="font-size: 26px;padding: 80px;color: rgb(0,0,0);border-style: solid;border-color: rgb(40,167,69);border-radius: 30px;width: 350px;">신고 목록</strong></a></div>
+                <div class="col-md-6"><a href="/manager/sales"><strong style="font-size: 26px;padding: 80px;color: rgb(0,0,0);border-style: solid;border-color: rgb(40,167,69);border-radius: 30px;width: 350px;">매출 통계</strong></a></div>
             </div>
         </div>
     </div>

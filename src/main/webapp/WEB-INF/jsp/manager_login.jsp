@@ -30,12 +30,12 @@
 <body>
 <div id="navigation-block">
     <nav class="navbar navbar-light navbar-expand-md d-flex" style="border-bottom-style: solid;border-bottom-color: rgb(40,167,69);">
-        <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="MAIN.html">Local libarary</a>
+        <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/manager/main">Local libarary</a>
             <div class="collapse navbar-collapse d-flex" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link active" href="#" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">관리자 님</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link active" href="#" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">로그아웃</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/home" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">로그아웃</a></li>
                 </ul>
             </div>
         </div>
@@ -140,7 +140,7 @@
 
 
 <form method="post" action="/login">
-    <div class="main-container" style="font-family: 'Do Hyeon', sans-serif;height: 100%; width: 40%; border:2px solid var(--naver-green-border-color); border-radius: 15px;">
+    <div class="main-container" style="font-family: 'Do Hyeon', sans-serif;height: 100%; width: 40%; border:2px solid var(--naver-green-border-color); margin-top:20px;border-radius: 15px;">
         <div class="main-wrap" >
             <header>
 
@@ -162,7 +162,6 @@
 
         </section>
         <div class="side">
-            <a href="signup" style="padding : 0 30px 0; color: rgb(38,166,67);">회원가입</a>
         </div>
     </div>
 </form>

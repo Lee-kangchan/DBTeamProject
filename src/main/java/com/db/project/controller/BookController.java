@@ -1,6 +1,7 @@
 package com.db.project.controller;
 
 import com.db.project.book.BookService;
+import com.db.project.card.CardService;
 import com.db.project.customer.CustomerService;
 import com.db.project.matching.MatchingService;
 import org.slf4j.Logger;
@@ -29,6 +30,9 @@ public class BookController {
     CustomerService customerService;
     @Autowired
     MatchingService matchingService;
+
+    @Autowired
+    CardService cardService;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping("/book")
@@ -129,6 +133,7 @@ public class BookController {
         }
         map.put("customer_secret_num", "070"+String.valueOf(front)+String.valueOf(back));
         matchingService.insertMatching(map);
+        cardService.updateCustomerMinusPoint(map);
         return "redirect:/home";
     }
     @PostMapping("book/reservation/{seq}")

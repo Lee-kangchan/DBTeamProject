@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.List" %>
+<% List<HashMap<String, Object>> book = (List<HashMap<String, Object>>)request.getAttribute("book"); %>
+
 <!DOCTYPE html>
 <html>
 
@@ -28,20 +32,19 @@
 </head>
 
 <body>
-    <div id="navigation-block">
-        <nav class="navbar navbar-light navbar-expand-md d-flex" style="border-bottom-style: solid;border-bottom-color: rgb(40,167,69);">
-            <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="MAIN.html">Local libarary</a>
-                <div class="collapse navbar-collapse d-flex" id="navcol-1">
-                    <ul class="nav navbar-nav ml-auto" style="margin-right: 6px;">
-                        <li class="nav-item" style="margin-right: 5px;"><a class="nav-link active" href="#" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">도서 목록</a></li>
-                        <li class="nav-item" style="margin-right: 3px;"><a class="nav-link active" href="#" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">프로모션 목록</a></li>
-                        <li class="nav-item" style="margin-right: 5px;"><a class="nav-link active" href="#" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">신고 목록</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="#" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">매출 통계</a></li>
-                    </ul>
-                </div>
+<div id="navigation-block">
+    <nav class="navbar navbar-light navbar-expand-md d-flex" style="border-bottom-style: solid;border-bottom-color: rgb(40,167,69);">
+        <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/manager/main">Local libarary</a>
+            <div class="collapse navbar-collapse d-flex" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">관리자 님</a></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link active" href="/home" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">로그아웃</a></li>
+                </ul>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
+</div>
     <div class="container"><strong style="font-size: 35px;margin-top: 30px;">도서 목록</strong>
         <div class="table-responsive" style="margin-top: 34px;">
             <table class="table">
@@ -54,60 +57,15 @@
                     </tr>
                 </thead>
                 <tbody style="text-align: center;">
+                    <%for(HashMap<String, Object> map : book){%>
                     <tr style="text-align: center;">
-                        <td style="text-align: center;">도서 제목</td>
-                        <td style="text-align: center;">이름</td>
-                        <td style="text-align: center;">대여중</td>
-                        <td style="text-align: center;">승인 완료</td>
+                        <td style="text-align: center;"><%=map.get("book_name")%></td>
+                        <td style="text-align: center;"><%=map.get("customer_nickname")%></td>
+                        <td style="text-align: center;"><%=map.get("customer_book_type")%></td>
+                        <td style="text-align: center;"><%if(map.get("customer_book_certification_yn").equals("y")){%>승인완료 <%}else{%>미승인<%}%>></td>
                     </tr>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;">도서 제목</td>
-                        <td style="text-align: center;">이름</td>
-                        <td style="text-align: center;">대여중</td>
-                        <td style="text-align: center;">승인 완료</td>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;">도서 제목</td>
-                        <td style="text-align: center;">이름</td>
-                        <td style="text-align: center;">대여중</td>
-                        <td style="text-align: center;">승인 완료</td>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;">도서 제목</td>
-                        <td style="text-align: center;">이름</td>
-                        <td style="text-align: center;">대여중</td>
-                        <td style="text-align: center;">승인 완료</td>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;">도서 제목</td>
-                        <td style="text-align: center;">이름</td>
-                        <td style="text-align: center;">대여중</td>
-                        <td style="text-align: center;">승인 완료</td>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;">도서 제목</td>
-                        <td style="text-align: center;">이름</td>
-                        <td style="text-align: center;">대여중</td>
-                        <td style="text-align: center;">승인 완료</td>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;">도서 제목</td>
-                        <td style="text-align: center;">이름</td>
-                        <td style="text-align: center;">대여중</td>
-                        <td style="text-align: center;">승인 완료</td>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;">도서 제목</td>
-                        <td style="text-align: center;">이름</td>
-                        <td style="text-align: center;">대여중</td>
-                        <td style="text-align: center;">승인 완료</td>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;">도서 제목</td>
-                        <td style="text-align: center;">이름</td>
-                        <td style="text-align: center;">대여중</td>
-                        <td style="text-align: center;">승인 완료</td>
-                    </tr>
+                    <%}%>
+
                 </tbody>
             </table>
         </div>
