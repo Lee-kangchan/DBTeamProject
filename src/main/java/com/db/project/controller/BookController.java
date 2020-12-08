@@ -123,16 +123,22 @@ public class BookController {
         Random rd = new Random();
         int front =0;
         int back = 0;
+
         for(int i=0; i<4; i++){
-            front = front + rd.nextInt(rd.nextInt(10));
+            front = front + rd.nextInt(rd.nextInt(10) + 1);
             front = front *10;
+
+            logger.info(front + "");
         }
+        front = front / 10;
         for(int i=0; i<4; i++){
-            back = back + rd.nextInt(rd.nextInt(10));
+            back = back + rd.nextInt(rd.nextInt(10) + 1);
             back = back *10;
         }
-        map.put("customer_secret_num", "070"+String.valueOf(front)+String.valueOf(back));
+        back /= 10;
+        map.put("customer_secret_num", "070-"+String.valueOf(front)+ "-" + String.valueOf(back));
         matchingService.insertMatching(map);
+
         cardService.updateCustomerMinusPoint(map);
         return "redirect:/home";
     }

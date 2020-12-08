@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -85,6 +87,19 @@ public class MyPageController {
 
         HashMap<String, Object> customerInfo = customerService.customerMyPage(map);
         List<HashMap<String, Object>> reservationInfo = matchingService.selectMyReservation(map);
+
+        for(int i = 0; i < reservationInfo.size(); i++) {
+            try {
+                String oldstring = reservationInfo.get(i).get("matching_endAt").toString();
+                Date date = new SimpleDateFormat("yyyy-MM-dd").parse(oldstring);
+                date = new Date(date.getTime() + (1000 * 60 * 60 * 24 * 7 * Integer.parseInt(reservationInfo.get(i).get("rank").toString())));
+                String newstring = new SimpleDateFormat("yyyy-MM-dd").format(date);
+                reservationInfo.get(i).put("predict", newstring);
+            }
+            catch (Exception e) {
+
+            }
+        }
 
         model.addAttribute("reservationInfo", reservationInfo);
         model.addAttribute("sess", session.getAttribute("customer_seq"));
