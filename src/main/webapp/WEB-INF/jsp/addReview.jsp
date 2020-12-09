@@ -32,8 +32,8 @@
     <link rel="stylesheet" href="/static/assets/css/TextEditor.css">
 </head>
 
-<body>
-    <div id="navigation-block">
+<body style="font-family: 'Do Hyeon', sans-serif;">
+    <div id="navigation-block" class="container ">
         <nav class="navbar navbar-light navbar-expand-md d-flex">
             <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="MAIN.html">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <ul
@@ -179,10 +179,10 @@
     <form method="post" action="/addReview/<%=book_isbn%>">
         <div class="main-container" style="font-family: Do Hyeon, sans-serif;height: 100%; width: 40%; border:2px solid var(--naver-green-border-color); border-radius: 15px;">
             <div class="main-wrap" >
-            <header>
+            <header style="font-family: 'Do Hyeon', sans-serif;">
                
                 <div class="logo-wrap" >
-                    <strong><h1>리뷰 등록</h1></strong>
+                    <strong><h1 style="font-family: 'Do Hyeon', sans-serif;">리뷰 등록</h1></strong>
                 </div>
             </header>
             </div>
@@ -194,8 +194,8 @@
                     <input placeholder="리뷰 제목" type="text" name="review_title" ></input>
                 </div>
                 
-                <div class="addReview-select-wrap score-wrap" style="border-radius: 15px;">
-                    <select name="review_score" aria-placeholder="평점"  >
+                <div class="addReview-select-wrap score-wrap" style="border-radius: 15px;" style="font-family: 'Do Hyeon', sans-serif;">
+                    <select name="review_score" aria-placeholder="평점" style="font-family: 'Do Hyeon', sans-serif;" >
                         <option value="" disabled selected hidden>평점</option>
                         <option value="1" >1</option>
                         <option value="2" >2</option>

@@ -33,7 +33,7 @@
 </head>
 
 <body>
-<div id="navigation-block">
+<div id="navigation-block" class="container">
     <nav class="navbar navbar-light navbar-expand-md d-flex">
         <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/home">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <ul
@@ -102,7 +102,7 @@
         <div class="row" style="margin-bottom: 50px;margin-top: 50px;padding-bottom: 15px;">
             <div class="col" style="width: 400px;"><strong id="dp" style="width: 400px;margin-left: 21px;font-size: 18px;color: rgb(95,98,101);">예약자 수&nbsp; : <%=map.get("count")%>명</strong></div>
             <%if(map.get("customer_book_type").toString().equals("대여가능")){%>
-            <div class="col">
+            <div class="col" >
                 <form action="/book/<%=map.get("customer_book_seq")%>" method="post">
                     <input type="hidden" name ="money" value="<%=1500- 1500/100 * sale %>">
                     <input type="hidden" name="deposit" value="<%=map.get("customer_book_deposit")%>">

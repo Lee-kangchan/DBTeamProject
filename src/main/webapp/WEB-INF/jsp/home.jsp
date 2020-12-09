@@ -58,6 +58,7 @@
             </nav>
         </div>
     </div>
+
     <div class="simple-slider">
         <div class="swiper-container">
             <div class="swiper-wrapper" style="height: 420px;">

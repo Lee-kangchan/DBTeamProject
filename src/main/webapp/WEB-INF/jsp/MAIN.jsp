@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <div id="navigation-block">
+    <div id="navigation-block" class="container">
         <nav class="navbar navbar-light navbar-expand-md d-flex">
             <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/home">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <ul
@@ -73,15 +73,29 @@
             </nav>
         </div>
     </div>
+    <div class="container" style="width: 500px;padding-bottom: 18px;font-family: 'Do Hyeon', sans-serif;">
+        <div class="row">
+            <div class="col" style="padding-right: 5px;padding-left: 5px;border-style: solid;border-color: rgb(40,167,69);"><strong style="text-align: center;font-size: 20px;border-style: none;border-bottom-style: solid;border-bottom-color: rgb(40,167,69);width: 460px;">우리지역 순위</strong>
+                <div class="row">
+                    <div class="col" style="padding-right: 0px;padding-left: 0px;"><strong style="font-size: 18px;width: 250px;">대출</strong></div>
+                    <div class="col" style="padding-right: 0px;padding-left: 0px;font-size: -1px;"><strong style="font-size: -1px;">대여</strong></div>
+                </div>
+                <div class="row">
+                    <div class="col" style="padding-right: 0px;padding-left: 0px;font-size: -1px;"><strong style="font-size: -1px;">01등</strong></div>
+                    <div class="col" style="padding-right: 0px;padding-left: 0px;"><strong>01등</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="simple-slider">
-        <div class="swiper-container">
+        <div class="swiper-container container">
             <div class="swiper-wrapper" style="height: 420px;">
                 <%for(int num =0 ; num < promotion.size(); num++ ){%>
                 <div class="swiper-button-prev"></div>
                     <%if(num==0){%>
-                        <div class="d-flex swiper-slide" style="background-image: url(https://placeholdit.imgix.net/~text?txtsize=68&amp;txt=Slideshow+Image&amp;w=1920&amp;h=500);background-size: cover;height: 400px;"><img src="<%= promotion.get(num).get("promotion_image")%>" style="height: 400px;margin: 0 auto;"></div>
+                        <div class="d-flex swiper-slide" style="background-image: url(https://placeholdit.imgix.net/~text?txtsize=68&amp;txt=Slideshow+Image&amp;w=1920&amp;h=500);background-size: cover;height: 400px;"><img width ="70%" src="<%= promotion.get(num).get("promotion_image")%>" style="height: 400px;margin: 0 auto;"></div>
                     <%}else{%>
-                        <div class="swiper-slide" style="background-image: url(https://placeholdit.imgix.net/~text?txtsize=68&amp;txt=Slideshow+Image&amp;w=1920&amp;h=500);background-size: cover;height: 400px;"><img class="d-flex" src="<%= promotion.get(num).get("promotion_image")%>" style="width: 977px;margin: 0 auto;height: 400px;"></div>
+                        <div class="swiper-slide" style="background-image: url(https://placeholdit.imgix.net/~text?txtsize=68&amp;txt=Slideshow+Image&amp;w=1920&amp;h=500);background-size: cover;height: 400px;"><img width="70%" class="d-flex" src="<%= promotion.get(num).get("promotion_image")%>" style="width: 977px;margin: 0 auto;height: 400px;"></div>
                     <%}%>
                 <%}%>
 
@@ -90,34 +104,34 @@
             <div class="swiper-pagination"></div>
         </div>
         <form>
-            <h1 style="font-family: Bungee, cursive;color: rgb(40,167,69);font-size: 26px;padding: 20px;">Current's BOOK</h1>
-            <section style="margin-top: 20px;">
-                <div class="d-flex flex-row multiple-item-slider">
+            <h1 class="container" style="font-family: Bungee, cursive;color: rgb(40,167,69);font-size: 26px;padding: 20px;">Current's BOOK</h1>
+            <section style="margin-top: 20px;" class="c">
+                <div class="d-flex  multiple-item-slider container">
                     <%for(int num=0 ; num < book.size(); num++){%>
                         <%if(num==0){%>
                             <div class="justify-content-center spacer-slider">
                                 <figure class="figure">
-                                    <img class="img-fluid figure-img" src="<%= book.get(num).get("book_img")%>" alt="alt text here"></figure>
+                                    <img class="img-fluid figure-img" width="200px" height="300px" src="<%= book.get(num).get("book_img")%>" alt="alt text here"></figure>
                             </div>
                         <%}else if(num == book.size()-1){%>
                             <div class="justify-content-center spacer-slider">
-                                <img class="img-fluid figure-img" src="<%= book.get(num).get("book_img")%>" alt="alt text here">
+                                <img class="img-fluid figure-img"width="200px" height="300px" src="<%= book.get(num).get("book_img")%>" alt="alt text here">
                             </div>
                         <%}else{%>
                             <div class="justify-content-center spacer-slider">
                                 <figure class="figure">
-                                    <img class="img-fluid figure-img d-flex" src="<%= book.get(num).get("book_img")%>" alt="alt text here"></figure>
+                                    <img class="img-fluid figure-img d-flex" width="200px" height="300px"src="<%= book.get(num).get("book_img")%>" alt="alt text here"></figure>
                             </div>
                         <%}%>
                     <%}%>
                 </div>
             </section>
         </form>
-        <h1 style="font-family: Bungee, cursive;color: rgb(68,178,93);font-size: 26px;padding: 20px;">Today's REVIEW</h1>
-        <div class="card-group bg-light">
+        <h1 class="container" style="font-family: Bungee, cursive;color: rgb(68,178,93);font-size: 26px;padding: 20px;">Today's REVIEW</h1>
+        <div class="card-group bg-light container d-flex  " style="margin-bottom: 20px">
             <%for(HashMap<String, Object> t : review){%>
-            <div class="card" style="padding:20px;">
-                <div class="card-body" style="width:80%; border-radius:8px; border:3px solid rgb(40,167,69); margin-left:10%">
+            <div class="card " style="padding:20px;border-radius:8px; border:3px solid rgb(40,167,69);">
+                <div class="card-body">
                     <a href="#" style="text-decoration:none;"><p class="card-title" style="font-family: 'Roboto Condensed', sans-serif; color:rgb(40,167,69); height:20%; font-weight:bold"><%=t.get("book_name")%></p></a>
                     <p> </p>
                     <p class="card-text" style="font-family: 'Roboto Condensed', sans-serif;text-align: center; height:60%"><%=t.get("review_detail")%></p>

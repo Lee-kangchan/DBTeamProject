@@ -31,7 +31,7 @@
 </head>
 
 <body>
-<div id="navigation-block">
+<div id="navigation-block" class="container">
     <nav class="navbar navbar-light navbar-expand-md d-flex">
         <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/home">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <ul

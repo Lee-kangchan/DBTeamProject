@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <div id="navigation-block">
+    <div id="navigation-block" class="container">
         <nav class="navbar navbar-light navbar-expand-md d-flex">
             <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/home">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <ul
@@ -112,7 +112,7 @@
                 </div></a>
             </div>
             <div class="col" style="width: 70px;border-style: solid;border-color: rgb(40,167,69);">
-                <section><strong style="color: rgb(131,135,143);font-size: 30px;font-family: 'Roboto Condensed', sans-serif;padding: 10px;padding-bottom: 18px;margin: 20px;">예약 목록</strong>
+                <section style="border-bottom-style: none;border-bottom-color: rgb(40,167,69); margin-bottom: 40px"><strong style="color: rgb(131,135,143);font-size: 30px;font-family: 'Roboto Condensed', sans-serif;padding: 10px;padding-bottom: 18px;margin: 20px;">예약 목록</strong>
                     <div class="row" style="border-bottom-style: solid;border-bottom-color: rgb(40,167,69);padding-bottom: 15px;margin-bottom: 8px;">
                         <div class="col"><strong style="font-family: 'Roboto Condensed', sans-serif;font-size: 20px;">예약날짜</strong></div>
                         <div class="col" style="font-family: 'Roboto Condensed', sans-serif;font-size: 20px;"><strong style="font-family: 'Roboto Condensed', sans-serif;font-size: 20px;">도서명</strong></div>
@@ -121,7 +121,7 @@
                         <div class="col" style="font-family: 'Roboto Condensed', sans-serif;font-size: 20px;"><strong style="font-family: 'Roboto Condensed', sans-serif;font-size: 20px;"></strong></div>
                     </div>
                     <% for(int i = 0; i < reservationInfo.size(); i++) { %>
-                    <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
+                    <div class="row" style="margin-top: 0px;">
                         <div class="col" style="height: 120px;"><strong class="text-center text-body" style="margin-top: 35px;font-family: 'Roboto Condensed', sans-serif;font-size: 16px;"><%=reservationInfo.get(i).get("reservation_createAt")%></strong></div>
                         <div class="col" style="height: 120px;"><strong class="text-center text-body" style="margin-top: 45px;font-family: 'Roboto Condensed', sans-serif;font-size: 20px;"><%=reservationInfo.get(i).get("book_name")%></strong></div>
                         <div class="col" style="font-family: 'Roboto Condensed', sans-serif;height: 120px;"><b class="text-center" style="margin-top: 45px;font-family: 'Roboto Condensed', sans-serif;font-size: 16px;"><%=reservationInfo.get(i).get("rank")%>순위</b></div>

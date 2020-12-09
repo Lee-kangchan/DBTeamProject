@@ -30,7 +30,7 @@
 </head>
 
 <body>
-<div id="navigation-block">
+<div id="navigation-block" class="container">
     <nav class="navbar navbar-light navbar-expand-md d-flex">
         <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/home">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <ul
@@ -70,10 +70,11 @@
         </nav>
     </div>
 </div>
-    <div class="col text-justify" style="width: 100px;margin-left: 860px;margin-bottom: 6px;"><a class="text-black-50" href="gridBook1.html" style="border-color: rgb(40,167,69);"><i class="fa fa-th-large" style="font-size: 29px;border-color: rgb(40,167,69);"></i></a><a class="text-black-50" href="listBook1.jsp" style="border-color: rgb(40,167,69);"><i class="fa fa-th-list" style="margin-left: 10px;font-size: 29px;"></i></a></div>
-    <% int count = 0; %>
+    <div class="col text-justify " style="width: 100px;margin-left: 860px;margin-bottom: 6px;"><a class="text-black-50" href="gridBook1.html" style="border-color: rgb(40,167,69);"><i class="fa fa-th-large" style="font-size: 29px;border-color: rgb(40,167,69);"></i></a><a class="text-black-50" href="listBook1.jsp" style="border-color: rgb(40,167,69);"><i class="fa fa-th-list" style="margin-left: 10px;font-size: 29px;"></i></a></div>
+<div class="container">
+<% int count = 0; %>
     <%for(int i =0 ; i<book.size()/3; i++){ %>
-    <div class="row">
+    <div class="row ">
         <% for(int j =0; j<3 ;j++){%>
                 <%if(book.get(count).get("customer_book_type").toString().equals("대여가능")){%>
                 <div class="col" style="padding-right: 5px;padding-left: 5px;">
@@ -159,6 +160,7 @@
     <div class="col">&nbsp;</div>
     <div class="col">&nbsp;</div>
     <%}%>
+</div>
     <script src="static/assets/js/jquery.min.js"></script>
     <script src="static/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="static/assets/js/bs-init.js"></script>
