@@ -35,6 +35,6 @@ public class ManagerServiceImpl implements  ManagerService{
     public List<HashMap<String, Object>> selectManagerReviewReport() {
         ManagerDAO dao = new ManagerDAO(sqlSession);
 
-        return selectManagerReviewReport();
+        return dao.selectManagerReviewReport();
     }
 }

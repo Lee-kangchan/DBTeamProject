@@ -8,6 +8,7 @@ import com.db.project.review.ReviewService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -66,5 +67,11 @@ public class MainController {
 		model.addAttribute("book",book);
 		model.addAttribute("promotion",promotion);
 		return "MAIN";
+	}
+
+	@Scheduled(fixedDelay = 1000)
+	public void scheduler(){
+		logger.info("---------scheduling-----------");
+
 	}
 }
