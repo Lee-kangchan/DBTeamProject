@@ -110,7 +110,7 @@
 
                 </form>
             </div>
-            <%}else if(map.get("customer_book_type").toString().equals("예약중")){%>
+            <%}else if(map.get("customer_book_type").toString().equals("대여중")){%>
             <div class="col"> <form action="/book/reservation/<%=map.get("customer_book_seq")%>" method="post"><button  class="btn btn-primary" type="submit" style="padding-right: 80px;padding-left: 80px;padding-top: 10px;padding-bottom: 10px;margin-bottom: 31px;font-size: 20px;text-align: center;margin-top: 0px;border-bottom-color: rgb(40,167,69);">예약하기</button></form></div>
             <%}else if(map.get("customer_book_type").toString().equals("대여불가")){%>%>
             <div class="col"><button disabled='disabled' class="btn btn-primary" type="button" style="padding-right: 80px;padding-left: 80px;padding-top: 10px;padding-bottom: 10px;margin-bottom: 31px;font-size: 20px;text-align: center;margin-top: 0px;border-bottom-color: rgb(40,167,69);">대출불가</button></div>

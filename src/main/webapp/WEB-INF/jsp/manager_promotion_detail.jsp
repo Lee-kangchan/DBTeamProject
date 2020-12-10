@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
-<% List<HashMap<String, Object>> book = (List<HashMap<String, Object>>)request.getAttribute("book"); %>
-
+<% HashMap<String, Object> promotion = (HashMap<String, Object>)request.getAttribute("promotion"); %>
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +11,7 @@
     <title>book</title>
     <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,800">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Do Hyeon:400,600,800">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
     <link rel="stylesheet" href="/static/assets/fonts/font-awesome.min.css">
@@ -21,14 +20,13 @@
     <link rel="stylesheet" href="/static/assets/css/Footer-Clean.css">
     <link rel="stylesheet" href="/static/assets/css/Grid-and-List-view-V10-1.css">
     <link rel="stylesheet" href="/static/assets/css/Grid-and-List-view-V10.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
     <link rel="stylesheet" href="/static/assets/css/Media-Slider-Bootstrap-3-1.css">
     <link rel="stylesheet" href="/static/assets/css/Media-Slider-Bootstrap-3.css">
     <link rel="stylesheet" href="/static/assets/css/Simple-Slider.css">
     <link rel="stylesheet" href="/static/assets/css/styles.css">
-    <link rel="stylesheet" href="/static/assets/css/TextEditor.css">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -46,29 +44,12 @@
         </div>
     </nav>
 </div>
-    <div class="container"><strong style="font-size: 35px;margin-top: 30px;">도서 목록</strong>
-        <div class="table-responsive" style="margin-top: 34px;">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th style="text-align: center;">도서 명</th>
-                        <th style="text-align: center;">회원 이름</th>
-                        <th style="text-align: center;">대여 상태</th>
-                        <th style="text-align: center;">승인 상태</th>
-                    </tr>
-                </thead>
-                <tbody style="text-align: center;">
-                    <%for(HashMap<String, Object> map : book){%>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;"><a style="color: black" href="/manager/book/<%=map.get("customer_book_seq")%>"><%=map.get("book_name")%></a></td>
-                        <td style="text-align: center;"><%=map.get("customer_nickname")%></td>
-                        <td style="text-align: center;"><%=map.get("customer_book_type")%></td>
-                        <td style="text-align: center;"><%if(map.get("customer_book_certification_yn").equals("1")){%>승인완료 <%}else{%>미승인<%}%></td>
-                    </tr>
-                    <%}%>
+    <div class="container" style="padding-bottom: 24px;font-family: Do Hyeon, sans-serif;"><strong>프로모션 제목</strong><img src="/<%=promotion.get("promotion_image")%>" style="width: 1000px;height: 400px;"><strong>프로모션 기간 : <%=promotion.get("promotion_startAt")%> ~ <%=promotion.get("promotion_endAt")%></strong><strong>프로모션 진행여부 : <%=promotion.get("name")%></strong></div>
+    <div class="container" style="width: 1000px;margin-top: 14px;">
+        <div class="row">
+            <div class="col">
 
-                </tbody>
-            </table>
+            </div>
         </div>
     </div>
     <script src="/static/assets/js/jquery.min.js"></script>

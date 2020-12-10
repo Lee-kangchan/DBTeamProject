@@ -49,7 +49,7 @@
             </div>
             <div class="row" style="margin-top: 50px;">
                 <div class="col-md-6"><a href="/manager/report"><strong style="font-size: 26px;padding: 80px;color: rgb(0,0,0);border-style: solid;border-color: rgb(40,167,69);border-radius: 30px;width: 350px;">신고 목록</strong></a></div>
-                <div class="col-md-6"><a href="/manager/sales"><strong style="font-size: 26px;padding: 80px;color: rgb(0,0,0);border-style: solid;border-color: rgb(40,167,69);border-radius: 30px;width: 350px;">매출 통계</strong></a></div>
+                <div class="col-md-6"><a href="/manager/sales/1"><strong style="font-size: 26px;padding: 80px;color: rgb(0,0,0);border-style: solid;border-color: rgb(40,167,69);border-radius: 30px;width: 350px;">매출 통계</strong></a></div>
             </div>
         </div>
     </div>

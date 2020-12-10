@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
-<% List<HashMap<String, Object>> book = (List<HashMap<String, Object>>)request.getAttribute("book"); %>
-
 <!DOCTYPE html>
 <html>
 
@@ -46,29 +44,19 @@
         </div>
     </nav>
 </div>
-    <div class="container"><strong style="font-size: 35px;margin-top: 30px;">도서 목록</strong>
-        <div class="table-responsive" style="margin-top: 34px;">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th style="text-align: center;">도서 명</th>
-                        <th style="text-align: center;">회원 이름</th>
-                        <th style="text-align: center;">대여 상태</th>
-                        <th style="text-align: center;">승인 상태</th>
-                    </tr>
-                </thead>
-                <tbody style="text-align: center;">
-                    <%for(HashMap<String, Object> map : book){%>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;"><a style="color: black" href="/manager/book/<%=map.get("customer_book_seq")%>"><%=map.get("book_name")%></a></td>
-                        <td style="text-align: center;"><%=map.get("customer_nickname")%></td>
-                        <td style="text-align: center;"><%=map.get("customer_book_type")%></td>
-                        <td style="text-align: center;"><%if(map.get("customer_book_certification_yn").equals("1")){%>승인완료 <%}else{%>미승인<%}%></td>
-                    </tr>
-                    <%}%>
-
-                </tbody>
-            </table>
+    <div class="container">
+        <div class="row" style="padding-top: 40px;">
+            <div class="col" style="padding-right: 15px;width: 300px;max-width: 300px;">
+                <div class="row" style="width: 250px;margin-left: -7px;">
+                    <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><a href="/manager/sales/1"><strong style="width: 250px;margin-left: -7px;color: rgb(12,13,13);">월별 매출통계</strong></a></div>
+                </div>
+                <div class="row" style="width: 250px;margin-left: -7px;border-style: solid;border-color: rgb(40,167,69);">
+                    <div class="col" style="margin: 10px;width: 250px;margin-left: -7px;"><a href="/manager/sales/2"><strong style="width: 250px;margin-left: -7px;color: rgb(35,36,37);">요일별 매출통계</strong></a></div>
+                </div>
+            </div>
+            <div class="col" style="width: 70px;border-style: solid;border-color: rgb(40,167,69);">
+                <section><strong style="color: rgb(131,135,143);font-size: 20px;font-family: 'Roboto Condensed', sans-serif;margin-top: 20px;">요일별 매출 통계</strong><img src="/static/img/day.jpg" style="width: 783px;"></section>
+            </div>
         </div>
     </div>
     <script src="/static/assets/js/jquery.min.js"></script>

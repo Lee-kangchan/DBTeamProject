@@ -85,7 +85,7 @@
                     </a>
                 </div>
                 <%}%>
-                <%if(book.get(count).get("customer_book_type").toString().equals("예약중")){%>
+                <%if(book.get(count).get("customer_book_type").toString().equals("대여중")){%>
                 <div class="col" style="padding-right: 5px;padding-left: 5px;">
                     <a href="/book/<%=book.get(count).get("customer_book_seq")%>" style="text-decoration:none;">
                         <picture><img src="<%=book.get(count).get("book_img")%>" style="width: 152px;height: 225px;"></picture><strong style="font-size: 20px;text-align: center;color: rgb(8,9,9);"><%=book.get(count).get("book_name")%><button class="btn btn-sm" type="button" style="font-size: 12px;margin-left: 5px;background: rgb(255,255,255);border-width: 2px;border-color: rgb(40,167,69);color: rgb(40,167,69);">대여중</button></strong>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <% List<HashMap<String, Object>> customer = (List<HashMap<String, Object>>)request.getAttribute("customer"); %>
 <% List<HashMap<String, Object>> review = (List<HashMap<String, Object>>)request.getAttribute("review"); %>
 <!DOCTYPE html>
@@ -32,14 +33,15 @@
 </head>
 
 <body>
-<div id="navigation-block">
+<div id="navigation-block" style="padding-bottom: 38px;">
     <nav class="navbar navbar-light navbar-expand-md d-flex" style="border-bottom-style: solid;border-bottom-color: rgb(40,167,69);">
         <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/manager/main">Local libarary</a>
             <div class="collapse navbar-collapse d-flex" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">관리자 님</a></li>
-                    <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link active" href="/home" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">로그아웃</a></li>
+                <ul class="nav navbar-nav ml-auto" style="margin-right: 6px;">
+                    <li class="nav-item" style="margin-right: 5px;"><a class="nav-link active" href="/manager/book" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">도서 목록</a></li>
+                    <li class="nav-item" style="margin-right: 3px;"><a class="nav-link active" href="/manager/promotion" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">프로모션 목록</a></li>
+                    <li class="nav-item" style="margin-right: 5px;"><a class="nav-link active" href="/manager/report" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">신고 목록</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/manager/sales/1" style="font-size: 19px;font-family: 'Roboto Condensed', sans-serif;">매출 통계</a></li>
                 </ul>
             </div>
         </div>
@@ -50,33 +52,19 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th style="text-align: center;">신고자</th>
+                        <th style="text-align: center;">매칭 번호</th>
                         <th style="text-align: center;">신고 사유</th>
                         <th style="text-align: center;">신고 날짜</th>
-                        <th style="text-align: center;">신고 상태</th>
                     </tr>
                 </thead>
                 <tbody style="text-align: center;">
                 <%  for(HashMap<String , Object> map : customer){%>
                     <tr style="text-align: center;">
-                        <td style="text-align: center;"><%=map.get("")%></td>
-                        <td style="text-align: center;"><a href="#" style="color: rgb(34,38,41);">장소에 나오지 않음</a></td>
-                        <td style="text-align: center;">2020.00.00</td>
-                        <td style="text-align: center;">완료</td>
+                        <td style="text-align: center;"><%=map.get("matching_seq")%></td>
+                        <td style="text-align: center;"><a href="#" style="color: rgb(34,38,41);"><%=map.get("customer_report_reason")%></a></td>
+                        <td style="text-align: center;"><%=map.get("customer_report_createAt")%></td>
                     </tr>
                 <%}%>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;">000</td>
-                        <td style="text-align: center;"><a href="#" style="color: rgb(34,38,41);">장소에 나오지 않음</a></td>
-                        <td style="text-align: center;">2020.00.00</td>
-                        <td style="text-align: center;">완료</td>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;">000</td>
-                        <td style="text-align: center;"><a href="#" style="color: rgb(34,38,41);">장소에 나오지 않음</a></td>
-                        <td style="text-align: center;">2020.00.00</td>
-                        <td style="text-align: center;">완료</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -86,37 +74,20 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th style="text-align: center;">신고자</th>
+                        <th style="text-align: center;">리뷰 번호</th>
                         <th style="text-align: center;">신고 사유</th>
                         <th style="text-align: center;">신고 날짜</th>
-                        <th style="text-align: center;">신고 상태</th>
                     </tr>
                 </thead>
                 <tbody style="text-align: center;">
+                <% for(HashMap<String, Object> map : review){%>
                     <tr style="text-align: center;">
-                        <td style="text-align: center;">000</td>
-                        <td style="text-align: center;"><a href="#" style="color: rgb(34,38,41);">거친 욕설이 있습니다</a></td>
-                        <td style="text-align: center;">2020.00.00</td>
-                        <td style="text-align: center;">완료</td>
+                        <td style="text-align: center;"><%=map.get("reivew_seq")%></td>
+                        <td style="text-align: center;"><a href="#" style="color: rgb(34,38,41);"><%=map.get("review_report_reason")%></a></td>
+                        <td style="text-align: center;"><%=map.get("review_report_createAt")%></td>
                     </tr>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;">000</td>
-                        <td style="text-align: center;"><a href="#" style="color: rgb(34,38,41);">거친 욕설이 있습니다</a></td>
-                        <td style="text-align: center;">2020.00.00</td>
-                        <td style="text-align: center;">완료</td>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;">000</td>
-                        <td style="text-align: center;"><a href="#" style="color: rgb(34,38,41);">거친 욕설이 있습니다</a></td>
-                        <td style="text-align: center;">2020.00.00</td>
-                        <td style="text-align: center;">완료</td>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <td style="text-align: center;">000</td>
-                        <td style="text-align: center;"><a href="#" style="color: rgb(34,38,41);">거친 욕설이 있습니다</a></td>
-                        <td style="text-align: center;">2020.00.00</td>
-                        <td style="text-align: center;">완료</td>
-                    </tr>
+                    <%}%>
+
                 </tbody>
             </table>
         </div>

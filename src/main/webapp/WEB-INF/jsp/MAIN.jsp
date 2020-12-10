@@ -73,6 +73,7 @@
             </nav>
         </div>
     </div>
+    <%if(sess!=null){%>
     <div class="container" style="width: 500px;padding-bottom: 18px;font-family: 'Do Hyeon', sans-serif;">
         <div class="row">
             <div class="col" style="padding-right: 5px;padding-left: 5px;border-style: solid;border-color: rgb(40,167,69);"><strong style="text-align: center;font-size: 20px;border-style: none;border-bottom-style: solid;border-bottom-color: rgb(40,167,69);width: 460px;">우리지역 순위</strong>
@@ -87,6 +88,7 @@
             </div>
         </div>
     </div>
+    <%}%>
     <div class="simple-slider">
         <div class="swiper-container container">
             <div class="swiper-wrapper" style="height: 420px;">
