@@ -58,4 +58,10 @@ public class BookDAO {
     }
 
     public HashMap<String, Object> reviewBook(HashMap<String, Object> map) {return mapper.reviewBook(map);}
+    public List<HashMap<String , Object>> selectBookImage(HashMap<String, Object> map){
+        return mapper.selectBookImage(map);
+    }
+    public void updateCustomerBookCertification(HashMap<String, Object> map ){
+        mapper.updateCustomerBookCertification(map);
+    }
 }

@@ -62,6 +62,7 @@ public class BookController {
         }
 
         model.addAttribute("book", book);
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
 
         return "booklist";
     }
@@ -103,6 +104,7 @@ public class BookController {
         HashMap<String, Object> map = new HashMap<>();
         map.put("customer_book_seq", seq);
         model.addAttribute("book",bookService.selectDetailBook(map));
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
 
         return "Book_borrow1";
     }
@@ -113,6 +115,7 @@ public class BookController {
         map.put("customer_seq", session.getAttribute("customer_seq"));
         model.addAttribute("book",bookService.selectDetailBook(map));
         model.addAttribute("sale", customerService.customerSales(map));
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
         return "Book_borrow2";
     }
     @PostMapping("book/{seq}")
@@ -166,6 +169,7 @@ public class BookController {
         List<HashMap<String, Object>> bookInfo = bookService.selectCustomerBook(map);
 
         model.addAttribute("bookInfo", bookInfo);
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
 
         return "myBook";
     }

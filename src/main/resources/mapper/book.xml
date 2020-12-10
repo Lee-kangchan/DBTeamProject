@@ -93,4 +93,14 @@
         where b.book_isbn = #{book_isbn}
     </select>
 
+    <!--회원이 올린 책 이미지-->
+    <select id="selectBookImage" parameterType="hashmap" resultType="hashmap">
+        select * from customer_book_image
+        where customer_book_seq = #{customer_book_seq}
+    </select>
+    <update id="updateCustomerBookCertification" parameterType="hashmap">
+        update customer_book set customer_book_certification_yn = #{customer_book_certification_yn}, customer_book_reason = #{customer_book_reason}
+        where customer_book_seq = #{customer_book_seq}
+    </update>
+
 </mapper>

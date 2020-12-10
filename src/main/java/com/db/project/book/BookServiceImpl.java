@@ -88,4 +88,17 @@ public class BookServiceImpl implements BookService {
 
         return dao.reviewBook(map);
     }
+
+    @Override
+    public List<HashMap<String, Object>> selectBookImage(HashMap<String, Object> map) {
+        BookDAO dao = new BookDAO(sqlSession);
+
+        return dao.selectBookImage(map);
+    }
+
+    @Override
+    public void updateCustomerBookCertification(HashMap<String, Object> map) {
+        BookDAO dao = new BookDAO(sqlSession);
+        dao.updateCustomerBookCertification(map);
+    }
 }

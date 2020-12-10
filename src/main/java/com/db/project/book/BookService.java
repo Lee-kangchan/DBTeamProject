@@ -15,4 +15,6 @@ public interface BookService {
     public HashMap<String , Object> selectDetailBook(HashMap<String, Object> map);
     public void insertBookReservation(HashMap<String, Object> map);
     public HashMap<String, Object> reviewBook(HashMap<String, Object> map);
+    public List<HashMap<String , Object>> selectBookImage(HashMap<String, Object> map);
+    public void updateCustomerBookCertification(HashMap<String, Object> map );
 }
