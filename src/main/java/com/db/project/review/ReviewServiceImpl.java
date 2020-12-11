@@ -52,5 +52,20 @@ public class ReviewServiceImpl implements ReviewService {
         ReviewDAO reviewDAO = new ReviewDAO(sqlSession);
 
         reviewDAO.insertReview(HashMap);
+        Integer i = reviewDAO.selectMaxReview();
+        HashMap.put("review_seq",i);
+    }
+
+    @Override
+    public void insertCurrentReview(HashMap<String, Object> map) {
+        ReviewDAO reviewDAO = new ReviewDAO(sqlSession);
+        reviewDAO.insertCurrentReview(map);
+    }
+
+    @Override
+    public List<HashMap<String, Object>> selectCurrentReview(HashMap<String, Object> map) {
+        ReviewDAO reviewDAO = new ReviewDAO(sqlSession);
+
+        return reviewDAO.selectCurrentReview(map);
     }
 }

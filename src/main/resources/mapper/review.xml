@@ -36,12 +36,16 @@
         WHERE book_isbn = #{book_isbn} AND review.customer_seq = customer.customer_seq
     </select>
 
-<!-- 리뷰 작성하기 -->
-<insert id="insertReview" parameterType="hashmap">
+    <!-- 리뷰 작성하기 -->
+    <insert id="insertReview" parameterType="hashmap">
         INSERT INTO
         review(customer_seq, book_isbn, review_title, review_detail, review_score)
         VALUES (#{customer_seq}, #{book_isbn}, #{review_title}, #{review_detail}, #{review_score})
     </insert>
+
+    <select id="selectMaxReview" resultType="integer">
+        select max(*) from review
+    </select>
 
     <select id="myReview" parameterType="hashmap" resultType="hashmap">
         SELECT r.*, b.book_name
@@ -54,5 +58,15 @@
         delete from review
         where reivew_seq = #{review_seq}
     </delete>
-
+    <insert id="insertCurrentReview" parameterType="hashmap">
+        insert into currents_review(currents_review_title, currents_review_content, current_review_name, currents_review_address_num, review_seq)
+        values(#{review_title}, #{review_detail}, #{name}, #{customer_address_num}, #{review_seq})
+    </insert>
+    <select id="selectCurrentReview" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+        select * from currents_review
+        where currents_review_address_num > #{address_num} - 100
+        and currents_review_address_num < #{address_num} + 100
+        ]]>
+    </select>
 </mapper>

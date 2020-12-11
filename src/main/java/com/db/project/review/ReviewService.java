@@ -10,4 +10,6 @@ public interface ReviewService {
     public void deleteReview(HashMap<String, Object> HashMap);
     public List<HashMap<String, Object>> selectReviewContent(HashMap<String, Object> HashMap);
     public void insertReview(HashMap<String, Object> HashMap);
+    public void insertCurrentReview(HashMap<String, Object> map);;
+    public List<HashMap<String, Object>> selectCurrentReview(HashMap<String , Object> map);
 }

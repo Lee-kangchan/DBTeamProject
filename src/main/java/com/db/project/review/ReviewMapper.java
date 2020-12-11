@@ -13,6 +13,7 @@ public interface ReviewMapper {
     public void insertReview(HashMap<String, Object> HashMap);
     public List<HashMap<String, Object>> myReview(HashMap<String, Object> HashMap);
     public void deleteReview(HashMap<String, Object> HashMap);
-
-
+    public void insertCurrentReview(HashMap<String, Object> map);;
+    public List<HashMap<String, Object>> selectCurrentReview(HashMap<String , Object> map);
+    public Integer selectMaxReview();
 }

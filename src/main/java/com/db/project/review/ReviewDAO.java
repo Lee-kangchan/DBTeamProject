@@ -24,4 +24,14 @@ public class ReviewDAO {
     public List<HashMap<String, Object>> myReview(HashMap<String, Object> HashMap) {return mapper.myReview(HashMap);}
     public void deleteReview(HashMap<String, Object> HashMap){mapper.deleteReview(HashMap);}
 
+    public void insertCurrentReview(HashMap<String, Object> map){
+        mapper.insertCurrentReview(map);
+    }
+    ;
+    public List<HashMap<String, Object>> selectCurrentReview(HashMap<String , Object> map){
+        return mapper.selectCurrentReview(map);
+    }
+    public Integer selectMaxReview(){
+        return mapper.selectMaxReview();
+    }
 }
