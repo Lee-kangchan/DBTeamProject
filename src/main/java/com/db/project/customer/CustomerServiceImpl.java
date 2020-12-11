@@ -119,4 +119,16 @@ public class CustomerServiceImpl implements  CustomerService{
 
         return result;
     }
+
+    @Override
+    public void insertBorrowArea(HashMap<String, Object> map) {
+        CustomerDAO dao = new CustomerDAO(sqlSession);
+        dao.insertBorrowArea(map);
+    }
+
+    @Override
+    public void deleteBorrowArea() {
+        CustomerDAO dao = new CustomerDAO(sqlSession);
+        dao.deleteBorrowArea();
+    }
 }

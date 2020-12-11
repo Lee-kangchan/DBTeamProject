@@ -63,4 +63,8 @@ public class CustomerDAO {
     public Integer borrowCount(HashMap<String, Object> HashMap) {return mapper.borrowCount(HashMap);}
     public Integer rentalCount(HashMap<String, Object> HashMap) {return mapper.rentalCount(HashMap);}
     public HashMap<String, Object> recommendCount(HashMap<String, Object> HashMap) {return mapper.recommendCount(HashMap);}
+    public void insertBorrowArea(HashMap<String, Object> map){mapper.insertBorrowArea(map);}
+    public void deleteBorrowArea(){
+        mapper.deleteBorrowArea();
+    }
 }

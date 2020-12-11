@@ -22,4 +22,6 @@ public interface CustomerMapper {
     public Integer borrowCount(HashMap<String, Object> HashMap);
     public Integer rentalCount(HashMap<String, Object> HashMap);
     public HashMap<String, Object> recommendCount(HashMap<String, Object> HashMap);
+    public void insertBorrowArea(HashMap<String, Object> map);
+    public void deleteBorrowArea();
 }

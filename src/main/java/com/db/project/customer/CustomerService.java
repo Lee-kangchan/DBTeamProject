@@ -10,4 +10,6 @@ public interface CustomerService {
     public void Membership(HashMap<String, Object> HashMap);
     public int customerSales(HashMap<String,Object> HashMap);
     public HashMap<String, Object> customerMyPage(HashMap<String, Object> HashMap);
+    public void insertBorrowArea(HashMap<String, Object> map);
+    public void deleteBorrowArea();
 }
