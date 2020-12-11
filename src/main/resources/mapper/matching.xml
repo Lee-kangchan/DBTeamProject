@@ -46,6 +46,62 @@
         where matching_seq = #{matching_seq}
     </update>
 
+    <select id="selectMatchingList" resultType="hashmap">
+        SET @id1 ="부산시 사상구", @id2="부산시 부산진구", @id3 = "부산시 중구",
+        @id4 = "부산시 서구",@id5 = "부산시 동구",@id6 = "부산시 영도구",
+        @id7 = "부산시 동래구", @id8 = "부산시 남구", @id9 = "부산시 북구",
+        @id10 = "부산시 해운대구", @id11 = "부산시 사하구", @id12 = "부산시 금정구",
+        @id13 = "부산시 강서구", @id14 = "부산시 연제구", @id15 = "부산시 수영구", @id16 = "부산시 기장구";
+
+        SELECT count(*) area, @id1 as name FROM db2020.matching
+        where  matching_deal_address like concat("%",@id1,"%")
+        UNION ALL
+        SELECT count(*) area, @id2 as name  FROM matching
+        where matching_deal_address like concat("%",@id2,"%")
+        UNION ALL
+        SELECT count(*) area, @id3 as name FROM matching
+        where matching_deal_address like concat("%",@id3,"%")
+        UNION ALL
+        SELECT count(*) area, @id4 as name  FROM matching
+        where matching_deal_address like concat("%",@id4,"%")
+        UNION aLL
+        SELECT count(*) area, @id5 as name FROM matching
+        where matching_deal_address like concat("%",@id5,"%")
+        UNION aLL
+        SELECT count(*) area, @id6 as name  FROM matching
+        where matching_deal_address like concat("%",@id6,"%")
+        UNION aLL
+        SELECT count(*) area, @id7 as name  FROM matching
+        where matching_deal_address like concat("%",@id7,"%")
+        UNION aLL
+        SELECT count(*) area, @id8 as name  FROM matching
+        where matching_deal_address like concat("%",@id8,"%")
+        UNION aLL
+        SELECT count(*) area, @id9 as name  FROM matching
+        where matching_deal_address like concat("%",@id9,"%")
+        UNION aLL
+        SELECT count(*) area, @id10 as name  FROM matching
+        where matching_deal_address like concat("%",@id10,"%")
+        UNION aLL
+        SELECT count(*) area, @id11 as name  FROM matching
+        where matching_deal_address like concat("%",@id11,"%")
+        UNION aLL
+        SELECT count(*) area, @id12 as name  FROM matching
+        where matching_deal_address like concat("%",@id12,"%")
+        UNION aLL
+        SELECT count(*) area, @id13 as name  FROM matching
+        where matching_deal_address like concat("%",@id13,"%")
+        UNION aLL
+        SELECT count(*) area, @id14 as name  FROM matching
+        where matching_deal_address like concat("%",@id14,"%")
+        UNION aLL
+        SELECT count(*) area, @id15 as name  FROM matching
+        where matching_deal_address like concat("%",@id15,"%")
+        UNION aLL
+        SELECT count(*) area, @id16 as name  FROM matching
+        where matching_deal_address like concat("%",@id16,"%")
+
+    </select>
     <!-- 매칭 대출자, 대여자 상태 변경 -->
     <update id="updateMatchingReset" parameterType="hashmap">
         update matching set matching_rental_yn = 0 , matching_borrow_yn = 0

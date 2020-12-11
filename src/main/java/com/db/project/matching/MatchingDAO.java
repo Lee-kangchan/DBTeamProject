@@ -43,5 +43,8 @@ public class MatchingDAO {
     public void updateMatchingDate(HashMap<String, Object> map){
         mapper.updateMatchingDate(map);
     }
+    public List<HashMap<String , Object>> selectMatchingList(){
+        return mapper.selectMatchingList();
+    }
 
 }

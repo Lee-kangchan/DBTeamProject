@@ -15,4 +15,5 @@ public interface MatchingMapper {
     public List<HashMap<String, Object>> selectReservation(HashMap<String, Object> HashMap);
     public List<HashMap<String, Object>> selectRank(HashMap<String, Object> HashMap);
     public void updateMatchingDate(HashMap<String, Object> map);
+    public List<HashMap<String , Object>> selectMatchingList();
 }

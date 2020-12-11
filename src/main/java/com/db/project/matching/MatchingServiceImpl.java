@@ -128,4 +128,11 @@ public class MatchingServiceImpl implements MatchingService {
 
         return res;
     }
+
+    @Override
+    public List<HashMap<String, Object>> matchingList() {
+        MatchingDAO dao = new MatchingDAO(sqlSession);
+
+        return dao.selectMatchingList();
+    }
 }
