@@ -2,7 +2,10 @@ package com.db.project.controller;
 
 
 import com.db.project.book.BookService;
+import com.db.project.customer.CustomerDAO;
 import com.db.project.customer.CustomerService;
+import com.db.project.matching.MatchingDAO;
+import com.db.project.matching.MatchingService;
 import com.db.project.promotion.PromotionService;
 import com.db.project.review.ReviewService;
 import org.slf4j.Logger;
@@ -24,10 +27,16 @@ import java.util.List;
 public class MainController {
 
 	@Autowired
+	MatchingService matchingService;
+
+	@Autowired
 	ReviewService reviewService;
 
 	@Autowired
 	BookService bookService;
+
+	@Autowired
+	CustomerService customerService;
 
 	@Autowired
 	PromotionService promotionService;
@@ -49,7 +58,7 @@ public class MainController {
 		if(id!=null){
 			params.put("customer_seq", session.getAttribute("customer_seq"));
 			params.put("customer_address_num",session.getAttribute("customer_address_num"));
-			book= bookService.selectNewBook(params);
+			book= bookService.selectCurrentMainBook(params);
 		}else{
 			book = bookService.selectMainBook();
 		}
@@ -72,6 +81,15 @@ public class MainController {
 	@Scheduled(fixedDelay = 1000)
 	public void scheduler(){
 		logger.info("---------scheduling-----------");
-
+		List<HashMap<String, Object>> map =matchingService.matchingList();
+		int count=1;
+		customerService.deleteBorrowArea();
+		for(HashMap<String, Object> t : map) {
+			t.put("seq", count);
+			t.put("count",t.get("area"));
+			t.put("name", t.get("name"));
+			customerService.insertBorrowArea(t);
+			count++;
+		}
 	}
 }
