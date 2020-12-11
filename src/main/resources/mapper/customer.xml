@@ -130,4 +130,11 @@
         FROM customer
         WHERE recommend_seq = #{customer_seq}
     </select>
+    <insert id="insertBorrowArea" parameterType="hashmap">
+        insert into best_borrow_area(best_borrow_area_seq, best_borrow_area_name, best_borrow_area_count)
+        values(#{seq}, #{name}, #{count})
+    </insert>
+    <delete id="deleteBorrowArea">
+        delete from best_borrow_area
+    </delete>
 </mapper>

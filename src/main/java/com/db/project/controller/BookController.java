@@ -68,7 +68,8 @@ public class BookController {
     }
 
     @GetMapping("/bookInsert")
-    public String bookInsert(@RequestParam HashMap<String, Object> map, HttpSession session){
+    public String bookInsert(Model model,@RequestParam HashMap<String, Object> map, HttpSession session){
+        model.addAttribute("sess", session.getAttribute("customer_seq"));
 
         return "addBook";
     }
@@ -84,6 +85,7 @@ public class BookController {
         String book_image_path = "/static/img/"+uuid+".jpg";
         map.put("book_img",book_image_path);
         map.put("customer_seq", session.getAttribute("customer_seq"));
+        map.put("customer_address_num",session.getAttribute("customer_address_num"));
         book_image.transferTo(new File("",book_image_path));
         bookService.insertBook(map);
         List<HashMap<String, Object>> list = new ArrayList<>();

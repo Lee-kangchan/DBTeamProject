@@ -18,11 +18,8 @@
         limit 10
         ]]>
     </select>
-    <select id ="selectMainBook"  resultType="hashmap">
-        select * from book
-        join customer_book on book.book_isbn = customer_book.book_isbn
-        order by customer_book_createAt desc
-        limit 10
+    <select id ="selectMainBook"  resultType="hashmap">[
+        select * from currents_book
     </select>
     <!--isbn찾기 -->
     <select id = "selectBookIsbn" parameterType="hashmap" resultType="Integer">
@@ -103,4 +100,15 @@
         where customer_book_seq = #{customer_book_seq}
     </update>
 
+    <insert id="insertCurrentBook" parameterType="hashmap">
+        insert into currents_book(currents_book_img, currents_book_address_num, customer_book_seq)
+        values(#{book_img}, #{customer_address_num}, #{customer_book_seq} )
+    </insert>
+    <select id="selectCurrentMainBook" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+        select * from currents_book
+        where currents_book_address_num > #{address_num} - 100
+        and currents_book_address_num < #{address_num} + 100
+        ]]>
+    </select>
 </mapper>

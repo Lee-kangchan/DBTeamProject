@@ -64,4 +64,11 @@ public class BookDAO {
     public void updateCustomerBookCertification(HashMap<String, Object> map ){
         mapper.updateCustomerBookCertification(map);
     }
+
+    public void insertCurrentBook(HashMap<String, Object> map){
+        mapper.insertCurrentBook(map);
+    }
+    public List<HashMap<String, Object>> selectCurrentMainBook(HashMap<String, Object> map){
+        return mapper.selectCurrentMainBook(map);
+    }
 }

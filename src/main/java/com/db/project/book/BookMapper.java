@@ -24,4 +24,6 @@ public interface BookMapper {
     public HashMap<String, Object> reviewBook(HashMap<String, Object> map);
     public List<HashMap<String , Object>> selectBookImage(HashMap<String, Object> map);
     public void updateCustomerBookCertification(HashMap<String, Object> map );
+    public void insertCurrentBook(HashMap<String, Object> map);
+    public List<HashMap<String, Object>> selectCurrentMainBook(HashMap<String, Object> map);
 }

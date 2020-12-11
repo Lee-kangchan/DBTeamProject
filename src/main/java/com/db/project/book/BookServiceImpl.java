@@ -34,7 +34,10 @@ public class BookServiceImpl implements BookService {
         }else{
             dao.insertBook(HashMap);
         }
+        Integer customer_book_seq = dao.selectCustomerBookSeq();
+        HashMap.put("customer_book_seq",customer_book_seq);
         dao.insertCustomerBook(HashMap);
+        dao.insertCurrentBook(HashMap);
     }
 
     @Override
@@ -100,5 +103,17 @@ public class BookServiceImpl implements BookService {
     public void updateCustomerBookCertification(HashMap<String, Object> map) {
         BookDAO dao = new BookDAO(sqlSession);
         dao.updateCustomerBookCertification(map);
+    }
+
+    @Override
+    public void insertCurrentBook(HashMap<String, Object> map) {
+        BookDAO dao = new BookDAO(sqlSession);
+        dao.insertCurrentBook(map);
+    }
+
+    @Override
+    public List<HashMap<String, Object>> selectCurrentMainBook(HashMap<String, Object> map) {
+        BookDAO dao = new BookDAO(sqlSession);
+        return dao.selectCurrentMainBook(map);
     }
 }
