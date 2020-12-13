@@ -113,16 +113,16 @@
                         <%if(num==0){%>
                             <div class="justify-content-center spacer-slider">
                                 <figure class="figure">
-                                    <img class="img-fluid figure-img" width="200px" height="300px" src="<%= book.get(num).get("book_img")%>" alt="alt text here"></figure>
+                                    <img class="img-fluid figure-img" width="200px" height="300px" src="<%= book.get(num).get("currents_book_img")%>" alt="alt text here"></figure>
                             </div>
                         <%}else if(num == book.size()-1){%>
                             <div class="justify-content-center spacer-slider">
-                                <img class="img-fluid figure-img"width="200px" height="300px" src="<%= book.get(num).get("book_img")%>" alt="alt text here">
+                                <img class="img-fluid figure-img"width="200px" height="300px" src="<%= book.get(num).get("currents_book_img")%>" alt="alt text here">
                             </div>
                         <%}else{%>
                             <div class="justify-content-center spacer-slider">
                                 <figure class="figure">
-                                    <img class="img-fluid figure-img d-flex" width="200px" height="300px"src="<%= book.get(num).get("book_img")%>" alt="alt text here"></figure>
+                                    <img class="img-fluid figure-img d-flex" width="200px" height="300px"src="<%= book.get(num).get("currents_book_img")%>" alt="alt text here"></figure>
                             </div>
                         <%}%>
                     <%}%>

@@ -18,9 +18,12 @@
         limit 10
         ]]>
     </select>
-    <select id ="selectMainBook"  resultType="hashmap">[
-        select * from currents_book
+
+    <select id ="selectMainBook" parameterType = "hashmap" resultType="hashmap">
+        SELECT * FROM db2020.currents_book;
     </select>
+
+
     <!--isbn찾기 -->
     <select id = "selectBookIsbn" parameterType="hashmap" resultType="Integer">
         select book_isbn from book
