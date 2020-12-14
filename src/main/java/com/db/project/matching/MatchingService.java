@@ -12,5 +12,6 @@ public interface MatchingService {
     public List<HashMap<String, Object>> selectMyReservation(HashMap<String, Object> HashMap);
     public void updateCancelMatching(HashMap<String , Object> map);
     public List<HashMap<String , Object>> matchingList();
+    public HashMap<String , Object> selectDetailMatching(HashMap<String,Object> map);
 
 }

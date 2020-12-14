@@ -116,4 +116,22 @@ public class BookServiceImpl implements BookService {
         BookDAO dao = new BookDAO(sqlSession);
         return dao.selectCurrentMainBook(map);
     }
+
+    @Override
+    public void updateCustomerBookYn(HashMap<String, Object> map) {
+        BookDAO dao = new BookDAO(sqlSession);
+        dao.updateCustomerBookYn(map);
+    }
+
+    @Override
+    public List<HashMap<String, Object>> reservation(HashMap<String, Object> map) {
+        BookDAO dao = new BookDAO(sqlSession);
+        return dao.reservation(map);
+    }
+
+    @Override
+    public void updateReservation(HashMap<String, Object> map) {
+        BookDAO dao = new BookDAO(sqlSession);
+        dao.updateReservation(map);
+    }
 }

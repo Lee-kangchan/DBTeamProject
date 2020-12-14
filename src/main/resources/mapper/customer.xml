@@ -137,4 +137,7 @@
     <delete id="deleteBorrowArea">
         delete from best_borrow_area
     </delete>
+    <select id="selectBorrowArea"  resultType="hashmap">
+        select * from best_borrow_area
+    </select>
 </mapper>

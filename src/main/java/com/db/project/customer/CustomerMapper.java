@@ -24,4 +24,5 @@ public interface CustomerMapper {
     public HashMap<String, Object> recommendCount(HashMap<String, Object> HashMap);
     public void insertBorrowArea(HashMap<String, Object> map);
     public void deleteBorrowArea();
+    public List<HashMap<String, Object>> selectBorrowArea();
 }

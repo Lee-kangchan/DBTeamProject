@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <div id="navigation-block">
+    <div id="navigation-block" class="con">
         <nav class="navbar navbar-light navbar-expand-md d-flex">
             <div class="container-fluid"><a class="navbar-brand" style="font-family: Bungee, cursive;padding-left: 20px;font-size: 31px;" href="/home">Local libarary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <ul
@@ -120,7 +120,7 @@
                         <div class="col"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">카드 번호</strong></div>
                         <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">카드명</strong></div>
                         <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;">카드 유효기간</strong></div>
-                        <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><a href="/addCard" style="color:black; text-decoration:none;">추가하기</a></strong></div>
+                        <div class="col" style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><strong style="font-family: 'Do Hyeon', sans-serif;font-size: 20px;"><a href="/addCard" style="color: rgb(40,167,69);text-decoration:none;">추가하기</a></strong></div>
                     </div>
             </section>
 

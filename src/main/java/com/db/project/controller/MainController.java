@@ -49,11 +49,35 @@ public class MainController {
 
 	@GetMapping("home")
 	public String home(Model model, HttpSession session){
-		List<HashMap<String,Object>> review = reviewService.selectMainReview();
+		List<HashMap<String,Object>> review;
 
 		String id = (String)session.getAttribute("customer_id");
-		List<HashMap<String, Object>> book = new ArrayList<>();
+
 		HashMap<String, Object> params = new HashMap<>();
+		List<HashMap<String ,Object>> rank ;
+		HashMap<String ,Object> customer;
+		model.addAttribute("rank", params);
+		if(id!=null){
+			rank = customerService.selectBorrowArea();
+			for(HashMap<String, Object> map : rank){
+				logger.info("왼쪽 값은 " + session.getAttribute("customer_address")+"이며 오른쪽값은"+map.get("best_borrow_area_name"));
+				if(session.getAttribute("customer_address").toString().contains(map.get("best_borrow_area_name").toString())){
+					logger.info("확인됬네 들어온다");
+					model.addAttribute("rank",map);
+				}
+			}
+		}
+
+
+		if(id!=null){
+			params.put("customer_seq", session.getAttribute("customer_seq"));
+			params.put("customer_address_num",session.getAttribute("customer_address_num"));
+			review = reviewService.selectCurrentReview(params);
+		}else{
+			review = reviewService.selectMainReview();
+		}
+
+		List<HashMap<String, Object>> book = new ArrayList<>();
 
 		if(id!=null){
 			params.put("customer_seq", session.getAttribute("customer_seq"));
@@ -68,7 +92,7 @@ public class MainController {
 		params.put("today",date);
 		List<HashMap<String, Object>> promotion = promotionService.selectProcessPromotion(params);
 		for(HashMap<String, Object> t :review){
-			logger.info(t.get("review_title").toString()+"");
+			logger.info(t.get("currents_review_title").toString()+"");
 		}
 
 		model.addAttribute("sess", session.getAttribute("customer_seq"));
@@ -78,7 +102,7 @@ public class MainController {
 		return "MAIN";
 	}
 
-	@Scheduled(fixedDelay = 1000)
+	@Scheduled(fixedDelay = 10000)
 	public void scheduler(){
 		logger.info("---------scheduling-----------");
 		List<HashMap<String, Object>> map =matchingService.matchingList();

@@ -59,6 +59,7 @@ public class CustomerController {
             session.setAttribute("customer_pw", result.get("customer_pw"));
             session.setAttribute("customer_name", result.get("customer_name"));
             session.setAttribute("customer_nickname", result.get("customer_nickname"));
+            session.setAttribute("customer_address", result.get("customer_address"));
             session.setAttribute("customer_address_num", result.get("customer_address_num"));
             mv.setViewName("redirect:/home");
         }

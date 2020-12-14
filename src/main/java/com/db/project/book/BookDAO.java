@@ -71,4 +71,13 @@ public class BookDAO {
     public List<HashMap<String, Object>> selectCurrentMainBook(HashMap<String, Object> map){
         return mapper.selectCurrentMainBook(map);
     }
+    public void updateCustomerBookYn(HashMap<String, Object> map){
+        mapper.updateCustomerBookYn(map);
+    }
+    public List<HashMap<String, Object>> reservation(HashMap<String, Object> map){
+        return mapper.reservation(map);
+    }
+    public void updateReservation(HashMap<String,Object> map){
+        mapper.updateReservation(map);
+    }
 }

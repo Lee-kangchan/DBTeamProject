@@ -68,6 +68,7 @@ public class ReviewController {
         reviewInfo.put("book_isbn", num);
         reviewInfo.put("customer_seq", session.getAttribute("customer_seq"));
         reviewInfo.put("customer_address_num", session.getAttribute("customer_address_num"));
+        reviewInfo.put("name",session.getAttribute("customer_nickname"));
         reviewService.insertReview(reviewInfo);
 
         return "redirect:/myReview";

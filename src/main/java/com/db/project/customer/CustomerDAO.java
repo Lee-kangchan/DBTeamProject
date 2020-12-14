@@ -67,4 +67,7 @@ public class CustomerDAO {
     public void deleteBorrowArea(){
         mapper.deleteBorrowArea();
     }
+    public List<HashMap<String, Object>> selectBorrowArea(){
+        return mapper.selectBorrowArea();
+    }
 }

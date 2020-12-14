@@ -54,6 +54,7 @@ public class ReviewServiceImpl implements ReviewService {
         reviewDAO.insertReview(HashMap);
         Integer i = reviewDAO.selectMaxReview();
         HashMap.put("review_seq",i);
+        reviewDAO.insertCurrentReview(HashMap);
     }
 
     @Override

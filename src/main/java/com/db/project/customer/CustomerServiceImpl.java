@@ -107,13 +107,27 @@ public class CustomerServiceImpl implements  CustomerService{
 
         HashMap<String, Object> result = customerDAO.customerMembership(HashMap);
 
-        int borrowCount = customerDAO.borrowCount(HashMap);
-        int rentalCount = customerDAO.rentalCount(HashMap);
+        Integer borrowCount = Integer.parseInt(customerDAO.borrowCount(HashMap).toString());
+        Integer rentalCount = Integer.parseInt(customerDAO.rentalCount(HashMap).toString());
 
         HashMap<String, Object> map = customerDAO.recommendCount(HashMap);
+        logger.info(HashMap+"");
+        logger.info(result+"");
+        logger.info(borrowCount+"");
+        logger.info(rentalCount+"");
+        if (borrowCount!=null){
+            result.put("borrowCount", borrowCount);
+        }else{
 
-        result.put("borrowCount", borrowCount);
-        result.put("rentalCount", rentalCount);
+            result.put("borrowCount", 0);
+        }
+        if(rentalCount!=null){
+
+            result.put("rentalCount", rentalCount);
+        }else{
+
+            result.put("rentalCount", 0);
+        }
         result.put("customer_point", map.get("customer_point"));
         result.put("recommendCount", map.get("recommendCount"));
 
@@ -130,5 +144,11 @@ public class CustomerServiceImpl implements  CustomerService{
     public void deleteBorrowArea() {
         CustomerDAO dao = new CustomerDAO(sqlSession);
         dao.deleteBorrowArea();
+    }
+
+    @Override
+    public List<HashMap<String, Object>> selectBorrowArea(){
+        CustomerDAO dao = new CustomerDAO(sqlSession);
+        return dao.selectBorrowArea();
     }
 }

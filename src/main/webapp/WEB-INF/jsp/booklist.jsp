@@ -98,6 +98,7 @@
         <%} %>
     </div>
     <% } %>
+    <div class="row">
     <%if(book.size()%3==2){%>
     <%if(book.get(count).get("customer_book_type").toString().equals("대여가능")){%>
     <div class="col" style="padding-right: 5px;padding-left: 5px;">
@@ -160,6 +161,7 @@
     <div class="col">&nbsp;</div>
     <div class="col">&nbsp;</div>
     <%}%>
+    </div>
 </div>
     <script src="static/assets/js/jquery.min.js"></script>
     <script src="static/assets/bootstrap/js/bootstrap.min.js"></script>

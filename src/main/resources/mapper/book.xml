@@ -102,6 +102,10 @@
         update customer_book set customer_book_certification_yn = #{customer_book_certification_yn}, customer_book_reason = #{customer_book_reason}
         where customer_book_seq = #{customer_book_seq}
     </update>
+    <update id="updateCustomerBookYn" parameterType="hashmap">
+        update customer_book set customer_book_type = #{customer_book_type}
+        where customer_book_seq = #{customer_book_seq}
+    </update>
 
     <insert id="insertCurrentBook" parameterType="hashmap">
         insert into currents_book(currents_book_img, currents_book_address_num, customer_book_seq)
@@ -110,8 +114,16 @@
     <select id="selectCurrentMainBook" parameterType="hashmap" resultType="hashmap">
         <![CDATA[
         select * from currents_book
-        where currents_book_address_num > #{address_num} - 100
-        and currents_book_address_num < #{address_num} + 100
+        where currents_book_address_num > #{customer_address_num} - 100
+        and currents_book_address_num < #{customer_address_num} + 100
         ]]>
     </select>
+    <select id="reservation" parameterType="hashmap" resultType="hashmap">
+        select * from reservation
+        where customer_book_seq = #{customer_book_seq}
+    </select>
+    <update id="updateReservation" parameterType="hashmap">
+        update reservation set reservation_yn = #{reservation_yn}
+        where reservation_seq;
+    </update>
 </mapper>

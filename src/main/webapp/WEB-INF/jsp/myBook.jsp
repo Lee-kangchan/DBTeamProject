@@ -3,7 +3,8 @@
 <%@ page import="java.util.List" %>
 <% Integer sess = (Integer)request.getAttribute("sess"); %>
 <% List<HashMap<String, Object>> bookInfo = (List<HashMap<String, Object>>)request.getAttribute("bookInfo"); %>
-
+<%
+%>
 <!DOCTYPE html>
 <html>
 
@@ -84,6 +85,7 @@
             <div class="col"><strong></strong></div>
         </div>
 
+        <%if(Integer.parseInt(bookInfo.get(0).get("bookCount").toString())!=0){%>
         <% for(int i = 0; i < bookInfo.size(); i++) { %>
         <div class="row" style="border-bottom-style: none;border-bottom-color: rgb(40,167,69);margin-top: 0px;">
             <div class="col"><a href="#"></a><img src='<%=bookInfo.get(i).get("book_img")%>' style="height: 120px;"></div>
@@ -92,6 +94,10 @@
             <div class="col" style="font-family: 'Do Hyeon', sans-serif;"><button class="btn btn-primary" type="button" style="margin-top: 40px;margin-left: 40px;font-family: 'Do Hyeon', sans-serif;height: 35px;text-align: right;background: rgb(255,255,255);color: rgb(40,167,69);border-width: 2px;border-color: rgb(40,167,69);padding-bottom: 18px;">삭제하기</button></div>
         </div>
         <% } %>
+        <%}else{ %>
+             <strong class="text-center text-body" style="margin-top: 45px;font-family: 'Do Hyeon', sans-serif;">등록한 책이 없어요..</strong>
+        <%}%>
+
 
     </div>
     <script src="static/assets/js/jquery.min.js"></script>

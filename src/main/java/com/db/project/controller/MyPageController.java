@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -50,8 +51,11 @@ public class MyPageController {
         List<HashMap<String, Object>> borrow = matchingService.selectBorrowMatching(map);
 
         logger.info(borrow + "");
-        customerInfo.put("customer_point", pointInfo.get("customer_point"));
-
+        logger.info(customerInfo+"");
+        logger.info(pointInfo+"");
+        if (customerInfo.get("borrowCount")!=null) {
+            customerInfo.put("customer_point", pointInfo.get("customer_point"));
+        }
         model.addAttribute("rental", rental);
         model.addAttribute("borrow", borrow);
         model.addAttribute("sess", session.getAttribute("customer_seq"));
@@ -90,14 +94,15 @@ public class MyPageController {
 
         for(int i = 0; i < reservationInfo.size(); i++) {
             try {
-                String oldstring = reservationInfo.get(i).get("matching_endAt").toString();
-                Date date = new SimpleDateFormat("yyyy-MM-dd").parse(oldstring);
-                date = new Date(date.getTime() + (1000 * 60 * 60 * 24 * 7 * Integer.parseInt(reservationInfo.get(i).get("rank").toString())));
-                String newstring = new SimpleDateFormat("yyyy-MM-dd").format(date);
-                reservationInfo.get(i).put("predict", newstring);
+                Calendar cal = Calendar.getInstance();
+                Date date2 = new Date();
+                cal.setTime(date2);
+                int abcd = Integer.parseInt(reservationInfo.get(i).get("rank").toString());
+                cal.add(Calendar.SECOND,  60 * 60 * 24 * 7 * abcd);
+                reservationInfo.get(i).put("predict", new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime()));
             }
             catch (Exception e) {
-
+                e.printStackTrace();
             }
         }
 

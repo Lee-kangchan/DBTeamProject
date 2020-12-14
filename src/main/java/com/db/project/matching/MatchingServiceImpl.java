@@ -40,12 +40,13 @@ public class MatchingServiceImpl implements MatchingService {
     }
 
     @Override
-    public void updateRentalMatching(HashMap<String, Object> HashMap) {
+    public void updateRentalMatching(HashMap<String, Object> hashMap) {
         MatchingDAO matchingDAO = new MatchingDAO(sqlSession);
-        matchingDAO.updateRentalMatching(HashMap);
-        HashMap<String, Object> map = matchingDAO.selectMatchingState(HashMap);
+        logger.info("여기가 업데이트 하는곳 " + hashMap);
+        matchingDAO.updateRentalMatching(hashMap);
+        HashMap<String, Object> map = matchingDAO.selectMatchingState(hashMap);
         if(map.get("matching_borrow_yn").toString().equals("1") && map.get("matching_rental_yn").toString().equals("1")){
-            if(map.get("matching_type").equals("거래완료")){
+            if(map.get("matching_type").equals("대기")){
                 map.put("matching_type","대여");
                 //시간 구하기
                 DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -84,6 +85,7 @@ public class MatchingServiceImpl implements MatchingService {
                 matchingDAO.updateMatchingDate(map);
             }else if(map.get("matching_type").equals("대여")){
                 map.put("matching_type","반납");
+
             }
             matchingDAO.updateTypeMatching(map);
             matchingDAO.updateMatchingReset(map);
@@ -134,5 +136,11 @@ public class MatchingServiceImpl implements MatchingService {
         MatchingDAO dao = new MatchingDAO(sqlSession);
 
         return dao.selectMatchingList();
+    }
+
+    @Override
+    public HashMap<String, Object> selectDetailMatching(HashMap<String, Object> map) {
+        MatchingDAO dao = new MatchingDAO(sqlSession);
+        return dao.selectMatchingState(map);
     }
 }

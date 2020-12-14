@@ -26,4 +26,8 @@ public interface BookMapper {
     public void updateCustomerBookCertification(HashMap<String, Object> map );
     public void insertCurrentBook(HashMap<String, Object> map);
     public List<HashMap<String, Object>> selectCurrentMainBook(HashMap<String, Object> map);
+    public void updateCustomerBookYn(HashMap<String, Object> map);
+    public List<HashMap<String, Object>> reservation(HashMap<String, Object> map);
+    public void updateReservation(HashMap<String,Object> map);
+
 }

@@ -12,4 +12,5 @@ public interface CustomerService {
     public HashMap<String, Object> customerMyPage(HashMap<String, Object> HashMap);
     public void insertBorrowArea(HashMap<String, Object> map);
     public void deleteBorrowArea();
+    List<HashMap<String, Object>> selectBorrowArea();
 }

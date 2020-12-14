@@ -89,7 +89,7 @@
             </div>
             <div class="col">
                 <div class="row" style="text-align: right;">
-                    <div class="col" style="width: 200px;"><strong style="font-size: 20px;text-align: center;margin: 20px;"><%=1500- 1500/100 * sale %></strong></div>
+                    <div class="col" style="width: 200px;"><strong style="font-size: 20px;text-align: center;margin: 20px;"><%=1500- 1500/100 * sale %> <small style="color:#828282; "><%=sale%>%</small></strong> </div>
                 </div>
                 <div class="row" style="text-align: right;">
                     <div class="col" style="width: 200px;"><strong style="font-size: 20px;text-align: center;margin: 20px;"><%=map.get("customer_book_deposit")%></strong></div>

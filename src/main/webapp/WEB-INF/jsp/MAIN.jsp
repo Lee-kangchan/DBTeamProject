@@ -5,7 +5,7 @@
 <% List<HashMap<String, Object>> review = (List<HashMap<String, Object>>)request.getAttribute("review"); %>
 <% List<HashMap<String, Object>> book = (List<HashMap<String, Object>>)request.getAttribute("book"); %>
 <% List<HashMap<String, Object>> promotion = (List<HashMap<String, Object>>)request.getAttribute("promotion"); %>
-
+<% HashMap<String, Object> rank = (HashMap<String, Object>)request.getAttribute("rank");  %>
 <!DOCTYPE html>
 <html>
 
@@ -76,14 +76,14 @@
     <%if(sess!=null){%>
     <div class="container" style="width: 500px;padding-bottom: 18px;font-family: 'Do Hyeon', sans-serif;">
         <div class="row">
-            <div class="col" style="padding-right: 5px;padding-left: 5px;border-style: solid;border-color: rgb(40,167,69);"><strong style="text-align: center;font-size: 20px;border-style: none;border-bottom-style: solid;border-bottom-color: rgb(40,167,69);width: 460px;">우리지역 순위</strong>
+            <div class="col" style="padding-right: 5px;padding-left: 5px;border-style: solid;border-color: rgb(40,167,69);"><strong style="text-align: center;font-size: 20px;border-style: none;border-bottom-style: solid;border-bottom-color: rgb(40,167,69);width: 460px;"><%=rank.get("best_borrow_area_name")%> 순위</strong>
                 <div class="row">
-                    <div class="col" style="padding-right: 0px;padding-left: 0px;"><strong style="font-size: 18px;width: 250px;">대출</strong></div>
-                    <div class="col" style="padding-right: 0px;padding-left: 0px;font-size: -1px;"><strong style="font-size: -1px;">대여</strong></div>
+                    <div class="col" style="padding-right: 0px;padding-left: 0px;"><strong style="font-size: 18px;width: 250px;">거래 순위</strong></div>
+                    <div class="col" style="padding-right: 0px;padding-left: 0px;font-size: -1px;"><strong style="font-size: -1px;">거래량</strong></div>
                 </div>
                 <div class="row">
-                    <div class="col" style="padding-right: 0px;padding-left: 0px;font-size: -1px;"><strong style="font-size: -1px;">01등</strong></div>
-                    <div class="col" style="padding-right: 0px;padding-left: 0px;"><strong>01등</strong></div>
+                    <div class="col" style="padding-right: 0px;padding-left: 0px;font-size: -1px;"><strong style="font-size: -1px;"><%=rank.get("best_borrow_area_seq")%>등</strong></div>
+                    <div class="col" style="padding-right: 0px;padding-left: 0px;"><strong><%=rank.get("best_borrow_area_count")%>회</strong></div>
                 </div>
             </div>
         </div>
@@ -109,20 +109,20 @@
             <h1 class="container" style="font-family: Bungee, cursive;color: rgb(40,167,69);font-size: 26px;padding: 20px;">Current's BOOK</h1>
             <section style="margin-top: 20px;" class="c">
                 <div class="d-flex  multiple-item-slider container">
-                    <%for(int num=0 ; num < book.size(); num++){%>
+                    <%for(int num = book.size()-1 ; num >= 0 ; num--){%>
                         <%if(num==0){%>
                             <div class="justify-content-center spacer-slider">
                                 <figure class="figure">
-                                    <img class="img-fluid figure-img" width="200px" height="300px" src="<%= book.get(num).get("currents_book_img")%>" alt="alt text here"></figure>
+                                    <a href="/book/<%=book.get(num).get("customer_book_seq")%>"><img class="img-fluid figure-img" width="200px" height="300px" src="<%= book.get(num).get("currents_book_img")%>" alt="alt text here"></a></figure>
                             </div>
                         <%}else if(num == book.size()-1){%>
                             <div class="justify-content-center spacer-slider">
-                                <img class="img-fluid figure-img"width="200px" height="300px" src="<%= book.get(num).get("currents_book_img")%>" alt="alt text here">
+                                <a href="/book/<%=book.get(num).get("customer_book_seq")%>"><img class="img-fluid figure-img" width="200px" height="300px" src="<%= book.get(num).get("currents_book_img")%>" alt="alt text here"></a>
                             </div>
                         <%}else{%>
                             <div class="justify-content-center spacer-slider">
                                 <figure class="figure">
-                                    <img class="img-fluid figure-img d-flex" width="200px" height="300px"src="<%= book.get(num).get("currents_book_img")%>" alt="alt text here"></figure>
+                                    <a href="/book/<%=book.get(num).get("customer_book_seq")%>"><img class="img-fluid figure-img" width="200px" height="300px" src="<%= book.get(num).get("currents_book_img")%>" alt="alt text here"></a></figure>
                             </div>
                         <%}%>
                     <%}%>
@@ -131,13 +131,13 @@
         </form>
         <h1 class="container" style="font-family: Bungee, cursive;color: rgb(68,178,93);font-size: 26px;padding: 20px;">Today's REVIEW</h1>
         <div class="card-group bg-light container d-flex  " style="margin-bottom: 20px">
-            <%for(HashMap<String, Object> t : review){%>
+            <%for(int i = review.size()-1 ; i>= review.size()-4; i--){ if(i == -1)break; %>
             <div class="card " style="padding:20px;border-radius:8px; border:3px solid rgb(40,167,69);">
                 <div class="card-body">
-                    <a href="#" style="text-decoration:none;"><p class="card-title" style="font-family: 'Roboto Condensed', sans-serif; color:rgb(40,167,69); height:20%; font-weight:bold"><%=t.get("book_name")%></p></a>
+                    <a href="#" style="text-decoration:none;"><p class="card-title" style="font-family: 'Roboto Condensed', sans-serif; color:rgb(40,167,69); height:20%; font-weight:bold"><%=review.get(i).get("currents_review_title")%></p></a>
                     <p> </p>
-                    <p class="card-text" style="font-family: 'Roboto Condensed', sans-serif;text-align: center; height:60%"><%=t.get("review_detail")%></p>
-                    <p class="card-title" style="font-family: 'Roboto Condensed', sans-serif;"><%=t.get("customer_nickname")%></p>
+                    <p class="card-text" style="font-family: 'Roboto Condensed', sans-serif;text-align: center; height:60%"><%=review.get(i).get("currents_review_content")%></p>
+                    <p class="card-title" style="font-family: 'Roboto Condensed', sans-serif;"><%=review.get(i).get("currents_review_name")%></p>
                 </div>
             </div>
             <%}%>

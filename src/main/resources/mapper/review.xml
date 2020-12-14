@@ -6,11 +6,7 @@
 
 <!-- 메인 페이지 따끈따근 리뷰 -->
 <select id="selectMainReview" resultType="hashmap">
-        SELECT reivew_seq, book_img, book_name, customer_nickname, review_title, review_detail, review_score, review_createAt
-        FROM customer, book, review
-        WHERE review.customer_seq = customer.customer_seq AND review.book_isbn = book.book_isbn
-        ORDER BY review_createAt DESC
-        LIMIT 4
+        select * from currents_review
     </select>
 
 <!-- 리뷰 메인 페이지 -->
@@ -44,7 +40,7 @@
     </insert>
 
     <select id="selectMaxReview" resultType="integer">
-        select max(*) from review
+        select max(reivew_seq) from review
     </select>
 
     <select id="myReview" parameterType="hashmap" resultType="hashmap">
@@ -59,14 +55,14 @@
         where reivew_seq = #{review_seq}
     </delete>
     <insert id="insertCurrentReview" parameterType="hashmap">
-        insert into currents_review(currents_review_title, currents_review_content, current_review_name, currents_review_address_num, review_seq)
+        insert into currents_review(currents_review_title, currents_review_content, currents_review_name, currents_review_address_num, review_seq)
         values(#{review_title}, #{review_detail}, #{name}, #{customer_address_num}, #{review_seq})
     </insert>
     <select id="selectCurrentReview" parameterType="hashmap" resultType="hashmap">
         <![CDATA[
         select * from currents_review
-        where currents_review_address_num > #{address_num} - 100
-        and currents_review_address_num < #{address_num} + 100
+        where currents_review_address_num > #{customer_address_num} - 100
+        and currents_review_address_num < #{customer_address_num} + 100
         ]]>
     </select>
 </mapper>

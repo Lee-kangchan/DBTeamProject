@@ -82,7 +82,7 @@ public class BookController {
         String root_path = request.getSession().getServletContext().getRealPath("/");
         logger.info(root_path);
         String path = "C:/Users/abc/AllWorkBench/TeamWorkBench/DBTeamProject/src/main/resources";
-        String book_image_path = "/static/img/"+uuid+".jpg";
+        String book_image_path = "static/img/"+uuid+".jpg";
         map.put("book_img",book_image_path);
         map.put("customer_seq", session.getAttribute("customer_seq"));
         map.put("customer_address_num",session.getAttribute("customer_address_num"));
@@ -92,7 +92,7 @@ public class BookController {
         HashMap<String, Object> image = new HashMap<>();
         for(MultipartFile file : customer_book_img){
             uuid = UUID.randomUUID();
-            String book_image_path2 = "/static/img/"+uuid+".jpg";
+            String book_image_path2 = "static/img/"+uuid+".jpg";
             image.put("customer_book_img",book_image_path2);
             file.transferTo(new File("",book_image_path2));
             list.add(image);
@@ -143,14 +143,20 @@ public class BookController {
         back /= 10;
         map.put("customer_secret_num", "070-"+String.valueOf(front)+ "-" + String.valueOf(back));
         matchingService.insertMatching(map);
+        map.put("approval_yn","-");
         map.put("approval_point",map.get("money"));
+        map.put("customer_point",map.get("money"));
+        logger.info(""+map.get("approval_point"));
         map.put("approval_detail", "매칭금액");
         cardService.updateCustomerMinusPoint(map);
 
         map.put("approval_point",map.get("deposit"));
+        map.put("customer_point",map.get("deposit"));
         map.put("approval_detail", "예치금");
         cardService.updateCustomerMinusPoint(map);
 
+        map.put("customer_book_type", "대여중");
+        bookService.updateCustomerBookYn(map);
         return "redirect:/home";
     }
     @PostMapping("book/reservation/{seq}")
@@ -172,6 +178,12 @@ public class BookController {
 
         model.addAttribute("bookInfo", bookInfo);
         model.addAttribute("sess", session.getAttribute("customer_seq"));
+
+        if(bookInfo.isEmpty()){
+            map.put("bookCount",0);
+            bookInfo.add(map);
+            model.addAttribute("bookInfo",bookInfo);
+        }
 
         return "myBook";
     }
