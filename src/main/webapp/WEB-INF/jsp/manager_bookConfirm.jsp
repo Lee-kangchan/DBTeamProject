@@ -104,7 +104,7 @@
             <form class="modal-body mx-3" action="/manager/book/yn" method="POST">
                 <input type="hidden" name="customer_book_reason" class="form-control validate" value="" >
                 <input type="hidden" name="customer_book_certification_yn" value="1">
-                <input type="hidden" name="<%=book.get("customer_book_seq")%>">
+                <input type="hidden" name="customer_book_seq" value="<%=book.get("customer_book_seq")%>">
                 <div class="col "><button class="btn btn-primary" type="submit" style="margin-left: 80%;padding-right: 80px;padding-left: 80px;padding-top: 10px;padding-bottom: 10px;margin-bottom: 51px;font-size: 20px;text-align: center;margin-top: 0px;font-family: 'Do Hyeon', sans-serif;">도서 승인</button></div>
                 <div class="col "><button id="SBtn"class="btn btn-primary" type="button" style="margin-left: 50%;padding-right: 80px;padding-left: 80px;padding-top: 10px;padding-bottom: 10px;margin-bottom: 31px;font-size: 20px;text-align: center;margin-top: 0px;font-family: 'Do Hyeon', sans-serif;">도서 거절</button></div>
             </form>
@@ -137,7 +137,7 @@
                     <div class="md-form mb-3">
                         <input name="customer_book_reason" id="defaultForm-text" class="form-control validate" placeholder="거절사유" >
                         <input type="hidden" name="customer_book_certification_yn" value="2">
-                        <input type="hidden" name="<%=book.get("customer_book_seq")%>">
+                        <input type="hidden" name="customer_book_seq" value="<%=book.get("customer_book_seq")%>">
                     </div>
 
                     <div class="modal-footer d-flex justify-content-center">

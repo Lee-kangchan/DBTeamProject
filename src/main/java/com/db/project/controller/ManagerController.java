@@ -91,7 +91,7 @@ public class ManagerController {
     }
     @PostMapping("/manager/book/yn")
     public String managerBookDetailYn(Model model, @RequestParam HashMap<String, Object> params){
-
+        logger.info(params+"");
         bookService.updateCustomerBookCertification(params);
         return "redirect:/manager/book";
     }
